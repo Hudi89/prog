@@ -11,19 +11,34 @@ Másik példaként vehetjük pl. hogy a legerősebb alkoholt keressük (szintén
 ### A programkód 
 
 ```c++
+#include <iostream>
+
+using namespace std;
+
 int main(){
   int b=2;
   b++;
   cout << b;
-  for(int a=0;a<b;a++){
-    cout << "Hello!" <<endl;
-  }
   return 0;
 }
 ```
-Miket mondhatunk el általánosan egy programkódról!
-* Sorról sorra fut (Szigorúan)
-* 
+Egy programkód értelmezése futtatás nélkül első dolog amit szem előtt kell tartani, hogy a programunk mindig *sorról sorra fut*, ergo nem kell rögtön megérteni az egészet, hanem a fejünkben szépen végiglépkedni a programunk futását. Első szinten azt figyeljük mindig, hogy hol jelenik meg a programunkban az *int main()* nevű függvény, mivel innen fog indulni a futásunk, ami ezután le van írva a *{ és }* között, az a rész lesz a főprogramunk amit elemezni fogunk lépésről lépésre. 
+Szóval ez a programkód pl. annyit csinál, hogy létrehoz egy változót b névvel, majd annak értékéül adja, hogy kettő.
+```c++ int b=2;```. Ezzel végeztünk is. A következő sorban a b változót növeljük egyel ```c++ b++;```.  Ekkor a b-nk 3 lesz, mivel eddig 2 volt. Kiírjuk a b-t, ergo a képernyőre kikerül, hogy 3.```c++ return 0;``` minden main végén kötelező, ezzel jelezzük a programot indítónak, hogy a program lefutása helyes volt. 
+
+#### De miért kell mindenhova ";"?
+A c++ nem foglalkozik a sortörésekkel, szóközökkel, tabulátorokkal (úgynevezzet whitespace karakterekkel, szemben a whitespace nevű nyelvvel: http://hu.wikipedia.org/wiki/Whitespace_%28programoz%C3%A1si_nyelv%29), így valahogy el kell választanunk a parancsokat, ebből adódóan az előző programkódot a következő módon is írhattuk volna.
+
+```c++
+#include <iostream> 
+using namespace std;int main(){int b=2;b++;cout << b;return 0;}
+```
+A *#include* -os rész sajnos teljesen más világ, így ott az egy sorba behúzást nem tehetjük meg, mivel ezek úgynevezett direktívák.
+
+#### Direktíva
+
+ #-el kezdődő részeket a programban direktívának hívjuk, ami nem konkrét programkód, hanem csak egy elősegítő folyamat.
+Első direktíva az #include, ami annyit tesz, hogy másolás beillesztés, 
 
 ### Fordítás (Linux & Konzol esetében)
 
@@ -70,6 +85,10 @@ C++-ban két alapvető lehetésünk van kommentelésre:
 * /* és */ közé írt szöveget szintén (több soros megjegyzés)
 
 ```c++
+#include <iostream>
+
+using namespace std;
+
 int main(){
   int b=2; //Szeretem a mákosgubát
   b++;
