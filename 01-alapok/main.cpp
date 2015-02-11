@@ -1,3 +1,8 @@
+/*
+Feladat:
+Olvassunk be számokat a konzolról amíg 0-t nem ír be a felhasználó, majd ezeket adjuk össze és írjuk ki a számok összegét.
+*/
+
 #include <iostream>
 #include <vector>
 
