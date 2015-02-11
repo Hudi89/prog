@@ -13,3 +13,7 @@ ZH tudnivalók:
 * Mindenféle papíros segédeszköz használható (igen, akár minden ZH megoldása kinyomtatva)
 * GT oldalán található minden információ és letölhető segédanyag használható a ZH-k folyamán
 * Az előbbi ponton kívül minden Digitális eszköz minden szinten tiltott és kizárást von maga után
+
+## 01-Alapok 
+Hogyan is kezdjünk hozzá egy programhoz...
+https://github.com/Hudi89/prog/blob/master/01-alapok/alapok.md
