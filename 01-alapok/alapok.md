@@ -40,12 +40,20 @@ A *#include* -os rész sajnos teljesen más világ, így ott az egy sorba behúz
  #-el kezdődő részeket a programban direktívának hívjuk, ami nem konkrét programkód, hanem csak egy elősegítő folyamat.
 Első direktíva az #include, ami annyit tesz, hogy másolás beillesztés, ekkor egy úgynevezett fejlécfájlt másol be a mi kódunkba, hogy a fordító tudja, hogy miket használhatunk a programunkban. De erről részletesebben későbbi fejezetekben lesz, egyelőre maradjunk annyiban, hogy ha valamilyen funkcióra szükségünk van, akkor ilyen #include sorokat kell majd hozzáadnunk és akkor azokat is megtudjuk majd hívni.
 
-A tárgyon belül az úgynevezett STL-t (Standard Template Library) fogjuk használni csak.
+A tárgyon belül az úgynevezett STL-t (Standard Template Library) fogjuk használni csak. 
+
+### És mit jelent az az utolsó sor?
+```c++
+using namespace std;
+```
+
+Ez egy egyszerű rövidítés, mivel ha ez nincs kiírva, akkor minden cout elé oda kell írni, hogy std::cout.
+[Több dolgozós példa]
 
 #### De hol is van ez a programkód?
 
 Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolya fejlesztőkörnyezetig minden megtudja nyitni. Megnyitási problémák karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk ékezetet sehol, így a kódolással nem lehet problémánk.
-Általában a kiterjesztése a c/c++ programkód fájloknak *cpp*, *cc* vagy simán *c*.
+Általában a kiterjesztése a c/c++ programkód fájloknak *cpp*, *cc* vagy simán *c*, mi és a CodeBlocks is a *cpp*-t fogja használni.
 
 ### Fordítás (Linux & Konzol esetében)
 
@@ -96,13 +104,13 @@ int main(){
   return 0;
 }
 ```
-A modern programozási világban a /*-os megjegyzés használata mellett óvatosságra intenek, mert ha pl. van egy 1000 soros kódod és kiakarsz kommentelni 200 sort belőle, de valahol van benne egy 10 soros rész aminél már használtad a több soros megjegyzés.
+A modern programozási világban a több soros megjegyzés használata esetén óvatosságra intenek, mert ha pl. van egy 1000 soros kódod és kiakarsz kommentelni 200 sort belőle, de valahol van benne egy 10 soros rész aminél már használtad a több soros megjegyzés, akkor a több soros megjegyzés az 200 soros komment nyitójától fog tartani a 10 soros zárójáig, tehát a 10 soros */-jétől nem lesz kikommentelve a kód. Ahhoz, hogy egy soros kommentelést alkalmazzunk több soron, a legtöbb fejlesztő környezet kínál egy billentyűkombinációt, aminek a segítségével a kijelölt sorok mindegyikét egysoros kommentbe teszi. (Ideiglenes kód eltávolítás miatt pl.)
 
 ## Függvények
 
 
 
-### Változók
+##  Változók
 A változó a program futásához szükséges kellék, ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ami
 Egy változónak van *élettartama* ameddig az adott változó létezik a memóriánkban.
 
