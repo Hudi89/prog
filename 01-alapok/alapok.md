@@ -42,7 +42,7 @@ Első direktíva az #include, ami annyit tesz, hogy másolás beillesztés, ekko
 
 A tárgyon belül az úgynevezett STL-t (Standard Template Library) fogjuk használni csak. 
 
-### És mit jelent az az utolsó sor?
+### És mit jelent az az utolsó még nem magyarázott sor?
 ```c++
 using namespace std;
 ```
@@ -52,8 +52,8 @@ Ez egy egyszerű rövidítés, mivel ha ez nincs kiírva, akkor minden cout elé
 
 #### De hol is van ez a programkód?
 
-Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolya fejlesztőkörnyezetig minden megtudja nyitni. Megnyitási problémák karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk ékezetet sehol, így a kódolással nem lehet problémánk.
-Általában a kiterjesztése a c/c++ programkód fájloknak **cpp**, **cc** vagy simán **c**, mi és a CodeBlocks is a **cpp**-t fogja használni.
+Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolyabb fejlesztőkörnyezetig minden megtudja nyitni. Problémák a karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk ékezetet sehol, így ezzel nem foglalkozunk.
+Általában a kiterjesztése a c/c++ programkód fájloknak **cpp**, **cc** vagy simán **c**, mi és a CodeBlocks is a **cpp**-t fogjuk használni.
 
 ### Fordítás
 
