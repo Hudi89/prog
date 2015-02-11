@@ -4,7 +4,7 @@ A Programozás című tárgy előfeltétele a Programozási alapismeretek című
 
 ## Alapok
 
-Egy programot úgy foghatunk fel mint egy ember által sokszor elvégzett feladat formalizálását. Például ha azt a feladatot kapod a boltban, hogy nézd át minden nap zárás után, hogy van-e esetleg lejárt termék. Ebben az esetben buta verzióban annyit fogunk tenni, hogy minden nap végignézzük az összes terméket, hogy mikor jár le és ha az adott dátum kisebb mint a mai akkor kidobjuk. Ez esetünkben lehet egy többszörös *keresés*, igen keresési tétel, ergo kiválogatás, mert ha ismerjük az 5 alap tételt, akkor egyelőre még csak keresést tudjuk használni, de azzal is megtudjuk oldani, mert ha kikeresünk egy olyat ami lejárt kivesszük és addig futtatjuk amíg van benne lejárt elem.
+Egy programot úgy foghatunk fel mint egy ember által sokszor elvégzett feladat formalizálását. Például ha azt a feladatot kapod a boltban, hogy nézd át minden nap zárás után, hogy van-e esetleg lejárt termék. Ebben az esetben buta verzióban annyit fogunk tenni, hogy minden nap végignézzük az összes terméket, hogy mikor jár le és ha az adott dátum kisebb mint a mai akkor kidobjuk. Ez esetünkben lehet egy többszörös **keresés**, igen keresési tétel, ergo kiválogatás, mert ha ismerjük az 5 alap tételt, akkor egyelőre még csak keresést tudjuk használni, de azzal is megtudjuk oldani, mert ha kikeresünk egy olyat ami lejárt kivesszük és addig futtatjuk amíg van benne lejárt elem.
 
 Másik példaként vehetjük pl. hogy a legerősebb alkoholt keressük (szintén a boltban...nem ott írom ezt...komolyan) a termékek közül. Ekkor annyit tudunk csinálni ha bemegyünk a boltba, hogy végigmegyünk a soron és nézegetjük, hogy melyik mennyi és mindig megjegyezzük, hogy mi volt eddig a legerősebb alkohol. Amikor a sor végére érünk akkor (ha a memóriánk nem rossz) emlékszünk, hogy melyik volt az, meg is oldottuk a feladatot.
 
@@ -22,7 +22,7 @@ int main(){
   return 0;
 }
 ```
-Egy programkód értelmezése futtatás nélkül első dolog amit szem előtt kell tartani, hogy a programunk mindig *sorról sorra fut*, ergo nem kell rögtön megérteni az egészet, hanem a fejünkben szépen végiglépkedni a programunk futását. Első szinten azt figyeljük mindig, hogy hol jelenik meg a programunkban az *int main()* nevű függvény, mivel innen fog indulni a futásunk, ami ezután le van írva a *{ és }* között, az a rész lesz a főprogramunk amit elemezni fogunk lépésről lépésre. 
+Egy programkód értelmezése futtatás nélkül első dolog amit szem előtt kell tartani, hogy a programunk mindig **sorról sorra fut**, ergo nem kell rögtön megérteni az egészet, hanem a fejünkben szépen végiglépkedni a programunk futását. Első szinten azt figyeljük mindig, hogy hol jelenik meg a programunkban az **int main()** nevű függvény, mivel innen fog indulni a futásunk, ami ezután le van írva a **{ és }** között, az a rész lesz a főprogramunk amit elemezni fogunk lépésről lépésre. 
 Szóval ez a programkód pl. annyit csinál, hogy létrehoz egy változót b névvel, majd annak értékéül adja, hogy kettő.
 ```c++ int b=2;```. Ezzel végeztünk is. A következő sorban a b változót növeljük egyel ```c++ b++;```.  Ekkor a b-nk 3 lesz, mivel eddig 2 volt. Kiírjuk a b-t, ergo a képernyőre kikerül, hogy 3.```c++ return 0;``` minden main végén kötelező, ezzel jelezzük a programot indítónak, hogy a program lefutása helyes volt. 
 
@@ -33,7 +33,7 @@ A c++ nem foglalkozik a sortörésekkel, szóközökkel, tabulátorokkal (úgyne
 #include <iostream> 
 using namespace std;int main(){int b=2;b++;cout << b;return 0;}
 ```
-A *#include* -os rész sajnos teljesen más világ, így ott az egy sorba behúzást nem tehetjük meg, mivel ezek úgynevezett direktívák.
+A **#include** -os rész sajnos teljesen más világ, így ott az egy sorba behúzást nem tehetjük meg, mivel ezek úgynevezett direktívák.
 
 #### Direktíva
 
@@ -53,7 +53,7 @@ Ez egy egyszerű rövidítés, mivel ha ez nincs kiírva, akkor minden cout elé
 #### De hol is van ez a programkód?
 
 Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolya fejlesztőkörnyezetig minden megtudja nyitni. Megnyitási problémák karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk ékezetet sehol, így a kódolással nem lehet problémánk.
-Általában a kiterjesztése a c/c++ programkód fájloknak *cpp*, *cc* vagy simán *c*, mi és a CodeBlocks is a *cpp*-t fogja használni.
+Általában a kiterjesztése a c/c++ programkód fájloknak **cpp**, **cc** vagy simán **c**, mi és a CodeBlocks is a **cpp**-t fogja használni.
 
 ### Fordítás (Linux & Konzol esetében)
 
@@ -79,7 +79,7 @@ parancsot.
 
 Részletesen: http://linux.die.net/man/1/g++
 
-*Code Blocks* is használható a tárgy alatt, új projekt létrehozása illetve fordítása sokkal egyszerűbb: https://www.youtube.com/watch?v=kYA8rK2fy2U
+**Code Blocks** is használható a tárgy alatt, új projekt létrehozása illetve fordítása sokkal egyszerűbb: https://www.youtube.com/watch?v=kYA8rK2fy2U
 
 ### Kommentelés
 
@@ -112,7 +112,7 @@ A modern programozási világban a több soros megjegyzés használata esetén �
 
 ##  Változók
 A változó a program futásához szükséges kellék, ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ami
-Egy változónak van *élettartama* ameddig az adott változó létezik a memóriánkban.
+Egy változónak van **élettartama** ameddig az adott változó létezik a memóriánkban.
 
 
 ## Referencia használata
