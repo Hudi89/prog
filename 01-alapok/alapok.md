@@ -55,7 +55,9 @@ Ez egy egyszerű rövidítés, mivel ha ez nincs kiírva, akkor minden cout elé
 Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolya fejlesztőkörnyezetig minden megtudja nyitni. Megnyitási problémák karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk ékezetet sehol, így a kódolással nem lehet problémánk.
 Általában a kiterjesztése a c/c++ programkód fájloknak **cpp**, **cc** vagy simán **c**, mi és a CodeBlocks is a **cpp**-t fogja használni.
 
-### Fordítás (Linux & Konzol esetében)
+### Fordítás
+
+#### Konzolból fordítás (Linux)
 
 ```bash
 g++ main.cpp
@@ -79,6 +81,7 @@ parancsot.
 
 Részletesen: http://linux.die.net/man/1/g++
 
+#### Code Blocks
 **Code Blocks** is használható a tárgy alatt, új projekt létrehozása illetve fordítása sokkal egyszerűbb: https://www.youtube.com/watch?v=kYA8rK2fy2U
 
 ### Kommentelés
