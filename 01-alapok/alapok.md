@@ -38,7 +38,14 @@ A *#include* -os rész sajnos teljesen más világ, így ott az egy sorba behúz
 #### Direktíva
 
  #-el kezdődő részeket a programban direktívának hívjuk, ami nem konkrét programkód, hanem csak egy elősegítő folyamat.
-Első direktíva az #include, ami annyit tesz, hogy másolás beillesztés, 
+Első direktíva az #include, ami annyit tesz, hogy másolás beillesztés, ekkor egy úgynevezett fejlécfájlt másol be a mi kódunkba, hogy a fordító tudja, hogy miket használhatunk a programunkban. De erről részletesebben későbbi fejezetekben lesz, egyelőre maradjunk annyiban, hogy ha valamilyen funkcióra szükségünk van, akkor ilyen #include sorokat kell majd hozzáadnunk és akkor azokat is megtudjuk majd hívni.
+
+A tárgyon belül az úgynevezett STL-t (Standard Template Library) fogjuk használni csak.
+
+#### De hol is van ez a programkód?
+
+Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolya fejlesztőkörnyezetig minden megtudja nyitni. Megnyitási problémák karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk ékezetet sehol, így a kódolással nem lehet problémánk.
+Általában a kiterjesztése a c/c++ programkód fájloknak *cpp*, *cc* vagy simán *c*.
 
 ### Fordítás (Linux & Konzol esetében)
 
@@ -66,17 +73,6 @@ Részletesen: http://linux.die.net/man/1/g++
 
 *Code Blocks* is használható a tárgy alatt, új projekt létrehozása illetve fordítása sokkal egyszerűbb: https://www.youtube.com/watch?v=kYA8rK2fy2U
 
-### Változók
-A változó a program futásához szükséges kellék, ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ami
-Egy változónak van *élettartama* ameddig az adott változó létezik a memóriánkban.
-
-#### "Manuális futtatás"
-
-| Kódsor | a | b |
-| ----- | - | - |
-|int b=2;|Ismeretlen|Ismeretlen|
-
-
 ### Kommentelés
 
 A kódban megjelenhetnek olyan információk is amik nem feltétlenül tartoznak a kódhoz hanem csak a kód megértését könnyítik, TODO (olyan amit még meg kell csinálni), dokumentáció, vagy bármi egyéb megjegyzés.
@@ -93,9 +89,6 @@ int main(){
   int b=2; //Szeretem a mákosgubát
   b++;
   cout << b;
-  for(int a=0;a<b;a++){
-    cout << "Hello!" <<endl;
-  }
   /*
   Egyszer volt hol nem volt volt egyszer egy... róka... vége.
   */
@@ -104,3 +97,15 @@ int main(){
 }
 ```
 A modern programozási világban a /*-os megjegyzés használata mellett óvatosságra intenek, mert ha pl. van egy 1000 soros kódod és kiakarsz kommentelni 200 sort belőle, de valahol van benne egy 10 soros rész aminél már használtad a több soros megjegyzés.
+
+## Függvények
+
+
+
+### Változók
+A változó a program futásához szükséges kellék, ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ami
+Egy változónak van *élettartama* ameddig az adott változó létezik a memóriánkban.
+
+
+## Referencia használata
+A tárgy óráin általában a http://www.cplusplus.com/ oldalán található leírásokat fogom ajánlani, mivel az oldalon egy függvény használatához általában 
