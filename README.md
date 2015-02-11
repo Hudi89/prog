@@ -6,3 +6,10 @@ A félév folyamán 2 zh lesz, az egyiket a gyakorlat időpontjában és helyén
 Beadandókat is kell majd írni, a GT oldalán található feladatokból, ez még később ki lesz osztva az órán.
  
 Akinek bármiféle észrevétele vagy kérdése van az anyaggal kapcsolatban az nyugodtan írjon a fentebb található e-mail címemre. 
+
+Gt oldala: http://people.inf.elte.hu/gt/prog/prog.html
+
+ZH tudnivalók:
+* Mindenféle papíros segédeszköz használható (igen, akár minden ZH megoldása kinyomtatva)
+* GT oldalán található minden információ és letölhető segédanyag használható a ZH-k folyamán
+* Az előbbi ponton kívül minden Digitális eszköz minden szinten tiltott és kizárást von maga után
