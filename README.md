@@ -7,6 +7,8 @@ Beadandókat is kell majd írni, a GT oldalán található feladatokból, ez mé
  
 Akinek bármiféle észrevétele vagy kérdése van az anyaggal kapcsolatban az nyugodtan írjon a fentebb található e-mail címemre. 
 
+**Fontos:** A jegyzet nem törekszik minden esetben a teljességre és a pontosságra, a fő szempont, hogy a lehető legkönnyebben lehessen fokozatosan megérteni a programozás című tárgy teljesítéséhez szükséges tudáshalmazt.
+
 Gt oldala: http://people.inf.elte.hu/gt/prog/prog.html
 
 ZH tudnivalók:
