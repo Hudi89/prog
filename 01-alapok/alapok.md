@@ -40,15 +40,33 @@ A **#include** -os rész sajnos teljesen más világ, így ott az egy sorba beh�
  #-el kezdődő részeket a programban direktívának hívjuk, ami nem konkrét programkód, hanem csak egy elősegítő folyamat.
 Első direktíva az #include, ami annyit tesz, hogy másolás beillesztés, ekkor egy úgynevezett fejlécfájlt másol be a mi kódunkba, hogy a fordító tudja, hogy miket használhatunk a programunkban. De erről részletesebben későbbi fejezetekben lesz, egyelőre maradjunk annyiban, hogy ha valamilyen funkcióra szükségünk van, akkor ilyen #include sorokat kell majd hozzáadnunk és akkor azokat is megtudjuk majd hívni.
 
-A tárgyon belül az úgynevezett STL-t (Standard Template Library) fogjuk használni csak. 
+A tárgyon belül az úgynevezett STL-t (Standard Template Library) fogjuk használni csak, ennek része az iostream is, de ha pl. matematikai függvényeket akarunk használni, akkor
+```c++
+#include <cmath> 
+```
+sor hozzáadásával elérhetővé tesszük a abs() függvényt is ami a paraméterül adott szám abszolútértékét adja vissza. 
+Részletesen: http://www.cplusplus.com/reference/ (ezekből csak párat fogunk érinteni a tárgy alatt.
 
 ### És mit jelent az az utolsó még nem magyarázott sor?
 ```c++
 using namespace std;
 ```
 
-Ez egy egyszerű rövidítés, mivel ha ez nincs kiírva, akkor minden cout elé oda kell írni, hogy std::cout.
-[Több dolgozós példa]
+Ez egy egyszerű rövidítés, mivel ha ez nincs kiírva, akkor minden cout elé oda kell írni, hogy std::cout (később lesz szó részletesebben a :: operátorról). De mire is jó?
+Egy könnyen érthető magyarázat, hogy programozásban minden feladat megvalósítására nagyon sok verzió készül különböző programozóktól, így viszont elkerülhetetlen, hogy egy nagy projekt esetében ne nevezzenek el a fejlesztők két különböző függvényt azonos névvel, de ha mindkettőt szeretnénk használni akkor mit tudunk tenni? Erre valók a névterek, hogy valamilyen megbeszélt felosztás szerint a függvényeket névcsoportokba soroljuk. Legyen A és B névtér (később erről is részletesebben) mindkettőben létezik a hello függvény, ekkor ```c++ A::hello()``` -val hívhatjuk meg az A verziót ```c++ B::hello()```-val meg a B-set. Ha viszont tudjuk, hogy főként az A függvényeit fogjuk használni, akkor kiírjuk a usingos részt és onnantól ha ```c++ hello()```-t írunk automatikusan az A verziót veszi, de továbbra is elérhető a B verziója ```c++ B::hello()```-t használva.
+
+Tehát ha eltávolítjuk a usingos rézt, akkor az iostream-ből ismert dolgok elé kikell rakni az ```c++ std::```-t
+```c++
+#include <iostream>
+
+int main(){
+  int b=2;
+  b++;
+  std::cout << b;
+  return 0;
+}
+```
+
 
 #### De hol is van ez a programkód?
 
