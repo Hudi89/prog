@@ -75,6 +75,8 @@ Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséh
 
 ### Fordítás
 
+Fordításra nagyon sok mód létezik, viszont a tárgy folyamán legfőképp CodeBlocks-ot fogjuk használni.
+
 #### Konzolból fordítás (Linux)
 
 ```bash
@@ -127,13 +129,31 @@ int main(){
 ```
 A modern programozási világban a több soros megjegyzés használata esetén óvatosságra intenek, mert ha pl. van egy 1000 soros kódod és kiakarsz kommentelni 200 sort belőle, de valahol van benne egy 10 soros rész aminél már használtad a több soros megjegyzés, akkor a több soros megjegyzés az 200 soros komment nyitójától fog tartani a 10 soros zárójáig, tehát a 10 soros */-jétől nem lesz kikommentelve a kód. Ahhoz, hogy egy soros kommentelést alkalmazzunk több soron, a legtöbb fejlesztő környezet kínál egy billentyűkombinációt, aminek a segítségével a kijelölt sorok mindegyikét egysoros kommentbe teszi. (Ideiglenes kód eltávolítás miatt pl.)
 
-## Függvények
-
-
 
 ##  Változók
-A változó a program futásához szükséges kellék, ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ami
-Egy változónak van **élettartama** ameddig az adott változó létezik a memóriánkban.
+A változó a program futásához szükséges kellék, ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ha azonosulunk a programmal. Képzeljük el, hogy mi vagyunk a buta program aki nem tud olyan komplexen gondolkozni mint egy ember, hanem egyszerre csak egy dologra tud koncentrálni aki ül egy asztalnál. Ha megkérdezed a felhasználót, hogy mondjon egy számot, akkor azt a számot le kell írnod egy lapra és ott hagynod az asztalodon (ami a valóságban a memóriát szimbolizálja), mivel ha nemírod fel elfelejted. 
+
+### Hogy hozzuk létre?
+
+A példánkból már látható vagy sejthető, hogy 
+```[Változó típus] [Változó név]```
+stílusban hozunk létre változót. A példánkban az int típust használjuk ami az egyszerű egész szám, viszont vigyázzunk vele, mert ezek nem minden egész számot képesek eltárolni, csak adott nagyságút, attól függően hány bit-ről van szó. Ha pl. 32. bites az int (általában ez igaz) akkor 2^32 számot képes kifejezni. (Részletesebben: Numerikus módszerek 1. http://numanal.inf.elte.hu/~hegedus/okt.html)
+
+#### Milyen típusok vannak
+
+int - Egész (általában 32 bites 0..4294967296)
+float - Lebegőpontos (általában 32 bites, viszont itt egy érdekesség, hogy vagy nagyon pontos vagy nagyon nagy számokat tud kifejezni)
+double - Ugyanaz mint a float csak nagyobb (általában 64 bit)
+char - karakter (8 bit - 1 byte - 1 karakter)
+bool - logikai változó (1 bit)
+
+Note: az általában kifejezés annyit tesz, hogy a mi esetünkben az ELTE-n a gépeken így lesz a félév folyamán.
+
+#### Milyen módosítók vannak
+
+## Függvények
+
+A programozási nyelvek első egyik legfontosabb eleme a függvények, amik segítségével struktúráltabbá tudjuk tenni a programunkat
 
 
 ## Referencia használata
