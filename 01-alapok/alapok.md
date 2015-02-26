@@ -205,3 +205,38 @@ Ezzel a kóddal elérjük azt, hogy ha három paraméterrel hívják meg a max f
 
 ## Referencia használata
 A tárgy óráin általában a http://www.cplusplus.com/ oldalán található leírásokat fogom ajánlani, mivel az oldalon egy függvény használatához általában 
+
+# Vector 
+
+A programozási alapismeretek órán megismerkedtetek a tömbökkel, amik arra szolgálnak, hogy a fentebb ismertetett típusokból többet tároljunk együtt. Ezt egyszerűen tudjuk megoldani:
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int max(int a, int b){
+  if(a > b){
+    return a;
+  }else{
+    return b;
+  }
+}
+
+int max(int a[3]){
+  return max(max(a[0],a[1]),a[2]);
+}
+
+int main(){
+  int T[3];
+  T[0] = 1;
+  T[1] = 2;
+  T[3] = 3;
+  cout << max(T);
+}
+```
+Ez a kód szintén ki fogja írni a 3 elem maximumát a korábbiakhoz hasonlóan.
+Note: Az, hogy belül hogy nevezzük el a változókat az teljesen független attól, hogy egy függvényen belül hogy hívjuk.
+Viszont ezzel a kóddal van egy olyan problémánk, hogy normális esetben egy statikus változó nem lehet dinamikus méretű, ergo ha mondjuk nem tudjuk mennyi bemenő adat lesz, akkor max úgy tudjuk megoldani, hogy létrehozunk egy 1000 nagyságút és imádkozunk, hogy a felhasználó ne akarjon több adatot beadni. Ez egy ideig használható megoldás is lehet, de éles helyzetben egy általánosabb programnál természtesen elfogadhatatlan. 
+
+
