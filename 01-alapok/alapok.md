@@ -53,7 +53,7 @@ using namespace std;
 ```
 
 Ez egy egyszerű rövidítés, mivel ha ez nincs kiírva, akkor minden cout elé oda kell írni, hogy std::cout (később lesz szó részletesebben a :: operátorról). De mire is jó?
-Egy könnyen érthető magyarázat, hogy programozásban minden feladat megvalósítására nagyon sok verzió készül különböző programozóktól, így viszont elkerülhetetlen, hogy egy nagy projekt esetében ne nevezzenek el a fejlesztők két különböző függvényt azonos névvel, de ha mindkettőt szeretnénk használni akkor mit tudunk tenni? Erre valók a névterek, hogy valamilyen megbeszélt felosztás szerint a függvényeket névcsoportokba soroljuk. Legyen A és B névtér (később erről is részletesebben) mindkettőben létezik a hello függvény, ekkor ```c++ A::hello()``` -val hívhatjuk meg az A verziót ```c++ B::hello()```-val meg a B-set. Ha viszont tudjuk, hogy főként az A függvényeit fogjuk használni, akkor kiírjuk a usingos részt és onnantól ha ```c++ hello()```-t írunk automatikusan az A verziót veszi, de továbbra is elérhető a B verziója ```c++ B::hello()```-t használva.
+Egy könnyen érthető magyarázat, hogy programozásban minden feladat megvalósítására nagyon sok verzió készül különböző programozóktól, így viszont elkerülhetetlen, hogy egy nagy projekt esetében ne nevezzenek el a fejlesztők két különböző függvényt azonos névvel, de ha mindkettőt szeretnénk használni akkor mit tudunk tenni? Erre valók a névterek, hogy valamilyen megbeszélt felosztás szerint a függvényeket névcsoportokba soroljuk. Legyen A és B névtér (később erről is részletesebben) mindkettőben létezik a hello függvény, ekkor ```c++ A::hello()``` -val hívhatjuk meg az A verziót ```c++ B::hello()```-val meg a B-set. Ha viszont tudjuk, hogy főként az A függvényeit fogjuk használni, akkor kiírjuk a usingos részt és onnantól ha ```c++ hello()```-t írunk automatikusan az A verziót veszi, de továbbra is elérhető a B verziója ```c++ B::hello()```-t használva. A ```c++::``` operátor más esetekben is használatos lesz majd még. Amit általánosan tudni kell róla az az, hogy ez egy olyan operátor ami egy fogalmi szinten létező dolgon belüli valamit választ ki. A mostani példánkban egy a fogalomban (névtér) lévő másik fogalmat (függvény) érünk elezzel az operátorral (később lesz másra is példa).
 
 Tehát ha eltávolítjuk a usingos rézt, akkor az iostream-ből ismert dolgok elé kikell rakni az ```c++ std::```-t
 ```c++
@@ -206,8 +206,8 @@ Ezzel a kóddal elérjük azt, hogy ha három paraméterrel hívják meg a max f
 ## Referencia használata
 A tárgy óráin általában a http://www.cplusplus.com/ oldalán található leírásokat fogom ajánlani, mivel az oldalon egy függvény használatához általában 
 
-# Vector 
 
+## Tömbök
 A programozási alapismeretek órán megismerkedtetek a tömbökkel, amik arra szolgálnak, hogy a fentebb ismertetett típusokból többet tároljunk együtt. Ezt egyszerűen tudjuk megoldani:
 
 ```c++
@@ -239,6 +239,8 @@ Ez a kód szintén ki fogja írni a 3 elem maximumát a korábbiakhoz hasonlóan
 Note: Az, hogy belül hogy nevezzük el a változókat az teljesen független attól, hogy egy függvényen belül hogy hívjuk.
 Viszont ezzel a kóddal van egy olyan problémánk, hogy normális esetben egy statikus változó nem lehet dinamikus méretű, ergo ha mondjuk nem tudjuk mennyi bemenő adat lesz, akkor max úgy tudjuk megoldani, hogy létrehozunk egy 1000 nagyságút és imádkozunk, hogy a felhasználó ne akarjon több adatot beadni. Ez egy ideig használható megoldás is lehet, de éles helyzetben egy általánosabb programnál természtesen elfogadhatatlan. 
 
+# Vector 
+
 Ebben az esetben jön segítségünkre a vector, ami egy eddig ismeretlen fogalomtárból származik. Ez egy úgynevezett osztály, amiről most első szinten annyit kell tudnunk, hogy egy olyan dolog aminek parancsokat tudunk kiadni, kérdezni tudunk tőle, de az hogy az adott feladatot hogy oldja meg az minket egyelőre nem érdekel. Ez az osztály segít nekünk dinamikusan kezelni tömböket, nem kell foglalkoznunk memóriafoglalásokkal, méretekkel meg semmivel, csak kiadunk neki egy parancsot, hogy mit csináljon és megoldja nekünk.
 
 Létrehozása egy kicsit érdekes, mert nem simán ahogy gondolnánk, hogy változó típus és név, mert itt van a típusnak egy paramétere is, amivel azt adjuk meg, hogy miket szeretnénk tárolni ebben a vectorban. Ha nem lenne ilyen támogatás a C++-ban akkor létre kéne hozni minden más típusra egy-egy vector osztyált, de mi lenne akkor ha egy saját új típusból szeretnénk vectort csinálni? Hát természetesen nem sikerlüne (egyszerűen legalábbis nem).
@@ -247,6 +249,53 @@ Tehát ha mondjuk egy int-ekből álló tömböt akarunk amit v-nek nevezünk, a
 ```c++ vector<int> v;```
 kód a nekünk való.:)
 
+Ennek az osztálynak úgy tudunk parancsot adni, azaz egy függvényét meghívni, hogy a neve után teszünk egy pontot majd megadjuk a függvény nevét. 
+
+## push_back
+Az első és legtriviálisabb függvény az a ```c++ vector::push_back(int)```. A jelölés ne zavarjon meg minket, ez már a korábban emlegetett ```c++::``` operátor ami egy fogalomban egy valamit jelöl. A vector fogalmi szinten létezik amíg nem hozunk létre belőle egyet. Az előző vector létrehozásnál a ```c++v``` a vector osztály egy példánya.
+Viszont ha már van példányunk és arra a konkrét vectorra szeretnénk meghívni egy függvényt akkor a ```c++.``` operátor lesz a segítségünkre:
+```c++v.push_back(4); ```
+Ez a Kód annyit fog tenni, hogy a v vektorba ami kezdetben üres berakja a 4-et.
+
+Note: Természetesen az int helyén *bármi* lehet (A bármire később lesznek korlátaink, de aktuális tudásunk szerint bármi). 
+
+Részletesebben: http://www.cplusplus.com/reference/vector/vector/push_back/
+
+## operator[]
+
+Ha csak berakni tudunk az nem túl izgalmas és mivel a tömböt általánosítottuk elég kínos lenne ha nem tudnánk ugyanúgy hivatkozni az elemeire, mint a tömbnek, így a szokásos írásmóddal tudunk hivatkozni egy tömb elemére:
+
+```c++vector::operator[](unsigned int) ```
+
+```c++v[1] ``` visszaadja az első elemét (tehát a második elemét, mivel 0-tól indexelünk c-ben, ne feledjük)
+
+Részletesebben: http://www.cplusplus.com/reference/vector/vector/operator[]/
+ 
+## size
+
+```c++vector::size() ```
+Visszaadja a vektor méretét, hogy mennyi elem van benne. Paramétere természetesen nincs.
+```c++v.size()```
+
+http://www.cplusplus.com/reference/vector/vector/size/
+
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  vector<int> v;
+  
+  v.push_back(3);
+  v.push_back(2);
+  v.push_back(1);
+  
+  for(int a=0;a<v.size())
+}
+```
+Ennek
+
+
 http://www.cplusplus.com/reference/vector/vector/
-http://www.cplusplus.com/reference/vector/vector/push_back/
-http://www.cplusplus.com/reference/vector/vector/operator[]/
