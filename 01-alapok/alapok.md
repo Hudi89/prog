@@ -239,4 +239,14 @@ Ez a kód szintén ki fogja írni a 3 elem maximumát a korábbiakhoz hasonlóan
 Note: Az, hogy belül hogy nevezzük el a változókat az teljesen független attól, hogy egy függvényen belül hogy hívjuk.
 Viszont ezzel a kóddal van egy olyan problémánk, hogy normális esetben egy statikus változó nem lehet dinamikus méretű, ergo ha mondjuk nem tudjuk mennyi bemenő adat lesz, akkor max úgy tudjuk megoldani, hogy létrehozunk egy 1000 nagyságút és imádkozunk, hogy a felhasználó ne akarjon több adatot beadni. Ez egy ideig használható megoldás is lehet, de éles helyzetben egy általánosabb programnál természtesen elfogadhatatlan. 
 
+Ebben az esetben jön segítségünkre a vector, ami egy eddig ismeretlen fogalomtárból származik. Ez egy úgynevezett osztály, amiről most első szinten annyit kell tudnunk, hogy egy olyan dolog aminek parancsokat tudunk kiadni, kérdezni tudunk tőle, de az hogy az adott feladatot hogy oldja meg az minket egyelőre nem érdekel. Ez az osztály segít nekünk dinamikusan kezelni tömböket, nem kell foglalkoznunk memóriafoglalásokkal, méretekkel meg semmivel, csak kiadunk neki egy parancsot, hogy mit csináljon és megoldja nekünk.
 
+Létrehozása egy kicsit érdekes, mert nem simán ahogy gondolnánk, hogy változó típus és név, mert itt van a típusnak egy paramétere is, amivel azt adjuk meg, hogy miket szeretnénk tárolni ebben a vectorban. Ha nem lenne ilyen támogatás a C++-ban akkor létre kéne hozni minden más típusra egy-egy vector osztyált, de mi lenne akkor ha egy saját új típusból szeretnénk vectort csinálni? Hát természetesen nem sikerlüne (egyszerűen legalábbis nem).
+
+Tehát ha mondjuk egy int-ekből álló tömböt akarunk amit v-nek nevezünk, akkor a 
+```c++ vector<int> v;```
+kód a nekünk való.:)
+
+http://www.cplusplus.com/reference/vector/vector/
+http://www.cplusplus.com/reference/vector/vector/push_back/
+http://www.cplusplus.com/reference/vector/vector/operator[]/
