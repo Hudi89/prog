@@ -19,3 +19,9 @@ ZH tudnivalók:
 ## 01-Alapok 
 Hogyan is kezdjünk hozzá egy programhoz...
 https://github.com/Hudi89/prog/blob/master/01-alapok/alapok.md
+
+## 02-Absztració (template, istream)
+https://github.com/Hudi89/prog/blob/master/02-absztrakcio/absztrakcio.md
+
+## 03-Általánosítsun tovább (operátor, mátrix)
+https://github.com/Hudi89/prog/blob/master/03-matrix/matrix.md
