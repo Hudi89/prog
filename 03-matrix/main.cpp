@@ -26,19 +26,6 @@ istream &operator >> (istream &in , vector<T> &t)
     return in;
 }
 
-int szamlalas(const vector <int> &t)
-{
-    int darab=0;
-    for (unsigned int i=0; i<t.size(); ++i)
-    {
-        if (t[i] % 2 ==0 )
-        {
-            darab++;
-        }
-    }
-    return darab;
-}
-
 template<typename T>
 T sor_osszeg(vector< T > &t)
 {
