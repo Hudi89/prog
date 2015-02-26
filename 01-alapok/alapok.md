@@ -153,7 +153,54 @@ Note: az általában kifejezés annyit tesz, hogy a mi esetünkben az ELTE-n a g
 
 ## Függvények
 
-A programozási nyelvek első egyik legfontosabb eleme a függvények, amik segítségével struktúráltabbá tudjuk tenni a programunkat
+A programozási nyelvek első egyik legfontosabb eleme a függvények, amik segítségével struktúráltabbá tudjuk tenni a programunkat. A függvényt úgy lehet elképzelni, mint egy doboz amiben ül egy manó te odaadod neki a paramétereket ő meg folyamatosan ugyanazt a feladatot hajtja végre és a végén opcionálisan visszaad valami választ és addig mi ott állunk és tartjuk a kezünket. Ilyenkor a szokásos sorról sorra futás hirtelen elugrik arra a kódrészletre ami meg lett hívva. A hívást egyszerűen úgy írjuk, hogy megadjuk a függvénynevét és utána zárójelben a paramétereket.
+Egy függvény két részből áll: van deklaráció és definíció része.
+
+### Deklaráció
+
+A deklaráció arra szolgál, hogy jelezzük a fordító számára (ami sorról sorra értelmezi a kódot), hogy lesz egy ilyen nevű és szignatúrájú függvény (Szignatúra később részletesebben). A deklaráció szerkezete a következő:
+[Visszatérési érték] [Függvény név]([Paraméterek]);
+[Paraméterek] ::= [1. Paraméter típus] [1. Paraméter név], [2. Paraméter típus] [2. Paraméter név] ...
+
+Például:
+```c++
+int max(int a, int b);
+```
+A kódban ezalatt a deklaráció alatt már akárhol hívhatjuk a ```c++max``` függvényt függetlenül attól, hogy definiálva lett-e, hogy mit is csinál ez a függvény.
+
+```c++
+cout << max(2,3); 
+```
+Ez természetesen kifogja írni, hogy 3 ha megfelelően definiáljuk később a függvényt. A deklaráció elhagyható és csak a definíció is elég pl. egy egyfájlos program esetében, de később látni fogjuk a hasznát. Ha mégis megakarjuk spórolni a deklaráció leírását, akkor figyeljünk arra, hogy az adott függvény csak onnantól hívható meg ha volt deklarálva vagy definiálva.
+
+### Definíció
+
+A függvény definíciója nem sokban különbözik a deklarációtól, annyi különbséggel, hogy a végén nem ;-el zárjuk le hanem { és } között megírunk egy alprogramot ami végre fog hajtódni a hívás esetén.
+
+```c++
+int max(int a, int b){
+  if(a > b){
+    return a;
+  }else{
+    return b;
+  }
+}
+```
+
+### Szignatúra és overload
+
+Egy függvényt nem csak a neve azonosít hanem az úgynevezett szignatúrája is, ami esetünkben a paraméterek típusa lesz. Az előző példánkban a függvény neve max volt a szignatúrája ```c++int,int``` volt, mivel két paramétert vár és mindkettő int. Ez azért fontos, mert ha ```c++max(2); ``` parancsot adjuk ki a kódunkban, akkor a fordító panaszkodni fog, hogy nem ismeri a függvényt.
+
+Viszont pont ezt kihasználva, hogy a szignatúra is beleszámít egy függvény azonosításába nem csak a név, tudunk úgymond overloadolni, ami annyit tesz, hogy egy névhez több funkciót is megadunk. 
+
+Például:
+```c++
+int max(int a, int b, int c){
+  return max(max(a,b),c);
+}
+```
+Ezzel a kóddal elérjük azt, hogy ha három paraméterrel hívják meg a max függvényünket akkor már az is fog működni. Ez a függvény teljesen egyszerűen, ha nézzük a definíciót meghívja a két paraméteres maxot. 
+*Note: Egyelőre nem törekedünk optimális kód írására, a fő szempontunk, hogy gyorsabban és szebb kódot írjunk.*
 
 
 ## Referencia használata
