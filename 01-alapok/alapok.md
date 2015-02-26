@@ -141,15 +141,15 @@ stílusban hozunk létre változót. A példánkban az int típust használjuk a
 
 #### Milyen típusok vannak
 
-int - Egész (általában 32 bites 0..4294967296)
+int - Egész (általában 32 bites 4294967296 értéket vehet fel. fele negatív fele pozitív irányban)
 float - Lebegőpontos (általában 32 bites, viszont itt egy érdekesség, hogy vagy nagyon pontos vagy nagyon nagy számokat tud kifejezni)
 double - Ugyanaz mint a float csak nagyobb (általában 64 bit)
 char - karakter (8 bit - 1 byte - 1 karakter)
 bool - logikai változó (1 bit)
 
-Note: az általában kifejezés annyit tesz, hogy a mi esetünkben az ELTE-n a gépeken így lesz a félév folyamán.
+A fenti számos típusokból (a bool nem) létrehozhatunk előjel nélkülit is ha a típus elé írjuk, hogy unsigned: ```c++ unsigned int```.
 
-#### Milyen módosítók vannak
+Note: az általában kifejezés annyit tesz, hogy a mi esetünkben az ELTE-n a gépeken így lesz a félév folyamán.
 
 ## Függvények
 
