@@ -125,14 +125,25 @@ int main(){
 
 ## Csináljuk szépen
 
-Ha mindenfelé nézünk olyanokat láthatunk, hogy ```c++cin>> a``` ami szép és jó és érdemes lenne ezt a stílust át venni. De hogy tudjuk ezt megtenni? Nagyon egyszerűen, mivel a C++-ban egyszerű függvényekként defininálhatóak operátorok. Annyi a dolgunk, hogy létrehozunk egy olyan függvényt, aminek az a neve, hogy ```c++operator>>(istream&,vector<T>&)```, tehát kb. csak át kell neveznünk a beolvas függvényünket egy különbséggel. Itt most nekünk kelleni fog visszatérési érték.
+Ha mindenfelé nézünk olyanokat láthatunk, hogy ```c++cin>> a``` ami szép és jó és érdemes lenne ezt a stílust át venni. De hogy tudjuk ezt megtenni? Nagyon egyszerűen, mivel a C++-ban egyszerű függvényekként defininálhatóak operátorok. Annyi a dolgunk, hogy létrehozunk egy olyan függvényt, aminek az a neve, hogy ```c++operator>>(istream&,vector<T>&)```, tehát kb. csak át kell neveznünk a beolvas függvényünket egy különbséggel. Itt most nekünk kelleni fog visszatérési érték. De mi is lesz az a visszatérési érték?
+Vegyük elő a cin-t ismét, aminél van egy olyan kis tulajdonságunk, hogy láncba tudjuk fűzni a parancsokat:
+```c++cin>> a >> b ```
+Ezt a tulajdonságot egy módon tudjuk megőrizni:
+3 + 4 + 5 összeget, hogy számoljuk ki?
+3+4 = 7, utána 
+7 + 5 = 12
+Ugyanígy működik c-ben is
+cin >> a mire kell kiértékelődjön, hogy a b-vel is történjen egy beolvasás. Természetesen cin-é.
+Tehát:
+(cin >> a) >> b;
+cin >> b; 
+és kész.
+Tehát az operátornak ebben az esetben a folyamot magát kell visszaadnia:
+```c++istream& operator>>(istream&,vector<T>&);```
 
+és kész is vagyunk.
 
 Note: Ha bal és jobb oldalt is egy alap típus(pl. int) áll, akkor azt nem fogja engedni a fordító.
-
-Csinájuk meg mi is a sajt operátorunkat.
-Láncolás szabálya. cin >> a >> b;
-
 
 ```c++
 template<class T> 
@@ -147,6 +158,18 @@ istream& operator>>(istream &in, vector<T> &v){
   return in;
 }
 ```
+
+Innentől stílusosan szépen írhatjuk a main-be, hogy
+```c++ 
+vector<int> a;
+cin >> a;
+``` 
+vagy pl.:
+```c++ 
+ifstream fileStream("asd.txt");
+vector<int> a;
+fileStream >> a;
+``` 
 
 # Feladat
 1. Alakítsuk úgy a beolvasó operátorunkat, hogy ne 0-ig olvassa ezt a T típust, hanem int-ek esetében annyi legyen, hogy először beolvassa hány elem lesz a vektorban, majd sorban az elemek. pl.: 3 1 2 1 vagy 4 1 1 1 2. Végül számolja meg, hogy a beolvasott vektor elemei között mennyi páros van. 
