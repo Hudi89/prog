@@ -9,7 +9,7 @@
 using namespace std;
 
 template <typename T>
-void beolvas(istream& in,vector<T> &myvector)
+istream& operator>>(istream& in,vector<T> &myvector)
 {
     unsigned int lol=0;
     in >> lol;
@@ -19,6 +19,7 @@ void beolvas(istream& in,vector<T> &myvector)
     {
         in >> myvector[i];
     }
+    return in;
 }
 
 template <typename T>
@@ -59,9 +60,9 @@ int main()
     vector<int> myvector;
     fstream fin("asd.txt");
 
-    beolvas(cin,myvector);
+    cin >> myvector;
   //Az általánosítás miatt fstreamet és a cin-t is átadhatjuk, hogy onnan olvasson be a program
-  //beolvas(fin,myvector);
+  //fin >> myvector;
     cout << szamolj(myvector);
     fin.close();
     return 0;
