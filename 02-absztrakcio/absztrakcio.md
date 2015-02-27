@@ -125,7 +125,10 @@ int main(){
 
 ## Csináljuk szépen
 
-Ha mindenfelé nézünk olyanokat láthatunk, hogy cin>> a ... stb... TODO
+Ha mindenfelé nézünk olyanokat láthatunk, hogy ```c++cin>> a``` ami szép és jó és érdemes lenne ezt a stílust át venni. De hogy tudjuk ezt megtenni? Nagyon egyszerűen, mivel a C++-ban egyszerű függvényekként defininálhatóak operátorok. Annyi a dolgunk, hogy létrehozunk egy olyan függvényt, aminek az a neve, hogy ```c++operator>>(istream&,vector<T>&)```, tehát kb. csak át kell neveznünk a beolvas függvényünket egy különbséggel. Itt most nekünk kelleni fog visszatérési érték.
+
+
+Note: Ha bal és jobb oldalt is egy alap típus(pl. int) áll, akkor azt nem fogja engedni a fordító.
 
 Csinájuk meg mi is a sajt operátorunkat.
 Láncolás szabálya. cin >> a >> b;
