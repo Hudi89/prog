@@ -106,7 +106,6 @@ void beolvas(istream &in, vector<T> &v){
 ```
 
 
-
 #### .txt.txt hiba!
 
 ```c++
