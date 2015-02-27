@@ -94,6 +94,8 @@ Részletesebben: OAF
 De hogy is tudjuk akkor ezt csinálni? Van egy fájl olvasónk ami egy ifstream példánya, ami viszont az istream-ből származik és van egy cin-ünk ami egy istream példány.
 Egyértelmű: Felveszünk még egy paramétert a függvényünkbe amin keresztül majd átadjuk, hogy mely folyamról olvassa be azt a vektort és ahol eddig a cin-t használtuk a függvényünkben ott most már ezt az istream-et fogjuk használni.
 
+Fontos infó itt is, hogy ilyen nagy osztályokat adjunk át lehetőleg mindig & jellel, hogy megelőzzük a másolódást. Ebben az esetben viszont nem is lehet átadni másképp egy istream-et csakis referenciaként, különben fordítóhibával el fog szálni!
+
 ```c++
 template<class T> 
 void beolvas(istream &in, vector<T> &v){
@@ -142,6 +144,8 @@ Tehát az operátornak ebben az esetben a folyamot magát kell visszaadnia:
 ```c++istream& operator>>(istream&,vector<T>&);```
 
 és kész is vagyunk.
+
+Fontos, hogy visszatérési értékben is & jellel adjuk át az istream-et. A többi objektumnál ez nem ajánlott lépés, mivel alapesetben nem is fog működni, hogy mikor lehet ilyet csinálni mélyebb megértést igényel. De, hogy tovább menjünk visszatérési értékként teljes osztályt átadni nem is nagyon szép dolog, ha osztályt akarunk feltölteni akkor paraméter szerint adjuk át és úgy töltsük fel.
 
 Note: Ha bal és jobb oldalt is egy alap típus(pl. int) áll, akkor azt nem fogja engedni a fordító.
 
