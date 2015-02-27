@@ -16,6 +16,14 @@ ZH tudnivalók:
 * GT oldalán található minden információ és letölhető segédanyag használható a ZH-k folyamán
 * Az előbbi ponton kívül minden Digitális eszköz minden szinten tiltott és kizárást von maga után
 
+Órai munka és jelenlét:
+* Az órai jelenlét 2 pont
+* Minden órán adok ki egy feladatot
+ * Ha az óra végéig sikerül megoldani egy hallgatónak 2 pontot kap
+ * Ha az órán nem sikerült megoldani, viszont a következő óra elejéig elküldi e-mailben a feladat helyes megoldását akkor kap 1 pontot
+
+**A szükséges ponthatár: 32 pont**
+
 ## 01-Alapok 
 Hogyan is kezdjünk hozzá egy programhoz...
 https://github.com/Hudi89/prog/blob/master/01-alapok/alapok.md
