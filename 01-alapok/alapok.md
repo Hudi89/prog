@@ -300,5 +300,8 @@ Ennek
 
 http://www.cplusplus.com/reference/vector/vector/
 
-Feladat 
+#Feladat 
+
 1. Írjunk egy olyan programot ami a vector használatával bekér számokat 0-ig, majd összegüket kiírja. (bontsuk függvényekre: beolvas összegzés)
+
+
