@@ -67,6 +67,8 @@ int main(){
 }
 ```
 
+Figyeljünk arra mindenképp, hogy ha a sulis gépeken hozunk létre egy fájlt és beírjuk, hogy .txt a végére akkor a létrejött fájl neve valami.txt.txt lesz, mivel a windows elrejti a kiterjesztéseket.
+
 #### Honnan fogja olvasni a fájlt?
 Alapvetően a válasz egyszerű, ahol fut a programunk, viszont ha CodeBlocks-ban futtatjuk a programot akkor az úgynevezett munkakönyvtár, ahol futni fog a program az a projektfájl mappája, így ha valami inputot be akarunk olvasni relatív útvonallal (pl.: "valami.txt") akkor azt oda tegyük.
 
@@ -96,34 +98,52 @@ Egyértelmű: Felveszünk még egy paramétert a függvényünkbe amin keresztü
 template<class T> 
 void beolvas(istream &in, vector<T> &v){
   T a;
-  cin >> a;
+  in >> a;
   
   while(a != 0){
     v.push_back(a);
-    cin >> a;
+    in >> a;
   }
 }
 ```
 
-
-#### .txt.txt hiba!
-
+Ezt a függvényt már kényelmesen tudjuk a main-ből hívni akár cin-el akár egy ifstream példánnyal. pl.:
 ```c++
-template<class T> 
-void beolvas(vector<T> &v){
-  int n; //Érdemes n-et írni, mert azt szokja meg az ember, hogy m és n a számosság
-  v.resize(n);
-  for(int a=0;a<v.size();a++){
-    cin >> v[a];
-  }
+int main(){
+  vector<int> v;
+  vector<float> v2;
+  
+  beolvas(cin,v);
+  
+  ifstream f("asd.txt"); //Megnyitok egy asd.txt nevű fájlt
+  
+  beolvas(f,v); // átadom a beolvasnak, hogy a fájlból olvasson be
+  
+  return 0;
 }
 ```
-
 
 ## Csináljuk szépen
 
-operator>>
+Ha mindenfelé nézünk olyanokat láthatunk, hogy cin>> a ... stb... TODO
 
+Csinájuk meg mi is a sajt operátorunkat.
+Láncolás szabálya. cin >> a >> b;
+
+
+```c++
+template<class T> 
+istream& operator>>(istream &in, vector<T> &v){
+  T a;
+  in >> a;
+  
+  while(a != 0){
+    v.push_back(a);
+    in >> a;
+  }
+  return in;
+}
+```
 
 # Feladat
 1. Alakítsuk úgy a beolvasó operátorunkat, hogy ne 0-ig olvassa ezt a T típust, hanem int-ek esetében annyi legyen, hogy először beolvassa hány elem lesz a vektorban, majd sorban az elemek. pl.: 3 1 2 1 vagy 4 1 1 1 2. Végül számolja meg, hogy a beolvasott vektor elemei között mennyi páros van. 
