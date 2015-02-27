@@ -51,20 +51,50 @@ Note: Programozási nyelvek c++ tárgyon lesz részletesebben a template haszná
 
 ### istream
 
-A függvényünk funkciójnak a mondatát általánosítva tovább megyünk arra, hogy ne csak konzolról lehessen beolvasni, hanem valamilyen folyamról.
+A függvényünk funkciójának a mondatát általánosítva tovább megyünk arra, hogy ne csak konzolról lehessen beolvasni, hanem valamilyen folyamról. Progalapon megismerkedtetek a fájlbeolvasással és a konzolról való beolvasással.
 
-```c++
+#### Fájlbeolvasás 
+Fájlbeolvasáshoz két dologra van szükségünk: 
+* includeolni az fstreamet
+* létrehozni egy ifstreamet ami majd kezeli a fájlt aminek az úgynevezett konstruktorában megadjuk a fájl nevét
 
-template<class T> 
-void beolvas(istream &in, vector<T> &v){
-...
+Ezután már ugyanúgy mint a cin-el tudunk dolgozni.
+```c+
+#include <fstream>
+
+int main(){
+  ifstream f("asd.txt");
 }
-
 ```
 
+#### Honnan fogja olvasni a fájlt?
+Alapvetően a válasz egyszerű, ahol fut a programunk, viszont ha CodeBlocks-ban futtatjuk a programot akkor az úgynevezett munkakönyvtár, ahol futni fog a program az a projektfájl mappája, így ha valami inputot be akarunk olvasni relatív útvonallal (pl.: "valami.txt") akkor azt oda tegyük.
+
+#### istream
+
+Rögtön láthatjuk is az utat az általánosítás felé, mivel a cin meg az ifstream nagyon hasonlóan működik és mivel az STL-t nem csak úgy összedobták valószínűleg megfelelően van megcsinálva hozzá, hogy tudjunk általánosítani.
+Keressünk is rá, hogy mi is az a cin:
+Ha googlebe beírjuk, hogy "cin c++" akkor első találatként eljuthatunk a http://www.cplusplus.com/reference/iostream/cin/ oldalra, viszont itt nem látunk olyat, hogy >> operátor. Ha elkezdjük olvasni a szöveget, akkor rátalálhatunk a válaszra: "Object of class istream", tehát ez egy objektuma az istream osztálynak, azaz egy példánya. Tehát akkor valójában azt kell néznünk nem az istream-et, mert a cin amikor pl. a v vektorunknak a funkcióit akarjuk megnézni akkor sem arra keresünk rá hogy "v c++" :P . Így végsősoron eljutnk a http://www.cplusplus.com/reference/istream/istream/ linkhez.
+Itt már láthatjuk az operator>>-at, viszont ha az oldal tetejét nézzük akkor láthatunk egy ábrát, ahol mindenféle nyilak vannak, ez az úgynevezett osztályhierarchiát hivatott megadni. A lényeg annyi, hogy amiből mutat a nyíl az rendelkezik minden tulajdonsággal (esetünkben minden függvénnyel) amivel az rendelkezik amibe mutat a nyíl. Innen láthatjuk, hogy az **ifstream egy speciális istream**. 
+Tehát a cin egy példánya az istream-nek, az ifstream meg egy speciális istream, tehát mindkettő istream! 
+
+#### De mi az a származás?
+
+Gondoljunk bele: amikor csinálunk egy valamilyen funkciót ellátó osztályt (később majd fogunk csinálni), aztán szeretnénk csinálni egy nagyon hasonlót, de kicsit másra jót, akkor ebben az esetben minden függvényt lekéne másolni és így egy csomó dolog többször szerepelne a kódunkban, ennek fő hátrányai, hogy ha át kell írni (mert pl. hibát találtunk benne) akkor több helyen kell majd átírni, átláthatatlanabb lesz a kód, illetve több sor mindig veszélyesebb.
+Erre jött létre az úgynevezett származtatás, amikor pl. van egy olyan osztályunk mint a vector aminek van operator[]-je, ekkor ha kiakarjuk bővíteni egy függvénnyel akkor fogjuk és származtatjuk és csak azt az egy függvényt írjuk meg.
+Amiből származtatunk azt nevezzük **ős**-nek.
+Ami származik egy adott osztályból azt hívjuk **gyerek**-nek
+
+Részletesebben: OAF
+
+#### A végeredmény
+
+De hogy is tudjuk akkor ezt csinálni? Van egy fájl olvasónk ami egy ifstream példánya, ami viszont az istream-ből származik és van egy cin-ünk ami egy istream példány.
+Egyértelmű: Felveszünk még egy paramétert a függvényünkbe amin keresztül majd átadjuk, hogy mely folyamról olvassa be azt a vektort és ahol eddig a cin-t használtuk a függvényünkben ott most már ezt az istream-et fogjuk használni.
+
 ```c++
-template<class T>
-void beolvas(vector<T> &v){
+template<class T> 
+void beolvas(istream &in, vector<T> &v){
   T a;
   cin >> a;
   
@@ -76,20 +106,6 @@ void beolvas(vector<T> &v){
 ```
 
 
-
-###
-```c++
-
-#include <fstream>
-
-
-int main(){
-  ifstream f("asd.txt");
-}
-```
-
-#### Honnan fogja olvasni a fájlt 
-Alapvetően a válasz egyszerű, ahol fut a programunk, viszont ha CodeBlocks-ban futtatjuk a programot akkor az úgynevezett munkakönyvtár, ahol futni fog a program az a projektfájl mappája, így ha valami inputot be akarunk olvasni relatív útvonallal (pl.: "valami.txt") akkor azt oda tegyük.
 
 #### .txt.txt hiba!
 
@@ -103,3 +119,12 @@ void beolvas(vector<T> &v){
   }
 }
 ```
+
+
+## Csináljuk szépen
+
+operator>>
+
+
+# Feladat
+1. Alakítsuk úgy a beolvasó operátorunkat, hogy ne 0-ig olvassa ezt a T típust, hanem int-ek esetében annyi legyen, hogy először beolvassa hány elem lesz a vektorban, majd sorban az elemek. pl.: 3 1 2 1 vagy 4 1 1 1 2. Végül számolja meg, hogy a beolvasott vektor elemei között mennyi páros van. 
