@@ -14,73 +14,38 @@ using namespace std;
 //beolvas számokat egy vektorba amíg 0-t nem ír be a felhasználó
 void beolvas(vector<int> &myvector);
 //összegzi egy vektor minden elemét és visszatér az összegével
+//const kulcs szót kirakjuk, hogy garantljuk a hívónak, hogy nem fogjuk módosítani
+//& jelet is berakjuk, hogy ne másoljon feleslegesen minden adatot 
 int osszeg(const vector<int> &myvector);
 
 int main ()
 {
-    //létrehozunk egy olyan vektort ami olyan vektorokat tartalmaz ami inteket tartalmaz :)
-    vector< vector<int> > myvector;
-    //ebbe összegezzük majd az eredményt
-    int ossz;
+    vector< int > myvector;
+    cout << "Kérlek add meg a bemenő számokat (0-t írva befejezheted a bevitelt):\n";
+    beolvas(myvector);
 
-    cout<<"szam"<<endl;
-
-    // beolvassuk az [a] változóba, hogy 
-    int a;
-    cin>>a;
-
-    // a nagy vektort megfelelő méretre állítjuk, ezzel létrehozva sok vector<int> típusú objektumot
-    myvector.resize(a);
-
-    //ciklusosan beolvasunk a vektorokba
-    for(int i=0;i<a;++i)
-    {
-        beolvas(myvector[i]);
-    }
-
-
-    ossz=0;
-    // összegzés tétele, úgy, hogy nem T[i]-t adjuk össze, hanem egy másik összegzési tétel eredményét 
-    for (int i=0; i<myvector.size(); ++i)
-    {
-       ossz=ossz+osszeg(myvector[i]);
-    }
-
-    cout << ossz<<endl;
+    cout << "Az összeg " << osszeg(myvector) << "." <<endl;
 
     return 0;
 }
 
-void beolvas(vector<int> &myvector)
+void beolvas(vector<int> &v)
 {
-    //kitöröljük a vektort, hogy tuti csak azok legyenek benne amiket a user beírt
-    myvector.clear();
-    cout << "Please enter some integers (enter 0 to end):\n";
-
-    int myint;
-    do
+    int a;
+	cin >> a;
+    while(a != 0)
     {
-       cin >> myint;
-
-       if(myint!=0)//csak akkor adjuk hozzá a vektorhoz, ha nem 0-t írt be
-       {
-	    myvector.push_back (myint);
-       }
+    	v.push_back(a);
+    	cin >> myint;
     }
-    while (myint);
 }
 
-
-int osszeg(const vector<int> &myvector)
+int osszeg(const vector<int> &v)
 {
-
-    int ossz;
-    ossz=0;
-
-    for (int i=0; i<myvector.size(); ++i)
+    int s = 0;
+    for (int a=0; a<v.size(); ++a)
     {
-       ossz=ossz+myvector[i];
+       s += v[a];
     }
-
-    return ossz;
+    return s;
 }
