@@ -14,7 +14,7 @@ void beolvas(vector<int> &v){
 }
 ```
 
-Alapvetően ha mondatként akarjuk ennek a függvénynek a funkcióját kimondani, akkor egy kis célzott gondolkodás után:) eljuthatunk addig, hogy: Egész számokat a konzolról beolvas vektorba.
+Alapvetően ha mondatként akarjuk ennek a függvénynek a funkcióját kimondani, akkor egy kis célzott gondolkodás után:) eljuthatunk addig az előző példában látható függvényünknél, hogy: Egész számokat a konzolról beolvas vektorba.
 Ezt a mondatot megpróbáljuk általánosítani, amivel végsősoron a függvény funkcióját fogjuk absztraktabbá tenni.
 
 Valamilyen típusú számokat olvasunk be egy valamilyen folyamról vektorba.
@@ -44,12 +44,14 @@ vector<int> v;
 beolvas(v);
 ```
 
-A függvénytörzsben
+A függvénytörzsben látható egy cin >> a; itt esetünkben számít, hogy milyen típusú a T, mivel nem mindegy, hogy intet, floatot vagy pl. stringet akarunk beolvasni. De szerencsénkre ezek mind megvannak írva, ez alapján mondhatjuk azt, hogy minden olyan vectorra működni fog ez a függvény ami olyan elemeket tartalmaz amire az STL-ben van >> operátor. (Tehát pl. amit be tudunk olvasni konzolról)
 
 Note: Több template paraméter is használható: ```c++template<class T,class T2> ``` hasonlóan mint a paraméterek.
 Note: Programozási nyelvek c++ tárgyon lesz részletesebben a template használata.
 
 ### istream
+
+A függvényünk funkciójnak a mondatát általánosítva tovább megyünk arra, hogy ne csak konzolról lehessen beolvasni, hanem valamilyen folyamról.
 
 ```c++
 
