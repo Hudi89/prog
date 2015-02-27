@@ -1,0 +1,4 @@
+Na de pontosan miket is tud beolvasni ez a >> operátor? Keressük meg:
+Ha googlebe beírjuk, hogy "cin c++" akkor első találatként eljuthatunk a http://www.cplusplus.com/reference/iostream/cin/ oldalra, viszont itt nem látunk olyat, hogy >> operátor. Ha elkezdjük olvasni a szöveget, akkor rátalálhatunk a válaszra: "Object of class istream", tehát ez egy objektuma az istream osztálynak, azaz egy példánya. Tehát akkor valójában azt kell néznünk nem az istream-et, mert a cin azokkal tulajdonságokkal fog rendelkezni mint az istream és így jutunk a http://www.cplusplus.com/reference/istream/istream/ linkhez.
+Itt már ha lejjebb görgetünk megtalálhatjuk az operator>> bejegyzést, amire kattintva eljutun a http://www.cplusplus.com/reference/istream/istream/operator%3E%3E/ oldalra.
+Itt már láthatjuk, hogy mikre is vannak megírva ezek az operátorok és egyben azt is láthatjuk, hogy valójában egy ilyen operátornak az írása annyiból áll, hogy egy függvén
