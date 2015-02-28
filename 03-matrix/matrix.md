@@ -101,20 +101,40 @@ int max(const vector<int> &v){
     }
 }
 ```
-Ezzel a legfőbb probléma, hogy mindig amikor talál új maximumot a függvény akkor újra kiszámolja a sorösszeget, ami egy nagyon széles mátrix esetén már jelentős számítási különbség lehet, tehát meg kéne jegyeznünk a cikluslépés
+Ezzel a legfőbb probléma, hogy mindig amikor talál új maximumot a függvény akkor újra kiszámolja a sorösszeget, ami egy nagyon széles mátrix esetén már jelentős számítási különbség lehet, tehát meg kéne jegyeznünk a ciklusmagban a sorösszeget. Egy lokális változó behozásával megoldható a dolog nagyon egyszerűen.
 ```c++
 //Ez a függvény csak akkor működik, ha van elem a vectorban
 int max(const vector<int> &v){
     int maxInd = 0; //ezzel jelöljük, hogy hol a maximális elem
     int max = szum(v[0]);
     for(int a=0;a<v.size();a++){
-        if (max < szum(v[a])){
-            max = szum(v[a]);
+        int temp = szum(v[a]);
+        if (max < temp){
+            max = temp;
             maxInd = a;
         }
     }
 }
 ```
 
+De akár templatet is csinálhatunk belőle:
+```c++
+template<typename T>
+int max(const vector<T> &v){
+    int maxInd = 0; //ezzel jelöljük, hogy hol a maximális elem
+    T max = szum(v[0]);
+    for(int a=0;a<v.size();a++){
+        int temp = szum(v[a]);
+        if (max < temp){
+            max = temp;
+            maxInd = a;
+        }
+    }
+}
+```
+
+A végső függvényünk már float,int-re is működő megoldás, de például string-el is működhetne a dolog, mivel az STL definiálja a ```c++ <``` (mint lexikografikus rendezés) és ```c++ +``` (mint konkatenáció) operátort, ezért valójában csak egy probléma van ami akadályoz minket, hogy az összegzés függvényünkben a kezdőérték 0-ként van definiálva ami viszont a stringek terén nem hasznáható. [TODO:hogy lehetne ezt tovább áltaálnosítani (null függvény)]
+
 ## Hogy találjunk ki feladatokat?
 
+A félévközi ZH-n egy ilyen többszörös  
