@@ -42,6 +42,7 @@ Azzal, hogy így rekurzíve betudunk olvasni több dimenziós adatot is (az oper
 Hogyan keressük meg például, hogy *egy mátrixban melyik sor összege a maximális?*
 Ha a mondatot elolvassuk magát, rögtön szembejön egy a két alkalmazandó tételünk neve: maximális, összege.
 Persze ez a mondat lehet sokkal körmönfontabb is:
+
 *Egy versenyen n darab versenyző m számban versenyez. Egy mátrixban feljegyeztük a ponteredményeiket egy-egy versenyszámban. Írjunk programot amely megmondja, hogy hanyadik versenyző lett a nyertes.*
 Ez a feladat írandó program szempontjából teljesen ugyanaz.
 
@@ -148,7 +149,16 @@ A félévközi ZH-n egy ilyen többszörös visszavezetéses feladat várható.
 Hat alaptételünk van és a ZH-n várhatóan ezeknek valamilyen összekapcsolása lesz. Nézznk pár példát arra, hogy hogyan is lehet kreálni ilyen feladatokat.    
 
 Jelöljük egymás után írással, kötőjellele elválasztva a két egymásba ágyazandó tételt úgy, hogy az első a külső tétel amibe beágyazzuk a 2.-at.
-Egy sum-cnt kapcsolásos feladat mi pl? 
+
+###Alaptételek kiterjesztése
+
+A legegyszerűbb eset amikor a mátrix minden elemén akarnánk futtatni az alaptételt. 
+
+max-max
+* Válasszuk ki a mátrix maximális elemét.
+
+
+sum-cnt
 * Adjuk össze hogy a sorokban hány páros szám van! = Adjuk meg, hogy a mátriban hány páros szám van!
 * Adjuk meg, hogy a mátrixban adott feltételnek megfelelő szám mennyi van?
 
@@ -160,5 +170,5 @@ cnt-sum
 ftm-sum,ker
 * Egy mátrix melyik sorában maximimális az összeg, amelyikben csak negatív számok vannak. (ergo legközelebb a 0-hoz)
 * Versenyző feladat
-    * Melyik versenyzőnek volt a minimális a össz versenyideje       
-* Versenyző feladat
+    * Melyik versenyző nyert? (Minimális versenyidő és minden versenyszámban érvényes eredmény, azaz nem 0)
+
