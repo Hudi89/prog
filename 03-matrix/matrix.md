@@ -137,4 +137,28 @@ A végső függvényünk már float,int-re is működő megoldás, de például 
 
 ## Hogy találjunk ki feladatokat?
 
-A félévközi ZH-n egy ilyen többszörös  
+A félévközi ZH-n egy ilyen többszörös visszavezetéses feladat várható.
+* Összegzés (sum)
+* Számlálás (cnt)
+* Lineáris keresés (ker)
+* Kiválasztás (kiv)
+* Maximum kiválasztás (max)
+* Feltételes maximum keresés (ftm)
+
+Hat alaptételünk van és a ZH-n várhatóan ezeknek valamilyen összekapcsolása lesz. Nézznk pár példát arra, hogy hogyan is lehet kreálni ilyen feladatokat.    
+
+Jelöljük egymás után írással, kötőjellele elválasztva a két egymásba ágyazandó tételt úgy, hogy az első a külső tétel amibe beágyazzuk a 2.-at.
+Egy sum-cnt kapcsolásos feladat mi pl? 
+* Adjuk össze hogy a sorokban hány páros szám van! = Adjuk meg, hogy a mátriban hány páros szám van!
+* Adjuk meg, hogy a mátrixban adott feltételnek megfelelő szám mennyi van?
+
+cnt-sum
+* A mátrix mennyi sorának az összege pozitív?
+* Legyenek a sorok versenyzők vagy tanulók az oszlopok meg versenyszámok vagy feladatok (mostantól: versenyző feladat).
+    * Mennyi versenyző érte el a szükséges ponthatárt? = A mátrix hány sorösszege több mint egy adott konstans.
+  
+ftm-sum,ker
+* Egy mátrix melyik sorában maximimális az összeg, amelyikben csak negatív számok vannak. (ergo legközelebb a 0-hoz)
+* Versenyző feladat
+    * Melyik versenyzőnek volt a minimális a össz versenyideje       
+* Versenyző feladat
