@@ -162,8 +162,11 @@ sum-cnt
 * Adjuk meg, hogy a mátrixban adott feltételnek megfelelő szám mennyi van?
 
 ker-ker - Keressünk adott feltétlenek megfelelő elemet a mátrixban
+
 kiv-ker - Kiválasztás a mátrix egy adott típusú elemére (Egy adott sorban nem tudjuk, hogy van-e így ott ker-t kell futtatnunk)
+
 max-max - Válasszuk ki a mátrix maximális elemét.
+
 ftm-ftm - Feltételesen keressük a maximumot (a külső ftm feltétle, hogy talált-e a belső FTM az érték meg a belő FTM által visszaadott maximum.)
 
 
