@@ -154,20 +154,20 @@ Jelöljük egymás után írással, kötőjellele elválasztva a két egymásba 
 
 A legegyszerűbb eset amikor az eredmény olyan mintha a mátrix minden elemén akarnánk futtatni az alaptételt. 
 
-sum-sum 
+SUM-SUM 
 * Adjuk össze az összes elemet
 
-sum-cnt
+SUM-CNT
 * Adjuk össze hogy a sorokban hány páros szám van! = Adjuk meg, hogy a mátriban hány páros szám van!
 * Adjuk meg, hogy a mátrixban adott feltételnek megfelelő szám mennyi van?
 
-ker-ker - Keressünk adott feltétlenek megfelelő elemet a mátrixban
+KER-KER - Keressünk adott feltétlenek megfelelő elemet a mátrixban
 
-kiv-ker - Kiválasztás a mátrix egy adott típusú elemére (Egy adott sorban nem tudjuk, hogy van-e így ott ker-t kell futtatnunk)
+KIV-KER - Kiválasztás a mátrix egy adott típusú elemére (Egy adott sorban nem tudjuk, hogy van-e így ott KER-t kell futtatnunk)
 
-max-max - Válasszuk ki a mátrix maximális elemét.
+MAX-MAx - Válasszuk ki a mátrix maximális elemét.
 
-ftm-ftm - Feltételesen keressük a maximumot (a külső ftm feltétle, hogy talált-e a belső FTM az érték meg a belő FTM által visszaadott maximum.)
+FTM-FTM - Feltételesen keressük a maximumot (a külső ftm feltétle, hogy talált-e a belső FTM az érték meg a belő FTM által visszaadott maximum.)
 
 
 
