@@ -152,15 +152,24 @@ Jelöljük egymás után írással, kötőjellele elválasztva a két egymásba 
 
 ###Alaptételek kiterjesztése
 
-A legegyszerűbb eset amikor a mátrix minden elemén akarnánk futtatni az alaptételt. 
+A legegyszerűbb eset amikor az eredmény olyan mintha a mátrix minden elemén akarnánk futtatni az alaptételt. 
 
-max-max
-* Válasszuk ki a mátrix maximális elemét.
-
+sum-sum 
+* Adjuk össze az összes elemet
 
 sum-cnt
 * Adjuk össze hogy a sorokban hány páros szám van! = Adjuk meg, hogy a mátriban hány páros szám van!
 * Adjuk meg, hogy a mátrixban adott feltételnek megfelelő szám mennyi van?
+
+ker-ker - Keressünk adott feltétlenek megfelelő elemet a mátrixban
+kiv-ker - Kiválasztás a mátrix egy adott típusú elemére (Egy adott sorban nem tudjuk, hogy van-e így ott ker-t kell futtatnunk)
+max-max - Válasszuk ki a mátrix maximális elemét.
+ftm-ftm - Feltételesen keressük a maximumot (a külső ftm feltétle, hogy talált-e a belső FTM az érték meg a belő FTM által visszaadott maximum.)
+
+
+
+
+### Valódi dupla tétel használat
 
 cnt-sum
 * A mátrix mennyi sorának az összege pozitív?
