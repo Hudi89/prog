@@ -72,7 +72,49 @@ int szum(const vector<T> &v){
 ```
 A templates esetben nyitva hagyjuk azt, hogy lebegőpontos vagy egész, mert mindkettőre működik és csak a bemenő paramétertől fog függeni.
 
-
+A külső tétel, ami a maximumkeresés viszont igényelni fog egy kis váloztatást. Eddig a vectorban egy számérték volt amit tudtunk hasonlítani egymáshoz, most viszont egy teljes sor van ott aminek az összegével kéne számolnunk. 
+Az alap maxker:
+```c++
+//Ez a függvény csak akkor működik, ha van elem a vectorban
+int max(const vector<int> &v){
+    int maxInd = 0; //ezzel jelöljük, hogy hol a maximális elem
+    int max = v[0];
+    for(int a=0;a<v.size();a++){
+        if (max < v[a]){
+            max = v[a];
+            maxInd = a;
+        }
+    }
+}
+```
+Az belső tétel bekötése után:
+```c++
+//Ez a függvény csak akkor működik, ha van elem a vectorban
+int max(const vector<int> &v){
+    int maxInd = 0; //ezzel jelöljük, hogy hol a maximális elem
+    int max = szum(v[0]);
+    for(int a=0;a<v.size();a++){
+        if (max < szum(v[a])){
+            max = szum(v[a]);
+            maxInd = a;
+        }
+    }
+}
+```
+Ezzel a legfőbb probléma, hogy mindig amikor talál új maximumot a függvény akkor újra kiszámolja a sorösszeget, ami egy nagyon széles mátrix esetén már jelentős számítási különbség lehet, tehát meg kéne jegyeznünk a cikluslépés
+```c++
+//Ez a függvény csak akkor működik, ha van elem a vectorban
+int max(const vector<int> &v){
+    int maxInd = 0; //ezzel jelöljük, hogy hol a maximális elem
+    int max = szum(v[0]);
+    for(int a=0;a<v.size();a++){
+        if (max < szum(v[a])){
+            max = szum(v[a]);
+            maxInd = a;
+        }
+    }
+}
+```
 
 ## Hogy találjunk ki feladatokat?
 
