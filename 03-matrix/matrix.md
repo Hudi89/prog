@@ -37,7 +37,42 @@ Ekkor a ```c++cin >> v```-t a fordító átalakítja ```c++operator>>(cin,v)```-
 
 ## Többszörös visszavezetés 
 
-Azzal, hogy így rekurzíve betudunk olvasni több dimenziós adatot is (az operátorunk logikusan akármennyi egymásba ágyazott vektorra működne.
+Azzal, hogy így rekurzíve betudunk olvasni több dimenziós adatot is (az operátorunk logikusan akármennyi egymásba ágyazott vektorra működne), gondolkodhatunk komplexebb problémákon is.
 
-## Hogy találjunk ki feladatokat
+Hogyan keressük meg például, hogy *egy mátrixban melyik sor összege a maximális?*
+Ha a mondatot elolvassuk magát, rögtön szembejön egy a két alkalmazandó tételünk neve: maximális, összege.
+Persze ez a mondat lehet sokkal körmönfontabb is:
+*Egy versenyen n darab versenyző m számban versenyez. Egy mátrixban feljegyeztük a ponteredményeiket egy-egy versenyszámban. Írjunk programot amely megmondja, hogy hanyadik versenyző lett a nyertes.*
+Ez a feladat írandó program szempontjából teljesen ugyanaz.
+
+Egy problémánk van: nekünk csak olyan programozási tételeink vannak, amik tömbökön (vektorokon) dolgozik, tehát ahhoz, hogy megoldjunk egy ilyen problémát módosítanunk kell egy kicsit az egyik tételünket amit alkalmazunk a megoldásnál.
+Egy ilyen 2 dimenziós megoldásnál lesz egy külső tételünk meg egy belső tételünk. A belső tétel fog végrehajtódni a mostani példánk esetében egy sorra, ami összegezni fogja az adott sort. Tehetnénk azt, hogy végigmegyünk ciklussal a sorokon és mindre lefuttatjuk az összegzés tételét, majd az eredményeket tároljuk egy köztes vektorban és erre lefuttatjuk a külső tételt és így megtaláljuk a maimumot.
+Ezzel az a probléma, hogy ha milliós nagyságrendű mátrixról van szó, akkor ez a mátrix is csak növeli a tárigényt, amikor könnyedén megoldható anélkül is.
+
+Tehát akkor a szumma az marad ugyanaz ami normál esetben lenne:
+```c++
+int szum(const vector<int> &v){
+    int s = 0;
+    for(int a=0;a<v.size();a++){
+        s += v[a];
+    }
+    return s;
+}
+```
+vagy templatel:
+```c++
+template<typename T>
+int szum(const vector<T> &v){
+    int s = 0;
+    for(int a=0;a<v.size();a++){
+        s += v[a];
+    }
+    return s;
+}
+```
+A templates esetben nyitva hagyjuk azt, hogy lebegőpontos vagy egész, mert mindkettőre működik és csak a bemenő paramétertől fog függeni.
+
+
+
+## Hogy találjunk ki feladatokat?
 
