@@ -35,6 +35,36 @@ cin >> v;
 ```
 Ekkor a ```c++cin >> v```-t a fordító átalakítja ```c++operator>>(cin,v)```-re, ezután megpróbál keresni egy olyan függvényt aminek azonos a szignatúrájá. Az általunk írt ```c++operator>>(istream&,vector<T>)```-t meg is találja úgy, hogy a ```c++T``` típus ```c++vector<int>```. Ebben a függvényben viszont viszont meghívódik egy ```c++T```-re a ```c++operator>>(istream&,vector<int>)```, ebben az esetben meg a template a már eddig látott módon elkészül és az fog lefutni.
 
+Viszont ebben az esetben milyen bemeneti formátum lesz szükséges? 
+```
+3 
+3 1 2 3 
+3 2 3 4
+3 4 5 6
+```
+
+Soronként is meg kell adnunk, hogy hány elem van egy adott sorban (itt egy kicsit több a szabadságfok mint kéne, mivel egy mátrixban nem lehetnek különböző hosszú sorok, de ettől egyelőre eltekintünk.
+Ha megnézzük valójában ez egy vector reprezentáció, a felépítése a rekurzíóval párhuzamba hozva megérthető: Az első hármas megadja, hogy hány vector-t akarunk beolvasni, ezután jönnek a vektorok. De hogy olvasunk be egy vektort, úgy hogy beolvasunk egy számot ami adja, hogy hány elem van a vectorban aztán beolvassuk a vectorokat.
+Az első vector ```3 1 2 3``` lesz, ami egy olyan vector amiben 1,2 és 3 egész számok szerepelnek (az első a számosság) 
+
+Ez a technika könnyen bővíthető a következő bementre is vector-vector-vector-int típusra:
+```
+2
+
+3 
+3 1 2 3 
+3 2 3 4
+3 4 5 6
+
+3 
+3 2 5 7 
+3 1 3 2
+3 7 5 3
+```
+Ez innen felfogható egy 3d-s mátrixként ami 3 széles 3 magas és 2 mély.
+
+
+
 ## Többszörös visszavezetés 
 
 Azzal, hogy így rekurzíve betudunk olvasni több dimenziós adatot is (az operátorunk logikusan akármennyi egymásba ágyazott vektorra működne), gondolkodhatunk komplexebb problémákon is.
@@ -165,22 +195,22 @@ KER-KER - Keressünk adott feltétlenek megfelelő elemet a mátrixban
 
 KIV-KER - Kiválasztás a mátrix egy adott típusú elemére (Egy adott sorban nem tudjuk, hogy van-e így ott KER-t kell futtatnunk)
 
-MAX-MAx - Válasszuk ki a mátrix maximális elemét.
+MAX-MAX - Válasszuk ki a mátrix maximális elemét.
 
 FTM-FTM - Feltételesen keressük a maximumot (a külső ftm feltétle, hogy talált-e a belső FTM az érték meg a belő FTM által visszaadott maximum.)
 
 
-
-
 ### Valódi dupla tétel használat
 
-cnt-sum
+CNT-SUM
 * A mátrix mennyi sorának az összege pozitív?
 * Legyenek a sorok versenyzők vagy tanulók az oszlopok meg versenyszámok vagy feladatok (mostantól: versenyző feladat).
     * Mennyi versenyző érte el a szükséges ponthatárt? = A mátrix hány sorösszege több mint egy adott konstans.
   
-ftm-sum,ker
+FTM-SUM,KER
 * Egy mátrix melyik sorában maximimális az összeg, amelyikben csak negatív számok vannak. (ergo legközelebb a 0-hoz)
 * Versenyző feladat
     * Melyik versenyző nyert? (Minimális versenyidő és minden versenyszámban érvényes eredmény, azaz nem 0)
 
+# Feladat
+1. Írjunk egy olyan programot ami beolvas egy mátrixot az ismeretetett formátumban majd megadja, hogy melyik sorban maximális a sorösszeg.
