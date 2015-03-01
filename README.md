@@ -25,7 +25,6 @@ ZH tudnivalók:
 **A szükséges ponthatár: 32 pont**
 
 ## 01-Alapok 
-Hogyan is kezdjünk hozzá egy programhoz...
 https://github.com/Hudi89/prog/blob/master/01-alapok/alapok.md
 
 ## 02-Absztrakció (template, istream)
