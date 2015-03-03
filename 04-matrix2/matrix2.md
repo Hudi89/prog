@@ -16,3 +16,24 @@ int max(const vector<int> &v){
     return maxInd;
 }
 ```
+Ez a függvény rögtön a 2. sorában kifagy ha üres vektorral akarjuk futtatni, mivel nincs a paraméterül adott vektornak 0. eleme (mivel üres:) ). Még azelőtt a sor előtt meg kell nézni, hogy üres-e a vektor és ha igen akkor valamit csinálni.
+De mit is csinálhatunk? Eldobunk egy hibát, ami addig megy felfele a hívó függvényeken amíg el nem kapja valaki vagy a mainből is ki nem repül!
+
+#### Mi az, hogy felfele a hívó függvényeken?
+Amikor a programunk elindul akkor meghívódik a main függvény, onnan indul a program. Amikor a main meghív egy függvényt, akkor a kód futása a main-ben ott megáll és folytatódik egy függvényben. Ami ha meghív egy függvényt akkor szintén megáll és így tovább. Ezeket a hívásokat lehet úgy elképzelni, hogy egyre mélyebben megy a kódban a futás. Amikor tehát eldobunk egy exceptiont, akkor a hívó fél felé indul el az exception.
+
+#### De mi az, hogy elkapni?
+
+Egy speciális blokk amivel jelezzük, hogy az adott fajta hibákat mi lekezeljük az adott ponton.
+
+### Hogy is néz ez ki?
+
+Hiba eldobás (bármilyen típust eldobhatunk valójában, most intet fogunk):
+```c++throw 1;``` 
+Elfogás:
+```c++
+try{
+   //Ezen belül eldobott hibákat kapja el
+}catch(int a){ //az itt megadott típusúakat kapja el
+   // Ez fut le ha történt hiba a try blokkban
+}
