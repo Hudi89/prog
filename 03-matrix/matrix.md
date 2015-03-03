@@ -116,6 +116,7 @@ int max(const vector<int> &v){
             maxInd = a;
         }
     }
+    return maxInd;
 }
 ```
 Az belső tétel bekötése után:
@@ -130,6 +131,7 @@ int max(const vector<int> &v){
             maxInd = a;
         }
     }
+    return maxInd;
 }
 ```
 Ezzel a legfőbb probléma, hogy mindig amikor talál új maximumot a függvény akkor újra kiszámolja a sorösszeget, ami egy nagyon széles mátrix esetén már jelentős számítási különbség lehet, tehát meg kéne jegyeznünk a ciklusmagban a sorösszeget. Egy lokális változó behozásával megoldható a dolog nagyon egyszerűen.
@@ -145,6 +147,7 @@ int max(const vector<int> &v){
             maxInd = a;
         }
     }
+    return maxInd;
 }
 ```
 
@@ -161,6 +164,7 @@ int max(const vector<T> &v){
             maxInd = a;
         }
     }
+    return maxInd;
 }
 ```
 
