@@ -3,7 +3,7 @@
 # Általánosítunk tovább
 
 Előző óra végén eljutottunk egy olyan beolvasási függvényhez, ami folyam illetve típusfüggetlen és ráadásul >> operátorként használhatjuk.
-
+ 
 ```c++
 template <typename T>
 istream& operator>>(istream& in,vector<T> &myvector)
