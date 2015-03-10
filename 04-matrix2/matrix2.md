@@ -90,12 +90,12 @@ Note: Ne felejtsük, hogy ezt is csak akkor ismeri meg a fordító, ha feljebb d
 
 using namespace std;
 
-enum Exception {URES_VEKTOR};
+enum Exception {EMPTY_VECTOR, NEGATIVE_COUNT};
 
 int max(const vector<int> &v){
     int maxInd = 0;
     if(v.size()){
-    	throw ;
+    	throw EMPTY_VECTOR;
     }
     int max = v[0];//Ez a sor szál el üres vektornak esetében (üres vektornak nincs 0. sora)
     for(int a=0;a<v.size();a++){
@@ -110,6 +110,7 @@ int max(const vector<int> &v){
 istream& operator>>(istream &in, vector<int> &v){
 	int n;
 	in >> n;
+	if()
 	v.resize(n);
 	for(int a=0;a<v.size();a++){
 		in >> v[a];
@@ -125,10 +126,12 @@ int main(){
 		cout << max(v);
 	}catch(Exception e){
 		switch(e){
-			case URES_VEKTOR: 
+			case EMPTY_VECTOR: 
 				cout << "Üres vektor!" << endl;
 				break;
-				
+			case NEGATIVE_COUNT:
+				cout << "Bemeneten negatív méretet kaptunk a vektorra!" << endl;
+				break;
 			default:
 				throw e;
 		}
@@ -137,15 +140,68 @@ int main(){
 }
 ```
 
-A try blokknak van egy olyan tulajdonsága, hogy ahogy a függvények excetion esetén 
-
-
+A try blokknak van egy olyan tulajdonsága, hogy ahogy a függvények excetion esetén a blokk maga is megszakad. Az előbbbi példában tehát, ha negatív értéket akarunk számossságnak megadni, akkor láthatjuk, hogy el fog dobni egy exceptiont (logikusan negatív méret nem létezik, így ez hiba), viszont ezt a main-ben elkapjuk és az utána lévő maximum keresés már nem fog lefutni (hiba esetén nem is lenne sok értelme, tehát nekünk ez a tulajdonság pont nyerő). Ha két külön try-ba raknánk a beolvasást és a maximum keresést, akkor ha a beolvasásba történne hiba akkor lefutna a max és valószínűleg az is dobna egy hibát, hogy üres a vektor. :)
 
 # Header fájlba szétpakolás
 
 Ahogy az első órán már beszéltünk róla, a header fájlok, amiket pl. használtunk már a kiírás és beolvasás használatához is: ```c++ #inlucde<iostream>```
 De most eljött az ideje, hogy saját ilyen fájlokat is létrehozzunk, ami nagyon egyszerű. A menüben a fájl->új->fájl kattintva előjön egy wizard aminek segítségével létrehozhatunk header fájlokat. Ha létrehozunk itt egy fájlt és azt includeoljuk valahol akkor teljesmértékben úgy fog működni mintha copy-paste lenne.
 
+A fejlécfájlokat (.h fájlokat) arra használjuk, hogy deklarációkat, leírásokat (típuslétrehozás pl.) tároljunk benne.
+A forrásfájlokat (.cpp fájlokat) viszont arra, hogy konkrét futtatandó programkódokat tároljon, tehát függvénytörzseket.
+
+## Header Guard
+
+Gondoljunk bele, hogy ez van egy header fájlban (asd.h) amit kétszer includeolunk be :
+```c++
+enum Asd {AAA,BBB};
+```
+akkor az eredmény a kódunkban:
+```c++
+#include "asd.h"
+#include "asd.h"
+```
+Ebből lesz:
+```c++
+enum Asd {AAA,BBB};
+enum Asd {AAA,BBB};
+```
+
+Itt viszont kétszer van definiálva ugyanarra a névre egy típus, erre a fordító nemet fog modani.:)
+Viszont, ha az asd.h tartalmazza a guardot:
+```c++
+#ifndef ASD_H
+#define
+enum Asd {AAA,BBB};
+#ifndef
+```
+
+Ebből lesz:
+```c++
+#ifndef ASD_H
+#define
+enum Asd {AAA,BBB};
+#ifndef
+#ifndef ASD_H
+#define
+enum Asd {AAA,BBB};
+#ifndef
+```
+
+
+## Fordítás
+
+A fordítás során a CPP fájlok mentén fordítunk, tehát azokkal foglalkozik a fordító, a fejlécfájlokat simán include-al bemásoljuk. 
+### Preprocess
+Első körben a preprocesszor (ez foglalkozik a #-os direktívákkal) dolgozza fel a fájlokat és csinál belőlük .i fájlokat. Ez a formátum még szöveges, de elég olvashatatlan, mivel ez már egy előkészített formátum a konkrét fordításhoz. (Nem könnyű előszedni ezeket a fájlokat, mert ezek mint köztes állapotok léteznek csak)
+### Fordítás
+Második a körben maga a fordítás, ekkor minden .i fájlból létrejön egy .o fájl (ezeket a .o fájlokat már megtalálhatjuk a CodeBlocks projektek esetében a build mappában). Ebben a fázisban még a fordító nem foglalkozik adott függvények konkrét létezésével, elég ha a deklarációról tud. Például eddig is amíg fordítótodd a mi main.cpp-nk nem panaszkodott a fordító, hogy nem találja a vector definícióját, mert amikor beincludeoltuk a ```<vector>``` -t, akkor abban benne volt, hogy lesz egy ilyesmi. A függvényeit viszont a linker rakja hozzá majd a következő lépésben.
+
+### Linkelés
+Ezek után mihelyt minden .o fájl kész van, jön a linker (Nem lineáris keresés, hanem LINK-er) ami a különböző kódszeleteket összekapcsolja, ekkor fogja nézni, hogy létezik-e minden deklarációhoz megfelelő definíció valahol valamelyik cpp-ben. 
+
+A Linkelésnél van egy olyan probléma, hogy 
+
 
 # Feladat
-1. (FTM-cnt(>=3)>=1,sum)
+1. (FTM-cnt(<5)>2,sum) Egy lovaglótusán keressük a nyertest, de a király úgy döntött, hogy mindenkit aki több mint két versenyszámban kevesebb mint 5 pontot ér el azt lefejezteti. (Ne feledjük, hogy mivan ha a király mindenkit lefejeztetett)
