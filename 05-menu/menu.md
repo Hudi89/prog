@@ -1,3 +1,4 @@
+# !!!Under Construction!!!
 # Menü írás
 
 írjunk egy menüt amin ki lehet választani, hogy konzol vagy fájl illetve újrafuttatás
