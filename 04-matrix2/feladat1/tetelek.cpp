@@ -58,7 +58,7 @@ int sorMennyiseg (vector<int> &v)
     return db;
 }
 
-int feltMaxKer(vector<vector<int> > &v)
+bool feltMaxKer(vector<vector<int> > &v, int& outInd)
 {
     int M = 0;
     int ind = 0;
@@ -77,10 +77,8 @@ int feltMaxKer(vector<vector<int> > &v)
                 }
         }
     }
-    if(!l){
-      throw EVERYBODY_IS_DEAD;
+    if(l){
+      outInd = ind
     }
-    else{
-      return ind;
-    }
+    return l;
 }
