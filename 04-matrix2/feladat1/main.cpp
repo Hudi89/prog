@@ -11,8 +11,13 @@ int main()
 
     fstream be("asd.txt");
     try{
+        int ind;
         be >> t;
-        cout << "The " << feltMaxKer ( t ) + 1 << ". knight won The Tournament." << endl;
+        if(feltMaxKer (t, ind)){
+            cout << "The " << (ind + 1) << ". knight won The Tournament." << endl;
+        }else{
+            cout << "Kill them all!" << endl;
+        }
     }catch(Exceptions e){
         switch (e){
             case EMPTY_MATRIX: 
@@ -29,9 +34,6 @@ int main()
                 break;
             case TOO_MANY_SCORES: 
                 cout << "The max score is 10!" <<endl;
-                break;
-            case EVERYBODY_IS_DEAD: 
-                cout << "EVERYBODY IS UNDER GIOTIN!" <<endl;
                 break;
             default: 
                 cout << "Unknown problem!" <<endl;
