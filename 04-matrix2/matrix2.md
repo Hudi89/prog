@@ -250,10 +250,34 @@ Első körben a preprocesszor (ez foglalkozik a #-os direktívákkal) dolgozza f
 Második a körben maga a fordítás, ekkor minden .i fájlból létrejön egy .o fájl (ezeket a .o fájlokat már megtalálhatjuk a CodeBlocks projektek esetében a build mappában). Ebben a fázisban még a fordító nem foglalkozik adott függvények konkrét létezésével, elég ha a deklarációról tud. Például eddig is amíg fordítótodd a mi main.cpp-nk nem panaszkodott a fordító, hogy nem találja a vector definícióját, mert amikor beincludeoltuk a ```<vector>``` -t, akkor abban benne volt, hogy lesz egy ilyesmi. A függvényeit viszont a linker rakja hozzá majd a következő lépésben.
 
 ### Linkelés
-Ezek után mihelyt minden .o fájl kész van, jön a linker (Nem lineáris keresés, hanem LINK-er) ami a különböző kódszeleteket összekapcsolja, ekkor fogja nézni, hogy létezik-e minden deklarációhoz megfelelő definíció valahol valamelyik cpp-ben. 
+Ezek után mihelyt minden .o fájl kész van, jön a linker (Nem lineáris keresés, hanem LINK-er) ami a különböző kódszeleteket összekapcsolja. Ekkor fogja nézni, hogy létezik-e minden deklarációhoz megfelelő definíció valahol valamelyik cpp-ben. 
 
-A Linkelésnél van egy olyan probléma, hogy 
+A Linkelésnél van egy olyan probléma, hogy ha a definíciókat is a fejlécfájlokba tartnánk akkor az két o fájlba fordulna bele és akkor a linker nem tudná eldönteni, hogy melyik legyen a mérvadó (Igen, megint kétszer ugyanaz között nem tud különbséget tenni, de megvan ennek is az oka), tehát ezért kell a CPP-kbe rakni a definíciókat.
 
+Viszont van egy kivétel, ami a template, mivel ott előjön a probléma, hogy ha a cppbe rakjuk a templatet:
+- Fordul a main.cpp (ebben használjuk a templatünket), a deklarációját látjuk a h fájlban a template-nek, így megnyugszunk, hogy majd linkelés közben lesz hozzá definíció
+- Fordul a seged.cpp (ebben van a templateünk amire a main-ben hivatkozunk): itt nézi a függvényeket, de a templatekből nem csinál egy rendes függvényt sem, mivel nincs rá hivatkozás (bezséltük, hogy a template C-ben sajnos olyan buta, hogy szinte copy-paste módon csinál másolatot azokból a függvényekből adott típusra amire használják őket)
+- A linkerhez viszont eljutva szembesülünk azzal, hogy nincs adott típusra létrehozott függvénydefiníció
+
+Ezt úgy tudjuk megoldani, hogy a seged.cpp-ben megadjuk, hogy milyen altípusokra használhatják a templatünket (nem túl biztonságos, mivel a header fájlban nincs megszabda, így fordítási időben nem tűnik fel, csak linkeléskor ha olyan típussal akarjuk használni ami nincs), illetve nem működik a x dimenziós beolvasás sem.
+```c++
+
+template<typename T>
+int max(const vector<T> &v){
+    int maxInd = 0;
+    T max = v[0];
+    for(int a=0;a<v.size();a++){
+        if (max < v[a]){
+            max = v[a];
+            maxInd = a;
+        }
+    }
+    return maxInd;
+}
+template void max<int>(const vector<int> &v); 
+template void max<float>(const vector<float> &v); 
+```
+De láthatjuk, hogy ez nem a legjobb megoldás, tehát maradjunk annál, hogy a templatek esetében a fejlécfájlban tartjuk a definíciókat is.
 
 # Feladat
 1. (FTM-cnt(<5)>2,sum) Egy lovaglótusán keressük a nyertest, de a király úgy döntött, hogy mindenkit aki több mint két versenyszámban kevesebb mint 5 pontot ér el azt lefejezteti. (Ne feledjük, hogy mivan ha a király mindenkit lefejeztetett)
