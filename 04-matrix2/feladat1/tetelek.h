@@ -17,6 +17,6 @@ std::istream &operator >> (std::istream &in , std::vector<int> &t);
 std::istream &operator >> (std::istream &in , std::vector<std::vector<int> > &t);
 int sorOsszeg(std::vector<int> &v);
 int sorMennyiseg (std::vector<int> &v);
-int feltMaxKer(std::vector<std::vector<int> > &v);
+bool feltMaxKer(std::vector<std::vector<int> > &v, int& outInd);
 
 #endif // TETELEK_H_INCLUDED
