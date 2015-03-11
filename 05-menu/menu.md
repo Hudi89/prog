@@ -1,4 +1,19 @@
 # !!!Under Construction!!!
+
+# Struct 
+
+Emlékezünk típust úgy hozunk létre, hogy:
+```
+[Típus típus] [típus név] {[típus típustól függő definíció]};
+```
+
+```c++
+struct{
+	bool l;
+	int ind;
+	int max; 
+}
+```
 # Menü írás
 
 írjunk egy menüt amin ki lehet választani, hogy konzol vagy fájl illetve újrafuttatás
