@@ -152,6 +152,22 @@ A forrásfájlokat (.cpp fájlokat) viszont arra, hogy konkrét futtatandó prog
 
 ## Header Guard
 
+Képzeljü el a szituációt, hogy van egy valaki által írt fejlécfájl, ami beincludeolja a vectort, viszont mi is megtesszük ezt. Ebben az esetben minden kétszer lenne deklarálva ami a fordítónak nem fog tetszeni, mert neki nem tisztje eldönteni, hogy ha kétszer ugyanúgy akarunk megadni egy típust pl. akkor melyik legyen a kettő teljesen egyforma közül. :) (Igen...:D)
+
+Ennek a komoly problémának a megoldására jött létre az úgynevezett header guard, amit nekünk a CodeBlocks automatikusan hozzá fog rakni a fájljainkhoz, de azért ismerkedjünk meg vele. A direktíváknál is vannak elágazások, viszont itt a feltételek csak kapcsolók lehetnek, hogy adott érték már be van-e állítva/igaz-e/definiálva volt-e már. Egy ilyen kapcsolót úgy tudunk bekapcsolt állapotra állítani, hogy azt írjuk a kódba, hogy 
+```c++ #define ASD```
+Ebben az esetben az adott sor kódtól nekünk ez definiálva lesz, tehát ha azt írjuk, hogy
+```c++
+#ifdef ASD
+//A códrézlet
+#else
+//B kódrészlet
+#endif
+```
+Akkor ebben az esetben ha a define fölött történik ez, akkor a ```B``` kódrészlet lesz itt a előfeldogozás után, ha viszont alatta, tehát a kapcsoló már be van állítva mire az if-hez érünk, így az if igaz lesz, akkor az ```A``` kódrészlet marad. A Header Guardokhoz a tagadó If-et használják:
+```c++ #ifndef ASD```
+ami annyit tesz, hogy ahelyett hogy azt kérdezénk, hogy ```ASD``` be van-e állítva azt kérdezzük, hogy ```ASD``` nincs beállítva?
+
 Gondoljunk bele, hogy ez van egy header fájlban (asd.h) amit kétszer includeolunk be :
 ```c++
 enum Asd {AAA,BBB};
@@ -161,7 +177,7 @@ akkor az eredmény a kódunkban:
 #include "asd.h"
 #include "asd.h"
 ```
-Ebből lesz:
+amiből az lesz, hogy:
 ```c++
 enum Asd {AAA,BBB};
 enum Asd {AAA,BBB};
@@ -187,12 +203,48 @@ enum Asd {AAA,BBB};
 enum Asd {AAA,BBB};
 #ifndef
 ```
+Ennél az esetnél az első esetben nincs még definiálva az ASD_H így az ottani rész az endifig érvényes lesz, így az is, hogy define. A második ifndef-nél viszont már definiálva van, így az if és az endif közötti rész kiesik, tehát az eredmény:
+```c++
+enum Asd {AAA,BBB};
+```
+:)
 
+Az ilyen direktívás ifeket szokták (régebben legalábbis, már manapság nem túl elterjedtek) arra is használni, hogy debug szinteket definiáljanak:
+```c++
+int max(const vector<int> &v){
+    int maxInd = 0;
+    if(v.size()){
+	    #ifdef DEGUB_MAX
+	    	cout << "Empty vector passed to max: throwing exception!"<< endl;
+	    #endif
+    	throw EMPTY_VECTOR;
+    }
+    int max = v[0];//Ez a sor szál el üres vektornak esetében (üres vektornak nincs 0. sora)
+    #ifdef DEGUB_MAX
+    	cout << "First element is " << v[0] ", so this is the max now"<< endl;
+    #endif
+    for(int a=0;a<v.size();a++){
+	    #ifdef DEGUB_MAX
+	    	cout << "Next element is " << v[a] ", comparing to "<< max << endl;
+	    #endif
+        if (max < v[a]){
+            max = v[a];
+            maxInd = a;
+		    #ifdef DEGUB_MAX
+		    	cout << "Find a new max "<<max<<" in the "<< maxInd << "position."<< endl;
+		    #endif
+        }
+    }
+    return maxInd;
+}
+```
+Ebben az esetben, ha a függvény előtt definiáljuk a DEBUG_MAX kapcsolót, akkor ki fog írni mindent a max futása közben a programunk, ha nem akkor viszont nem. 
+Miért jobb ez mint egy kódbeli változótól függő if? Mert ez a kész termékbe nem fordul bele, mivel fordítás időben kidobódnak az adott kiírós részek ha a kapcsoló nincs definiálva, ennek köszönhetően nem fogja feleslegesen lassítani a sok-sok felesleges if mindenhol a végső kódot, illetve kisebb is lesz.
 
 ## Fordítás
 
 A fordítás során a CPP fájlok mentén fordítunk, tehát azokkal foglalkozik a fordító, a fejlécfájlokat simán include-al bemásoljuk. 
-### Preprocess
+### Preprocessor
 Első körben a preprocesszor (ez foglalkozik a #-os direktívákkal) dolgozza fel a fájlokat és csinál belőlük .i fájlokat. Ez a formátum még szöveges, de elég olvashatatlan, mivel ez már egy előkészített formátum a konkrét fordításhoz. (Nem könnyű előszedni ezeket a fájlokat, mert ezek mint köztes állapotok léteznek csak)
 ### Fordítás
 Második a körben maga a fordítás, ekkor minden .i fájlból létrejön egy .o fájl (ezeket a .o fájlokat már megtalálhatjuk a CodeBlocks projektek esetében a build mappában). Ebben a fázisban még a fordító nem foglalkozik adott függvények konkrét létezésével, elég ha a deklarációról tud. Például eddig is amíg fordítótodd a mi main.cpp-nk nem panaszkodott a fordító, hogy nem találja a vector definícióját, mert amikor beincludeoltuk a ```<vector>``` -t, akkor abban benne volt, hogy lesz egy ilyesmi. A függvényeit viszont a linker rakja hozzá majd a következő lépésben.
