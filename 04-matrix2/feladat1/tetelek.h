@@ -6,13 +6,11 @@
 #include <fstream>
 
 enum Exceptions {
-    EMPTY_MATRIX,
+    EMPTY_MATRIX, 
     NEGATIV_COUNT,
     NEGATIV_TOURNAMENT,
     NULL_MATCH,
-    TOO_MANY_SCORES,
-    EVERYBODY_IS_DEAD
-
+    TOO_MANY_SCORES //Scores <= 10
 };
 
 std::istream &operator >> (std::istream &in , std::vector<int> &t);
