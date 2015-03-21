@@ -11,14 +11,15 @@
 * A program előfeltételeknek nem megfelelő esetekre is jó reagál (try-catch-el)
 * 
 
-http://hudi89.web.elte.hu/progzh1verseny.pdf
-http://hudi89.web.elte.hu/progzh1verseny2.pdf
 
-##Tavalyi ZH-k 
+## Gyakorláshoz
+* Tavalyi ZH-k 
+** http://hudi89.web.elte.hu/progzh1verseny.pdf
+** http://hudi89.web.elte.hu/progzh1verseny2.pdf
 
-http://hudi89.web.elte.hu/progzh1ciao.pdf
-http://hudi89.web.elte.hu/prog1zh_gyak.pdf
-http://hudi89.web.elte.hu/progzh1hehe.pdf
-Régebbi ZH-k, itt még stuktogramm megadásával ment a ZH
+* Régebbi ZH-k, itt még stuktogramm megadásával ment a ZH
+** http://hudi89.web.elte.hu/progzh1ciao.pdf
+** http://hudi89.web.elte.hu/prog1zh_gyak.pdf
+** http://hudi89.web.elte.hu/progzh1hehe.pdf
 
 Note: A feladatokban vannak hibák:)
