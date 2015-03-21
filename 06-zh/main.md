@@ -1,7 +1,6 @@
 ##ZH alap tudnivalók
 * Mindenféle nyomtatott segédeszköz használata szabályos (igen, akár az egész internetet kinyomtathatod)
-* 
-* 
+* Bárminemű kommunikáció vagy közös munka azonnali kizárás
 
 ##ZH elvárás
 * vector osztály használata
@@ -29,3 +28,4 @@
   * http://hudi89.web.elte.hu/progzh1hehe.pdf
 
 Note: A feladatokban vannak hibák:)
+Note: Akinek kérdése van írjon bátran és akkor bővítem az irományt.
