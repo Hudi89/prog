@@ -19,6 +19,7 @@
 ## Gyakorláshoz
 * Most összerakott
   * https://github.com/Hudi89/prog/blob/master/06-zh/minta.md
+  * https://github.com/Hudi89/prog/blob/master/06-zh/minta2.md
 * Tavalyi ZH-k 
   * http://hudi89.web.elte.hu/progzh1verseny.pdf
   * http://hudi89.web.elte.hu/progzh1verseny2.pdf
