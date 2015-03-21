@@ -15,14 +15,14 @@ Erre kéne írnunk egy programot.
 
 Az input tartalmazza a vásárlásokat és a közös kasszába való befizetéseket is vegyesen. 
 Az input ezen rekordok számával kezdődik, majd minden sor megadja egy vásárlás 1-1 tételét, vagy ha közösbe fizetésről volt szó, akkor 1-1 ember által beadott pénzösszeget.  
-
+```
 5 
 5 -3000 -3000 -3000 -3000 -3000
 4 1000 2000 3500 4000
 5 -500 -500 -500 -500 -500
 2 1000 2500
 3 500 1000 1500
- 
+```
 Output:
 
 A fent megadott feladatok minta outputjai a következők, zárójelben a lehetsgées outputokat adom meg.
