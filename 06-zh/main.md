@@ -7,7 +7,6 @@
 * függvényekre bontott feladatmegoldás
 * a kész program fájlból olvasson be (egy fix fájlnévből)
 * a feladatban megadott kimenetet adja meg a program a konzolra
-* 
 
 ##ZH értékelés
 * A egyszerűbb esetekre helyes eredményt adjon vissza (kettes)
@@ -28,4 +27,5 @@
   * http://hudi89.web.elte.hu/progzh1hehe.pdf
 
 Note: A feladatokban vannak hibák:)
+
 Note: Akinek kérdése van írjon bátran és akkor bővítem az irományt.
