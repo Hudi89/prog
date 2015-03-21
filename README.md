@@ -33,5 +33,5 @@ https://github.com/Hudi89/prog/blob/master/02-absztrakcio/absztrakcio.md
 ## 03-Általánosítsunk tovább (operátor, mátrix)
 https://github.com/Hudi89/prog/blob/master/03-matrix/matrix.md
 
-## Mátrix
+## 04-Mátrix
 https://github.com/Hudi89/prog/blob/master/04-matrix2/matrix2.md
