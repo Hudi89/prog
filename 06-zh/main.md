@@ -1,15 +1,21 @@
+##ZH alap tudnivalók
+* Mindenféle nyomtatott segédeszköz használata szabályos (igen, akár az egész internetet kinyomtathatod)
+* 
+* 
+
 ##ZH elvárás
 * vector osztály használata
 * függvényekre bontott feladatmegoldás
-* a kész program fájlból olvasson be
+* a kész program fájlból olvasson be (egy fix fájlnévből)
 * a feladatban megadott kimenetet adja meg a program a konzolra
 * 
 
 ##ZH értékelés
-* A program előfeltételeknek megfelelő esetekre helyes eredményt adjon vissza (kettes)
+* A egyszerűbb esetekre helyes eredményt adjon vissza (kettes)
+* A program minden előfeltételeknek megfelelő esetre helyes eredményt adjon vissza
 * Kód tagoltsága, egységesség, átláthatóság, értelmes elnevezések
 * A program előfeltételeknek nem megfelelő esetekre is jó reagál (try-catch-el)
-* 
+* A kód szépsége
 
 
 ## Gyakorláshoz
