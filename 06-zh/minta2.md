@@ -27,3 +27,9 @@ Output:
 1. [index]|Nincs
 2. [Index]|Nincs
 3. [Átlag érték]
+
+## Előfeltételek
+
+* Számosság nem lehet negatív
+* Egy zeneszám hossza pozitív kell legyen
+* Egy zeneszám hossza kevesebb mindig mint 10 óra :)
