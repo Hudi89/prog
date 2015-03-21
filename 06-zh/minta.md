@@ -23,10 +23,17 @@ Az input ezen rekordok számával kezdődik, majd minden sor megadja egy vásár
 2 1000 2500
 3 500 1000 1500
 ```
-Output:
+##Output
 
 A fent megadott feladatok minta outputjai a következők, zárójelben a lehetsgées outputokat adom meg.
 
 1. 2    ([index]|Nincs)
 2. Nincs (Nincs|Van)
 3. 16000 ([Érték])
+
+
+## Előfeltételek
+
+* Számosság nem lehet negatív
+* Egy befizetés nem lehet nagyobb mint 5000Ft
+* Egy termék ára nem lehet több 10000Ft-nál
