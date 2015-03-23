@@ -1,11 +1,11 @@
 ##ZH alap tudnivalók
 * Mindenféle nyomtatott segédeszköz használata szabályos (igen, akár az egész internetet kinyomtathatod)
 * Bárminemű kommunikáció vagy közös munka azonnali kizárás
-* Attól függetlenül, hogy kinyomtatva lehet bármit használni gépen ez tilos (csak GT oldala használható a ZH alatt)! Akinél egy pillanatra is meglátok valami mást az kérdés nélkül egyes.
-  * Tehát ami szabad az ez a dokumentum
+* Attól függetlenül, hogy kinyomtatva lehet bármit használni gépen ez tilos (csak GT oldala használható a ZH alatt)! Akinél egy pillanatra is meglátok valami mást az kérdés nélkül egyes. Tehát ami szabad mégegyszer:
+  * az ez a dokumentum
   * GT oldala
   * A zh feladat leírása
-  * Többi azonnali kérdés nélküli kizárás
+  * minden más azonnali kérdés nélküli kizárás
 
 ##ZH elvárás
 * Vector osztály használata.
