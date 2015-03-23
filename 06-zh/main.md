@@ -20,6 +20,10 @@
 * A kód szépsége
 
 
+##ZH beadás
+
+Ha kész vagy akkor küld el nekem a hudi1989@gmail.com-ra és várj míg jelzek az eredménnyel.
+
 ## Gyakorláshoz
 * Most összerakott
   * https://github.com/Hudi89/prog/blob/master/06-zh/minta.md
