@@ -7,8 +7,9 @@
 * Függvényekre bontott feladatmegoldás.
 * A kész program fájlból olvasson be (egy fix fájlnévből).
 * A feladatban megadott kimenetet adja meg a program a konzolra.
-* Készítsünk teszteseteket, amiket a programkód végére írunk
- * 5-6 teszteset kell, amivel rávilágítunk a kritikus lefutási esetekre
+* Készítsünk teszteseteket, amiket a programkód végére írunk.
+ * 5-6 teszteset kell, amivel rávilágítunk a kritikus lefutási esetekre.
+ * A minta bemenet majd utána a minta kimenetet adjátok meg, hogy mikre teszteltétek a programot.
 * A program ```input.txt``` nevű fájlból olvasson be.
 
 ##ZH értékelés
