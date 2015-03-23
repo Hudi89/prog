@@ -23,6 +23,7 @@
 ##ZH beadás
 
 Ha kész vagy akkor küld el nekem a hudi1989@gmail.com-ra és várj míg jelzek az eredménnyel.
+**Fontos:** A levél tárgya úgy kezdődjön, hogy ```[PROG]```!
 
 ## Gyakorláshoz
 * Most összerakott
