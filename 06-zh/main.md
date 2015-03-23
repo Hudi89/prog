@@ -27,7 +27,7 @@
 
 ##ZH beadás
 
-Ha kész vagy akkor küld el nekem a hudi1989@gmail.com-ra és várj míg jelzek az eredménnyel.
+Ha kész vagy akkor küld el nekem a hudi1989@gmail.com -ra és várj míg jelzek az eredménnyel.
 
 **Fontos:** Csak a main.cpp tartalmát küldjétek el a levél törzseként, nem kell semmi szöveg azon kívül (Még köszönés sem:) ).
 **Fontos:** A levél tárgya úgy kezdődjön, hogy ```[PROG]``` majd utána név és neptun kód!
