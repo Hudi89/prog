@@ -3,10 +3,13 @@
 * Bárminemű kommunikáció vagy közös munka azonnali kizárás
 
 ##ZH elvárás
-* vector osztály használata
-* függvényekre bontott feladatmegoldás
-* a kész program fájlból olvasson be (egy fix fájlnévből)
-* a feladatban megadott kimenetet adja meg a program a konzolra
+* Vector osztály használata.
+* Függvényekre bontott feladatmegoldás.
+* A kész program fájlból olvasson be (egy fix fájlnévből).
+* A feladatban megadott kimenetet adja meg a program a konzolra.
+* Készítsünk teszteseteket, amiket a programkód végére írunk
+ * 5-6 teszteset kell, amivel rávilágítunk a kritikus lefutási esetekre
+* A program ```input.txt``` nevű fájlból olvasson be.
 
 ##ZH értékelés
 * A egyszerűbb esetekre helyes eredményt adjon vissza (kettes)
