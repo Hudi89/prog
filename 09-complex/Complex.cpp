@@ -17,7 +17,7 @@ Complex::Complex(int R2){
 }
 Complex::Complex(){}
 
-Complex Complex::conj(){
+Complex Complex::conj() const{
     Complex ret(R,-I);
     return ret;
 }
@@ -32,7 +32,7 @@ Complex& Complex::operator=(int rh){
     return *this;
 }
 
-Complex Complex::operator+(Complex rh){
+Complex Complex::operator+(Complex rh) const{
     return rh += *this;
 }
 Complex& Complex::operator+=(Complex rh){
@@ -41,10 +41,10 @@ Complex& Complex::operator+=(Complex rh){
     return *this;
 }
 
-double Complex::getR(){
+double Complex::getR() const{
     return R;
 }
-double Complex::getI(){
+double Complex::getI() const{
     return I;
 }
 void Complex::setR(double v){
