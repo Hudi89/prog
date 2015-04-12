@@ -14,15 +14,15 @@ public:
     Complex(int R2);
     Complex();
 
-    Complex conj();
+    Complex conj() const;
     Complex& operator=(Complex c);
     Complex& operator=(int rh);
 
-    Complex operator+(Complex rh);
+    Complex operator+(Complex rh) const;
     Complex& operator+=(Complex rh);
 
-    double getR();
-    double getI();
+    double getR() const;
+    double getI() const;
     void setR(double v);
     void setI(double v);
 
