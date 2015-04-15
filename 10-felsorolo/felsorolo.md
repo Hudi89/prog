@@ -171,7 +171,14 @@ int main(){
   cout << sum(fe);
 }
 ```
+Ezeket a felsorolókat szokás hívni, szekvenciális inputnak is, aminek létezik felsoroló párja is.
+
 
 ##Feladat
 
-* 
+Készítsük el azt a programot ami megmondja, hogy a környező bolygók közül melyik a legközelebbi lakott bolygó. Az inputunk olyan formájú, hogy először a nevét adjuk meg a bolgyónak majd a koordinátáit és ezután fixen 4 számot ami megadja, hogy adott fajokb
+```
+asd 2.3 3.1 0 0 0 0  
+
+
+
