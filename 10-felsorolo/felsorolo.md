@@ -39,14 +39,14 @@ template<typename T>
 class Enumerator{
 public:
   //Inicializálja a felsorolót, az elejére áll az inputnak
-  void init() = 0;
+  virtual void init() = 0;
   //Jelzi, hogy vége-e van-e már az inputnak (Ha igen, akkor a current értéke ismeretlen)
-  bool isEnd() const = 0;
+  virtual bool isEnd() const = 0;
   //A következő felsorolandó elemre lép
-  void next() = 0;
+  virtual void next() = 0;
   
   //Visszaadja, hogy mi az aktuális elem amin a felsoroló áll
-  T current() const = 0;
+  virtual T current() const = 0;
 };
 ```
 De mit is jelent ez az ```= 0```? Arra jó, hogy meg tudunk adni függvényeket, amit majd a gyerekekben definiálni kell, így kötelezővé tehetjük, hogyha bárki csinál egy ilyen ```Enumeratort```, akkor a szükséges tagfüggvények létezni fognak. 
