@@ -33,19 +33,20 @@ int sum(Enumerator<T> &e){
 
 Ez alapján már definiálhatjuk az osztályunkat:
 ```c++
-//Az Enumerator osztály felelős azért, hogy egy elem sorozaton végigiteráljon. Egyszerre mindig csak egy elemre mutat ami a tagfüggvényekkel léptethető csak előre.
+//Az Enumerator osztály felelős azért, hogy egy elem sorozaton végigiteráljon.
+//Egyszerre mindig csak egy elemre mutat ami a tagfüggvényekkel léptethető csak előre.
 template<typename T>
 class Enumerator{
 public:
   //Inicializálja a felsorolót, az elejére áll az inputnak
   void init() = 0;
   //Jelzi, hogy vége-e van-e már az inputnak (Ha igen, akkor a current értéke ismeretlen)
-  bool isEnd() = 0;
+  bool isEnd() const = 0;
   //A következő felsorolandó elemre lép
   void next() = 0;
   
   //Visszaadja, hogy mi az aktuális elem amin a felsoroló áll
-  T current() = 0;
+  T current() const = 0;
 };
 ```
 De mit is jelent ez az ```= 0```? Arra jó, hogy meg tudunk adni függvényeket, amit majd a gyerekekben definiálni kell, így kötelezővé tehetjük, hogyha bárki csinál egy ilyen ```Enumeratort```, akkor a szükséges tagfüggvények létezni fognak. 
@@ -53,7 +54,6 @@ De mit is jelent ez az ```= 0```? Arra jó, hogy meg tudunk adni függvényeket,
 Ha szépen akarunk dolgozni akkor ebből az osztályból tudunk származtatni egy osztályt ami megvalósítja az eddigi függvényeket.
 
 ```c++
-//Az Enumerator osztály felelős azért, hogy egy elem sorozaton végigiteráljon. Egyszerre mindig csak egy elemre mutat ami a tagfüggvényekkel léptethető csak előre.
 template<typename T>
 class VectorEnumerator : public Enumerator<T>{
 private:
@@ -71,13 +71,13 @@ public:
   void init(){
     pointer = 0;
   }
-  bool isEnd(){
+  bool isEnd() const{
     return pointer >= data.size();
   }
   void next(){
     pointer++;
   }
-  T current(){
+  T current() const{
     return data[pointer];
   }
 };
@@ -90,7 +90,88 @@ int main(){
   vector<int> v;
   cin >> v; //Ez a függvény ismert, már nagyon sokszor megírtuk.:)
   VectorEnumerator<int> ve(v);
-  sum(ve);
+  cout << sum(ve);
 }
 
 ```
+
+De hogy valami értelmét is lássuk az egésznek, definiáljuk a fájl felsorolót, amivel el tudjuk érni azt, hogy nem kell letárolnunk az inputot egy vectorban, hanem egyenesen a fájlból tudunk feldolgozni.
+
+```c++
+template<typename T>
+class FileEnumerator : public Enumerator<T>{
+private:
+  T actualData;
+public:
+  
+  FileEnumerator(const string filename){
+    f.open(filename.c_str());
+  }
+  
+  ~FileEnumerator(){
+    f.close();
+  }
+
+  void init(){
+    next();
+  }
+  bool isEnd() const{
+    return f.fail() || f.eof(); 
+  }
+  void next(){
+    f >> actualData;
+  }
+  T current() const{
+    return actualData;
+  }
+};
+```
+
+
+Ekkor a main függvényünk:
+
+```c++
+int main(){
+  FileEnumerator<int> fe("asd.txt");
+  cout << sum(fe);
+}
+```
+
+Tehát optimálisabbak is lettük és rövidebbek is.:)
+Természetesen az egészet tudjuk származtatás nélkül is megoldani, de láthatjuk, hogy sokban nem különbözik a megoldás:
+
+```c++
+class IntFileEnumerato{
+private:
+  int actualData;
+public:
+  
+  IntFileEnumerato(const string filename){
+    f.open(filename.c_str());
+  }
+  ~IntFileEnumerato(){
+    f.close();
+  }
+  
+  void init(){
+    next();
+  }
+  bool isEnd() const {
+    return f.fail() || f.eof(); 
+  }
+  void next(){
+    f >> actualData;
+  }
+  int current() const{
+    return actualData;
+  }
+};
+int main(){
+  IntFileEnumerator fe("asd.txt");
+  cout << sum(fe);
+}
+```
+
+##Feladat
+
+* 
