@@ -176,7 +176,7 @@ Ezeket a felsorolókat szokás hívni, szekvenciális inputnak is, aminek létez
 ##Feladat
 
 Készítsük el azt a programot ami megmondja, hogy a környező bolygók közül melyik a legközelebbi bolygó ahol legalább 10 millió az összlakosság.
-Az inputunk olyan formájú, hogy minden sor egy bolygó és először a nevét adjuk meg a bolgyónak majd a koordinátáit és végül fixen 4 számot ami megadja, hogy a négy ismert fajból mekkora a népesség az adott bolygón (Millióban megadva).
+Az inputunk olyan formájú, hogy minden sor egy bolygó és először a nevét adjuk meg a bolygónak majd a koordinátáit és végül fixen 4 számot ami megadja, hogy a négy ismert fajból mekkora a népesség az adott bolygón (Millióban megadva).
 ```
 asd 2.3 3.1 0 0 0 0  
 bsd 3.1 4.1 1 0 5 2
