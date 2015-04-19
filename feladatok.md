@@ -23,8 +23,6 @@ Earth 0 0 0 1
 Mars 0 12 0 0.03
 Theia 0 12 0 0.03 
 ````
-
-
 A program képes kell legyen lefuttatni tranzakciókat. Egy tranzakció egy fájlban tárolódik és a következő parancsokat tudja:
 
 * INSERT [Hozzáadandó bolygó adatai]
@@ -70,3 +68,10 @@ Készítsünk egy programot ami reguláris kifejezéseket tud lefuttatni. A prog
 * Mire cseréljen (captureöket lehessen megadni)
 
 + 3 - Működjön teljeskörűen, mint egy normális linuxos bash program minden szempontból, lehessen pl. pipeolni.
+
+### tikzpicture (4)
+
+Készítsünk egy programot ami Latex-tikzpicture formátumú megjelenítést készít egy paraméterül átadott mátrixra, ami egy irányítatlan egyszerű gráf szomszédossági mátrixát adja meg.
+
++ 1 - irányított gráf 
++ 
