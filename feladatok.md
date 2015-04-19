@@ -29,12 +29,13 @@ A program képes kell legyen lefuttatni tranzakciókat. Egy tranzakció egy fáj
 Egy iskolai osztálykirándulás árát (13000) a tanulók részletekben fizetik be. Minden tanuló minden befizetése egy szöveges állomány egy-egy sorában található, amelyik tartalmazza a  tanuló nevét (sztring), a befizetés dátumát (EEEE.HH.NN formájú sztring) és összegét(természetes szám). Egy soron belül az adatokat elválasztójelek (szóközök, tabulátor jelek) határolják egymástól. A sorok a tanulók nevei szerint, azon belül a befizetési dátumok időrendje szerint rendezettek. Feltehetjük, hogy az állomány nem üres, sorai a megadott formájúak.
 
 Példa néhány egymást követő sorra:
+```
 Feri   2013.11.13   2500   
 Feri   2014.01.23   3000   
 Feri   2014.03.11   1500
 Juli    2013.11.21   4000
 Juli    2014.02.15   1500
-
+```
 1. megszámolja, hogy eddig összesen mennyit fizettek be a tanulók,
 2. megadja egy olyan tanulónak a nevét, aki a legkevesebb részletben fizetette be a teljes összeget. 
 3. a befizetések két, a fent megadott formájú szöveges állományban helyezkednek el,
