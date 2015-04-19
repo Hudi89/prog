@@ -67,11 +67,11 @@ Készítsünk egy programot ami reguláris kifejezéseket tud lefuttatni. A prog
 * Mit cseréljen (reguláris kifejezés)
 * Mire cseréljen (captureöket lehessen megadni)
 
-+ 3 - Működjön teljeskörűen, mint egy normális linuxos bash program minden szempontból, lehessen pl. pipeolni.
++3 - Működjön teljeskörűen, mint egy normális linuxos bash program minden szempontból, lehessen pl. pipeolni.
 
 ### tikzpicture (4)
 
 Készítsünk egy programot ami Latex-tikzpicture formátumú megjelenítést készít egy paraméterül átadott mátrixra, ami egy irányítatlan egyszerű gráf szomszédossági mátrixát adja meg.
 
-+ 1 - irányított gráf 
++1 - irányított gráf 
 + 
