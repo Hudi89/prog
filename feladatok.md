@@ -1,6 +1,14 @@
 #Feladatok
 
 A féléves pontokat egy-egy feladattal lehet feljebb tornászni, ha esetleg a szükséges menyniség nem sikeres. Az elérhető pontszám a feladat mellett zárójelben található.
+A feladat megoldáshoz dokumentáció és részletes kommentezés nem szükséges, viszont erős követelmény, hogy a kód gyorsan/könnyen átlátható legyen, így valamennyi kommentet igényelnek a programok, természetesen megvalósítás minőségétől függően. 
+Az inputoknak sincs konkrét szigorú formája, ha a feladat nem ad meg semmit, ezek is rátok vannak bízva, de törekedjetek a leghatékonyabb megodásra, mert szép megoldás esetében tovább pontok szerezhetőek.
+
+### (i-j) mátrix (3)
+
+Készítsünk egy programot, ami megmondja egy bináris mátrixról i-j mátrix-e, azaz igaz-e a mátrixra, hogy minden sora pontosan ```i```  és minden oszlopa pontosan ```j``` egyest tartalmaz, minden más egyes. Input formája szabadon választható.
+
+### 
 
 ### Adatbázis (8)
 
@@ -13,9 +21,10 @@ Az adatbázisunk egy txt fájl lesz. Az aktuális esetben az adatbázisunk bolyg
 
 ```
 Earth 0 0 0 1 
-Theia 0 12 0 0.03 
 Mars 0 12 0 0.03
+Theia 0 12 0 0.03 
 ````
+
 
 A program képes kell legyen lefuttatni tranzakciókat. Egy tranzakció egy fájlban tárolódik és a következő parancsokat tudja:
 
@@ -23,8 +32,10 @@ A program képes kell legyen lefuttatni tranzakciókat. Egy tranzakció egy fáj
 * DELETE [Bolygó neve]
 * UPDATE [Bolygó neve] [Új adatok]
 
+Note: **A fő kulcs a neve a bolygónak, így eszerint van rendezve az input fájl és a tranzakció lista is**
+Note: A megoldáshoz szekvenciális osztályokkal oldjátok meg.
 
-### Osztálykirándulás
+### Osztálykirándulás (6)
 
 Egy iskolai osztálykirándulás árát (13000) a tanulók részletekben fizetik be. Minden tanuló minden befizetése egy szöveges állomány egy-egy sorában található, amelyik tartalmazza a  tanuló nevét (sztring), a befizetés dátumát (EEEE.HH.NN formájú sztring) és összegét(természetes szám). Egy soron belül az adatokat elválasztójelek (szóközök, tabulátor jelek) határolják egymástól. A sorok a tanulók nevei szerint, azon belül a befizetési dátumok időrendje szerint rendezettek. Feltehetjük, hogy az állomány nem üres, sorai a megadott formájúak.
 
