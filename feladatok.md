@@ -8,7 +8,6 @@ Az inputoknak sincs konkrét szigorú formája, ha a feladat nem ad meg semmit, 
 
 Készítsünk egy programot, ami megmondja egy bináris mátrixról i-j mátrix-e, azaz igaz-e a mátrixra, hogy minden sora pontosan ```i```  és minden oszlopa pontosan ```j``` egyest tartalmaz, minden más egyes. Input formája szabadon választható.
 
-### 
 
 ### Adatbázis (8)
 
@@ -59,3 +58,15 @@ Ezeken kívül a programja kielégíti az alábbi követelményeket:
 * egy osztályt készít a szöveges állomány olvasásához;
 * a szöveges állományt csak egyszer nyitja meg olvasásra és nem használ a szöveges állomány sorainak számától függő méretű változót.
 
+### Reguláris cserélő (5)
+
+**Ez a feladat olyan tudást is igényel ami a tanév alatt nem került leadásra**
+
+Készítsünk egy programot ami reguláris kifejezéseket tud lefuttatni. A program négy parancssori paramétert várjon, ha nem kap elegendőt egy helpet adjon a program, hogy hogy kell paraméterezni. A három paraméter legyen:
+
+* A forrásfájl neve
+* A célfájl neve
+* Mit cseréljen (reguláris kifejezés)
+* Mire cseréljen (captureöket lehessen megadni)
+
++ 3 - Működjön teljeskörűen, mint egy normális linuxos bash program minden szempontból, lehessen pl. pipeolni.
