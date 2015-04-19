@@ -4,6 +4,8 @@ A féléves pontokat egy-egy feladattal lehet feljebb tornászni, ha esetleg a s
 A feladat megoldáshoz dokumentáció és részletes kommentezés nem szükséges, viszont erős követelmény, hogy a kód gyorsan/könnyen átlátható legyen, így valamennyi kommentet igényelnek a programok, természetesen megvalósítás minőségétől függően. 
 Az inputoknak sincs konkrét szigorú formája, ha a feladat nem ad meg semmit, ezek is rátok vannak bízva, de törekedjetek a leghatékonyabb megodásra, mert szép megoldás esetében tovább pontok szerezhetőek.
 
+Több feladat is igényel olyan tudást amit nem tanultunk konkrétan, de egy programozónak tudnia kell új tudást felvennie.:)
+
 ### (i-j) mátrix (3)
 
 Készítsünk egy programot, ami megmondja egy bináris mátrixról i-j mátrix-e, azaz igaz-e a mátrixra, hogy minden sora pontosan ```i```  és minden oszlopa pontosan ```j``` egyest tartalmaz, minden más egyes. Input formája szabadon választható.
@@ -71,7 +73,16 @@ Készítsünk egy programot ami reguláris kifejezéseket tud lefuttatni. A prog
 
 ### tikzpicture (4)
 
+**Ez a feladat olyan tudást is igényel ami a tanév alatt nem került leadásra**
+
 Készítsünk egy programot ami Latex-tikzpicture formátumú megjelenítést készít egy paraméterül átadott mátrixra, ami egy irányítatlan egyszerű gráf szomszédossági mátrixát adja meg. A kiement magasságát és szélességét is meg lehessen adni paraméterként a generáláshoz.
 
 +1 - irányított gráf 
 +2 - nem egyszerű gráfra is működik
+
+
+### GMP (4-8)
+
+**Ez a feladat olyan tudást is igényel ami a tanév alatt nem került leadásra**
+
+Gmp libary (https://gmplib.org/) használatával készítsünk minél gyorsabb algoritmust ami megadja a paraméterül adott két szám prímfelbontását (Tudjuk, hogy az átadott szám két prímszám szorzata).
