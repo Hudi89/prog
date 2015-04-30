@@ -1,8 +1,8 @@
 #Feladatok
 
-A féléves pontokat egy-egy feladattal lehet feljebb tornászni, ha esetleg a szükséges menyniség nem sikeres. Az elérhető pontszám a feladat mellett zárójelben található.
-A feladat megoldáshoz dokumentáció és részletes kommentezés nem szükséges, viszont erős követelmény, hogy a kód gyorsan/könnyen átlátható legyen, így valamennyi kommentet igényelnek a programok, természetesen megvalósítás minőségétől függően. 
-Az inputoknak sincs konkrét szigorú formája, ha a feladat nem ad meg semmit, ezek is rátok vannak bízva, de törekedjetek a leghatékonyabb megodásra, mert szép megoldás esetében tovább pontok szerezhetőek.
+A féléves pontokat egy-egy feladattal lehet feljebb tornászni, ha esetleg a szükséges mennyiség nem sikeres. Az elérhető pontszám a feladat mellett zárójelben található.
+A feladatok megoldásához a dokumentáció és a részletes kommentezés nem szükséges, viszont erős követelmény, hogy a kód gyorsan/könnyen átlátható legyen, így valamennyi kommentet igényelnek a programok, természetesen megvalósítás minőségétől függően. 
+Az inputoknak sincs konkrét szigorú formája, ha a feladat nem ad meg semmit, ezek is rátok vannak bízva, de törekedjetek a leghatékonyabb megoldásra, mert szép megoldás esetében tovább pontok szerezhetőek.
 
 Több feladat is igényel olyan tudást amit nem tanultunk konkrétan, de egy programozónak tudnia kell új tudást felvennie.:)
 
