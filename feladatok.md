@@ -14,7 +14,7 @@ Készítsünk egy programot, ami megmondja egy bináris mátrixról i-j mátrix-
 ### Adatbázis (8)
 
 Írjunk egy mini adatbáziskezelő programot. 
-Az adatbázisunk egy txt fájl lesz. Az aktuális esetben az adatbázisunk bolygókat fognak tárolni a következő információkkal:
+Az adatbázisunk egy txt fájl lesz. Az aktuális esetben az adatbázisunk bolygókat (mert szeretjük ezt a példát:D) fognak tárolni a következő információkkal:
 
 * Név
 * 3d Koordináta (3 lebegőpontos szám)
@@ -33,6 +33,15 @@ A program képes kell legyen lefuttatni tranzakciókat. Egy tranzakció egy fáj
 
 Note: **A fő kulcs a neve a bolygónak, így eszerint van rendezve az input fájl és a tranzakció lista is**
 Note: A megoldáshoz szekvenciális osztályokkal oldjátok meg.
+
+### Merger (4)
+
+Készítsünk egy programot ami valamilyen kulcs szerint sorbarendezett rekordokat tartalmazó fájlokat össszefűz egy nagy fájlba. Nem csak kettő fájl hanem akármennyi fájlra működjön és az output is rendezett legyen.
+
+
+### Összefoglaló készítése (8)
+
+Egy tetszőleges tulajdonságú rekordokra készítsük el mind a négy halmazműveleti feladatot a tanult megoldási módszerrel.
 
 ### Osztálykirándulás (6)
 
