@@ -85,4 +85,4 @@ Készítsünk egy programot ami Latex-tikzpicture formátumú megjelenítést k�
 
 **Ez a feladat olyan tudást is igényel ami a tanév alatt nem került leadásra**
 
-Gmp libary (https://gmplib.org/) használatával készítsünk minél gyorsabb algoritmust ami megadja a paraméterül adott két szám prímfelbontását (Tudjuk, hogy az átadott szám két prímszám szorzata).
+Gmp libary (https://gmplib.org/) használatával készítsünk minél gyorsabb algoritmust ami megadja a paraméterül adott szám prímfelbontását (Tudjuk, hogy az átadott szám két prímszám szorzata).
