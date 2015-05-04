@@ -80,9 +80,9 @@ ostream& operator<<(ostream& out,const Adatok &adatok) {
 
 int main()
 {
-    FileEnumerator<ppl> si1("in1.txt");
-    FileEnumerator<ppl> si2("in2.txt");
-    ConsoleSeqOut<ppl> so;
+    FileEnumerator<Adatok> si1("in1.txt");
+    FileEnumerator<Adatok> si2("in2.txt");
+    ConsoleSeqOut<Adatok> so;
     si1.init();
     si2.init();
 
