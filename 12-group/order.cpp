@@ -7,9 +7,7 @@ using namespace std;
 
 
 /*
-Feladat: Melyik nap nem fogyott alkohol 
-
-apróbetűs rész: Illetve nem került be a jegyzőkönyvbe.
+Feladat: Melyik nap fogyott mind két helyen alkohol? 
 */
 
 struct OrderItem{
