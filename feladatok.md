@@ -8,7 +8,7 @@ Több feladat is igényel olyan tudást amit nem tanultunk konkrétan, de egy pr
 
 ### (i-j) mátrix (3)
 
-Készítsünk egy programot, ami megmondja egy bináris mátrixról i-j mátrix-e, azaz igaz-e a mátrixra, hogy minden sora pontosan ```i```  és minden oszlopa pontosan ```j``` egyest tartalmaz, minden más egyes. Input formája szabadon választható.
+Készítsünk egy programot, ami megmondja egy bináris mátrixról i-j mátrix-e, azaz igaz-e a mátrixra, hogy minden sora pontosan ```i```  és minden oszlopa pontosan ```j``` egyest tartalmaz, minden más nullás. Input formája szabadon választható.
 
 
 ### Adatbázis (8)
