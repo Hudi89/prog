@@ -8,6 +8,12 @@ using namespace std;
 
 /*
 Feladat: Melyik nap fogyott mind két helyen alkohol? 
+
+Bemenet:
+
+2015-01-01 asd 100 bsd 200 asd 300
+2015-01-01 asd 100 
+2015-01-02 Beer 200
 */
 
 struct OrderItem{
