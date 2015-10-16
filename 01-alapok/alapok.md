@@ -2,13 +2,7 @@
 
 A Programozás című tárgy előfeltétele a Programozási alapismeretek című tágy, így annak anyagát ismertnek vesszük és csak egy rövid áttekintés erejéig érintjük a teljesség igénye nélkül.
 
-## Alapok
-
-Egy programot úgy foghatunk fel mint egy ember által sokszor elvégzett feladat formalizálását. Például ha azt a feladatot kapod a boltban, hogy nézd át minden nap zárás után, hogy van-e esetleg lejárt termék. Ebben az esetben buta verzióban annyit fogunk tenni, hogy minden nap végignézzük az összes terméket, hogy mikor jár le és ha az adott dátum kisebb mint a mai akkor kidobjuk. Ez esetünkben lehet egy többszörös **keresés**, igen keresési tétel, ergo kiválogatás, mert ha ismerjük az 5 alap tételt, akkor egyelőre még csak keresést tudjuk használni, de azzal is megtudjuk oldani, mert ha kikeresünk egy olyat ami lejárt kivesszük és addig futtatjuk amíg van benne lejárt elem.
-
-Másik példaként vehetjük pl. hogy a legerősebb alkoholt keressük (szintén a boltban...nem ott írom ezt...komolyan) a termékek közül. Ekkor annyit tudunk csinálni ha bemegyünk a boltba, hogy végigmegyünk a soron és nézegetjük, hogy melyik mennyi és mindig megjegyezzük, hogy mi volt eddig a legerősebb alkohol. Amikor a sor végére érünk akkor (ha a memóriánk nem rossz) emlékszünk, hogy melyik volt az, meg is oldottuk a feladatot.
-
-### A programkód 
+## A programkód 
 
 ```c++
 #include <iostream>
@@ -26,7 +20,7 @@ Egy programkód értelmezése futtatás nélkül első dolog amit szem előtt ke
 Szóval ez a programkód pl. annyit csinál, hogy létrehoz egy változót b névvel, majd annak értékéül adja, hogy kettő.
 ```c++ int b=2;```. Ezzel végeztünk is. A következő sorban a b változót növeljük egyel ```c++ b++;```.  Ekkor a b-nk 3 lesz, mivel eddig 2 volt. Kiírjuk a b-t, ergo a képernyőre kikerül, hogy 3.```c++ return 0;``` minden main végén kötelező, ezzel jelezzük a programot indítónak, hogy a program lefutása helyes volt. 
 
-#### De miért kell mindenhova ";"?
+### De miért kell mindenhova ";"?
 A c++ nem foglalkozik a sortörésekkel, szóközökkel, tabulátorokkal (úgynevezzet whitespace karakterekkel, szemben a whitespace nevű nyelvvel: http://hu.wikipedia.org/wiki/Whitespace_%28programoz%C3%A1si_nyelv%29), így valahogy el kell választanunk a parancsokat, ebből adódóan az előző programkódot a következő módon is írhattuk volna.
 
 ```c++
@@ -35,7 +29,7 @@ using namespace std;int main(){int b=2;b++;cout << b;return 0;}
 ```
 A **#include** -os rész sajnos teljesen más világ, így ott az egy sorba behúzást nem tehetjük meg, mivel ezek úgynevezett direktívák.
 
-#### Direktíva
+### Direktíva
 
  #-el kezdődő részeket a programban direktívának hívjuk, ami nem konkrét programkód, hanem csak egy elősegítő folyamat.
 Első direktíva az #include, ami annyit tesz, hogy másolás beillesztés, ekkor egy úgynevezett fejlécfájlt másol be a mi kódunkba, hogy a fordító tudja, hogy miket használhatunk a programunkban. De erről részletesebben későbbi fejezetekben lesz, egyelőre maradjunk annyiban, hogy ha valamilyen funkcióra szükségünk van, akkor ilyen #include sorokat kell majd hozzáadnunk és akkor azokat is megtudjuk majd hívni.
@@ -68,16 +62,16 @@ int main(){
 ```
 
 
-#### De hol is van ez a programkód?
+### De hol is van ez a programkód?
 
 Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolyabb fejlesztőkörnyezetig minden megtudja nyitni. Problémák a karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk ékezetet sehol, így ezzel nem foglalkozunk.
 Általában a kiterjesztése a c/c++ programkód fájloknak **cpp**, **cc** vagy simán **c**, mi és a CodeBlocks is a **cpp**-t fogjuk használni.
 
-### Fordítás
+## Fordítás
 
 Fordításra nagyon sok mód létezik, viszont a tárgy folyamán legfőképp CodeBlocks-ot fogjuk használni.
 
-#### Konzolból fordítás (Linux)
+### Konzolból fordítás (Linux)
 
 ```bash
 g++ main.cpp
@@ -101,10 +95,10 @@ parancsot.
 
 Részletesen: http://linux.die.net/man/1/g++
 
-#### Code Blocks
+### Code Blocks
 **Code Blocks** is használható a tárgy alatt, új projekt létrehozása illetve fordítása sokkal egyszerűbb: https://www.youtube.com/watch?v=kYA8rK2fy2U
 
-### Kommentelés
+## Kommentelés
 
 A kódban megjelenhetnek olyan információk is amik nem feltétlenül tartoznak a kódhoz hanem csak a kód megértését könnyítik, TODO (olyan amit még meg kell csinálni), dokumentáció, vagy bármi egyéb megjegyzés.
 C++-ban két alapvető lehetésünk van kommentelésre: 
@@ -130,16 +124,16 @@ int main(){
 A modern programozási világban a több soros megjegyzés használata esetén óvatosságra intenek, mert ha pl. van egy 1000 soros kódod és kiakarsz kommentelni 200 sort belőle, de valahol van benne egy 10 soros rész aminél már használtad a több soros megjegyzés, akkor a több soros megjegyzés az 200 soros komment nyitójától fog tartani a 10 soros zárójáig, tehát a 10 soros */-jétől nem lesz kikommentelve a kód. Ahhoz, hogy egy soros kommentelést alkalmazzunk több soron, a legtöbb fejlesztő környezet kínál egy billentyűkombinációt, aminek a segítségével a kijelölt sorok mindegyikét egysoros kommentbe teszi. (Ideiglenes kód eltávolítás miatt pl.)
 
 
-##  Változók
+#  Változók
 A változó a program futásához szükséges kellék, ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ha azonosulunk a programmal. Képzeljük el, hogy mi vagyunk a buta program aki nem tud olyan komplexen gondolkozni mint egy ember, hanem egyszerre csak egy dologra tud koncentrálni aki ül egy asztalnál. Ha megkérdezed a felhasználót, hogy mondjon egy számot, akkor azt a számot le kell írnod egy lapra és ott hagynod az asztalodon (ami a valóságban a memóriát szimbolizálja), mivel ha nemírod fel elfelejted. 
 
-### Hogy hozzuk létre?
+## Hogy hozzuk létre?
 
 A példánkból már látható vagy sejthető, hogy 
 ```[Változó típus] [Változó név]```
 stílusban hozunk létre változót. A példánkban az int típust használjuk ami az egyszerű egész szám, viszont vigyázzunk vele, mert ezek nem minden egész számot képesek eltárolni, csak adott nagyságút, attól függően hány bit-ről van szó. Ha pl. 32. bites az int (általában ez igaz) akkor 2^32 számot képes kifejezni. (Részletesebben: Numerikus módszerek 1. http://numanal.inf.elte.hu/~hegedus/okt.html)
 
-#### Milyen típusok vannak
+## Milyen típusok vannak
 
 int - Egész (általában 32 bites 4294967296 értéket vehet fel. fele negatív fele pozitív irányban)
 float - Lebegőpontos (általában 32 bites, viszont itt egy érdekesség, hogy vagy nagyon pontos vagy nagyon nagy számokat tud kifejezni)
@@ -151,12 +145,12 @@ A fenti számos típusokból (a bool nem) létrehozhatunk előjel nélkülit is 
 
 Note: az általában kifejezés annyit tesz, hogy a mi esetünkben az ELTE-n a gépeken így lesz a félév folyamán.
 
-## Függvények
+# Függvények
 
 A programozási nyelvek első egyik legfontosabb eleme a függvények, amik segítségével struktúráltabbá tudjuk tenni a programunkat. A függvényt úgy lehet elképzelni, mint egy doboz amiben ül egy manó te odaadod neki a paramétereket ő meg folyamatosan ugyanazt a feladatot hajtja végre és a végén opcionálisan visszaad valami választ és addig mi ott állunk és tartjuk a kezünket. Ilyenkor a szokásos sorról sorra futás hirtelen elugrik arra a kódrészletre ami meg lett hívva. A hívást egyszerűen úgy írjuk, hogy megadjuk a függvénynevét és utána zárójelben a paramétereket.
 Egy függvény két részből áll: van deklaráció és definíció része.
 
-### Deklaráció
+## Deklaráció
 
 A deklaráció arra szolgál, hogy jelezzük a fordító számára (ami sorról sorra értelmezi a kódot), hogy lesz egy ilyen nevű és szignatúrájú függvény (Szignatúra később részletesebben). A deklaráció szerkezete a következő:
 [Visszatérési érték] [Függvény név]([Paraméterek]);
@@ -173,7 +167,7 @@ cout << max(2,3);
 ```
 Ez természetesen kifogja írni, hogy 3 ha megfelelően definiáljuk később a függvényt. A deklaráció elhagyható és csak a definíció is elég pl. egy egyfájlos program esetében, de később látni fogjuk a hasznát. Ha mégis megakarjuk spórolni a deklaráció leírását, akkor figyeljünk arra, hogy az adott függvény csak onnantól hívható meg ha volt deklarálva vagy definiálva.
 
-### Definíció
+## Definíció
 
 A függvény definíciója nem sokban különbözik a deklarációtól, annyi különbséggel, hogy a végén nem ;-el zárjuk le hanem { és } között megírunk egy alprogramot ami végre fog hajtódni a hívás esetén.
 
@@ -187,7 +181,7 @@ int max(int a, int b){
 }
 ```
 
-### Szignatúra és overload
+## Szignatúra és overload
 
 Egy függvényt nem csak a neve azonosít hanem az úgynevezett szignatúrája is, ami esetünkben a paraméterek típusa lesz. Az előző példánkban a függvény neve max volt a szignatúrája ```c++int,int``` volt, mivel két paramétert vár és mindkettő int. Ez azért fontos, mert ha ```c++max(2); ``` parancsot adjuk ki a kódunkban, akkor a fordító panaszkodni fog, hogy nem ismeri a függvényt.
 
@@ -203,11 +197,11 @@ Ezzel a kóddal elérjük azt, hogy ha három paraméterrel hívják meg a max f
 *Note: Egyelőre nem törekedünk optimális kód írására, a fő szempontunk, hogy gyorsabban és szebb kódot írjunk.*
 
 
-## Referencia használata
+# Referencia használata
 A tárgy óráin általában a http://www.cplusplus.com/ oldalán található leírásokat fogom ajánlani, mivel az oldalon egy függvény használatához általában 
 
 
-## Tömbök
+# Tömbök
 A programozási alapismeretek órán megismerkedtetek a tömbökkel, amik arra szolgálnak, hogy a fentebb ismertetett típusokból többet tároljunk együtt. Ezt egyszerűen tudjuk megoldani:
 
 ```c++
@@ -238,6 +232,28 @@ int main(){
 Ez a kód szintén ki fogja írni a 3 elem maximumát a korábbiakhoz hasonlóan.
 Note: Az, hogy belül hogy nevezzük el a változókat az teljesen független attól, hogy egy függvényen belül hogy hívjuk.
 Viszont ezzel a kóddal van egy olyan problémánk, hogy normális esetben egy statikus változó nem lehet dinamikus méretű, ergo ha mondjuk nem tudjuk mennyi bemenő adat lesz, akkor max úgy tudjuk megoldani, hogy létrehozunk egy 1000 nagyságút és imádkozunk, hogy a felhasználó ne akarjon több adatot beadni. Ez egy ideig használható megoldás is lehet, de éles helyzetben egy általánosabb programnál természtesen elfogadhatatlan. 
+
+
+# Tételek
+
+Ha egy feladatot nagyon sokszor végez el valaki, akkor egy idő után nagyon elkezdi unni. :) Mit tehetünk ilyenkor? Automatizáljuk. A programok pont erre lesznek jók nekünk. Vegyünk például egy egyszerű példát:
+Ha egy boltban minden nap meg kell számolnunk az összes bevételt, úgy mint kasszában, ugyanúgy a blokkokon, akkor az egy elég robot munka lehet. Ez az összegzés tétel.
+
+```c++
+int s = 0;
+for(int i=0;i<billCount;i++){
+  s = bills[a];
+}
+```
+
+Másik példaként vehetjük pl. hogy a legerősebb alkoholt keressük a termékek közül. Ekkor annyit tudunk csinálni ha bemegyünk a boltba, hogy végigmegyünk a soron és nézegetjük, hogy melyik mennyi és mindig megjegyezzük, hogy mi volt eddig a legerősebb alkohol. Amikor a sor végére érünk akkor (ha a memóriánk nem rossz) emlékszünk, hogy melyik volt az, meg is oldottuk a feladatot. Ez a maximum keresés.
+
+```c++
+int s = 0;
+for(int i=0;i<billCount;i++){
+  s = bills[a];
+}
+```
 
 # Vector 
 
