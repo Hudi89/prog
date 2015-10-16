@@ -4,6 +4,8 @@ A Programozás című tárgy előfeltétele a Programozási alapismeretek című
 
 ## A programkód 
 
+Ugorjunk rögtön egy mintakód közepébe és próbáljuk meg annak értelmezése mentén felszedni az alapvető információkat.
+
 ```c++
 #include <iostream>
 
