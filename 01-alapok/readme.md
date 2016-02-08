@@ -4,7 +4,7 @@ A Programozás című tárgy előfeltétele a Programozási alapismeretek című
 
 ## A programkód 
 
-Ugorjunk rögtön egy mintakód közepébe és próbáljuk meg annak értelmezése mentén felszedni az alapvető információkat.
+Ugorjunk rögtön egy mintakód közepébe és próbáljuk meg annak értelmezése mentén elkezdeni az egészet.
 
 ```c++
 #include <iostream>
@@ -18,12 +18,13 @@ int main(){
   return 0;
 }
 ```
-Egy programkód értelmezése futtatás nélkül első dolog amit szem előtt kell tartani, hogy a programunk mindig **sorról sorra fut**, ergo nem kell rögtön megérteni az egészet, hanem a fejünkben szépen végiglépkedni a programunk futását. Első szinten azt figyeljük mindig, hogy hol jelenik meg a programunkban az **int main()** nevű függvény, mivel innen fog indulni a futásunk, ami ezután le van írva a **{ és }** között, az a rész lesz a főprogramunk amit elemezni fogunk lépésről lépésre. 
-Szóval ez a programkód pl. annyit csinál, hogy létrehoz egy változót b névvel, majd annak értékéül adja, hogy kettő.
-```c++ int b=2;```. Ezzel végeztünk is. A következő sorban a b változót növeljük egyel ```c++ b++;```.  Ekkor a b-nk 3 lesz, mivel eddig 2 volt. Kiírjuk a b-t, ergo a képernyőre kikerül, hogy 3.```c++ return 0;``` minden main végén kötelező, ezzel jelezzük a programot indítónak, hogy a program lefutása helyes volt. 
+Egy programkód futtatás nélküli elemzéséhez az első dolog amit szem előtt kell tartani, hogy a programunk mindig **sorról sorra fut**, ergo a gép nem fogja mágikus módon kitalálni, hogy mit akarunk, hanem sorról sorra fogja azokat végrehajtani, mint egy gép:). 
+Először figyeljük meg azt, hogy hol jelenik meg a programunkban az **int main()** nevű függvény, mivel innen fog indulni a futásunk. Ami a ```c++main``` után van a **{ és }** között, az a rész lesz a főprogramunk. 
+Szóval ez a programkód pl. annyit csinál, hogy létrehoz egy egészeket tároló változót b névvel, majd annak értékéül adja, hogy kettő.
+```c++ int b=2;```. következő sorban a b változót növeljük egyel ```c++ b++;```.  Ekkor a b-nk 3 lesz, mivel eddig 2 volt. Kiírjuk a b-t, ergo a képernyőre kikerül, hogy 3.```c++ return 0;``` minden main végén kötelező, ezzel jelezzük a programot indítónak, hogy a program lefutása sikeres volt (ha nem 0-t írunk a return után, akkor azzal hibát jelzünk a programunkat futtató felé). 
 
 ### De miért kell mindenhova ";"?
-A c++ nem foglalkozik a sortörésekkel, szóközökkel, tabulátorokkal (úgynevezzet whitespace karakterekkel, szemben a whitespace nevű nyelvvel: http://hu.wikipedia.org/wiki/Whitespace_%28programoz%C3%A1si_nyelv%29), így valahogy el kell választanunk a parancsokat, ebből adódóan az előző programkódot a következő módon is írhattuk volna.
+A c++ nem foglalkozik a sortörésekkel, szóközökkel, tabulátorokkal (whitespace karakterekkel, szemben a whitespace nevű nyelvvel: http://hu.wikipedia.org/wiki/Whitespace_%28programoz%C3%A1si_nyelv%29), így valahogy el kell választanunk a parancsokat, ebből adódóan az előző programkódot a következő módon is írhattuk volna.
 
 ```c++
 #include <iostream> 
@@ -33,8 +34,8 @@ A **#include** -os rész sajnos teljesen más világ, így ott az egy sorba beh�
 
 ### Direktíva
 
- #-el kezdődő részeket a programban direktívának hívjuk, ami nem konkrét programkód, hanem csak egy elősegítő folyamat.
-Első direktíva az #include, ami annyit tesz, hogy másolás beillesztés, ekkor egy úgynevezett fejlécfájlt másol be a mi kódunkba, hogy a fordító tudja, hogy miket használhatunk a programunkban. De erről részletesebben későbbi fejezetekben lesz, egyelőre maradjunk annyiban, hogy ha valamilyen funkcióra szükségünk van, akkor ilyen #include sorokat kell majd hozzáadnunk és akkor azokat is megtudjuk majd hívni.
+ #-el kezdődő részeket a programban direktívának hívjuk, ami nem konkrét programkód, hanem csak egy előfeldolgozó folyamat.
+Első direktíva amiről beszélünk a legalapvetőbb #include, ami annyit tesz, hogy másolás beillesztés, ekkor egy úgynevezett fejlécfájlt másol be a mi kódunkba, hogy a fordító tudja, hogy miket használhatunk a programunkban. De erről részletesebben későbbi fejezetekben lesz, egyelőre maradjunk annyiban, hogy ha valamilyen funkcióra szükségünk van, akkor ilyen #include sorokat kell majd hozzáadnunk és akkor azokat is megtudjuk majd hívni.
 
 A tárgyon belül az úgynevezett STL-t (Standard Template Library) fogjuk használni csak, ennek része az iostream is, de ha pl. matematikai függvényeket akarunk használni, akkor
 ```c++
@@ -66,12 +67,15 @@ int main(){
 
 ### De hol is van ez a programkód?
 
-Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolyabb fejlesztőkörnyezetig minden megtudja nyitni. Problémák a karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk ékezetet sehol, így ezzel nem foglalkozunk.
+Egyszerű szöveges fájlt hozunk létre és abban mint szöveg, szerkesztéséhez nem szükséges semmi extra eszköz, egy egyszerű notepad-től, komolyabb fejlesztőkörnyezetig mindennel szerkeszthetjük. Problémák a karakterkódolásoknál jelenhetnek meg, de a tárgy folyamán nem használunk speciális karaktereket, így ezzel nem foglalkozunk.
 Általában a kiterjesztése a c/c++ programkód fájloknak **cpp**, **cc** vagy simán **c**, mi és a CodeBlocks is a **cpp**-t fogjuk használni.
 
 ## Fordítás
 
 Fordításra nagyon sok mód létezik, viszont a tárgy folyamán legfőképp CodeBlocks-ot fogjuk használni.
+
+### Code Blocks
+**Code Blocks** is használható a tárgy alatt, új projekt létrehozása illetve fordítása sokkal egyszerűbb: https://www.youtube.com/watch?v=kYA8rK2fy2U
 
 ### Konzolból fordítás (Linux)
 
@@ -97,9 +101,6 @@ parancsot.
 
 Részletesen: http://linux.die.net/man/1/g++
 
-### Code Blocks
-**Code Blocks** is használható a tárgy alatt, új projekt létrehozása illetve fordítása sokkal egyszerűbb: https://www.youtube.com/watch?v=kYA8rK2fy2U
-
 ## Kommentelés
 
 A kódban megjelenhetnek olyan információk is amik nem feltétlenül tartoznak a kódhoz hanem csak a kód megértését könnyítik, TODO (olyan amit még meg kell csinálni), dokumentáció, vagy bármi egyéb megjegyzés.
@@ -123,11 +124,11 @@ int main(){
   return 0;
 }
 ```
-A modern programozási világban a több soros megjegyzés használata esetén óvatosságra intenek, mert ha pl. van egy 1000 soros kódod és kiakarsz kommentelni 200 sort belőle, de valahol van benne egy 10 soros rész aminél már használtad a több soros megjegyzés, akkor a több soros megjegyzés az 200 soros komment nyitójától fog tartani a 10 soros zárójáig, tehát a 10 soros */-jétől nem lesz kikommentelve a kód. Ahhoz, hogy egy soros kommentelést alkalmazzunk több soron, a legtöbb fejlesztő környezet kínál egy billentyűkombinációt, aminek a segítségével a kijelölt sorok mindegyikét egysoros kommentbe teszi. (Ideiglenes kód eltávolítás miatt pl.)
+A programozási világban a több soros megjegyzés használata esetén óvatosságra intenek, mert ha pl. van egy 1000 soros kódod és kiakarsz kommentelni 200 sort belőle, de valahol van benne egy 10 soros rész aminél már használtad a több soros megjegyzés, akkor a több soros megjegyzés az 200 soros komment nyitójától fog tartani a 10 soros zárójáig, tehát a 10 soros */-jétől nem lesz kikommentelve a kód. Ahhoz, hogy egy soros kommentelést alkalmazzunk több soron, a legtöbb fejlesztő környezet kínál egy billentyűkombinációt, aminek a segítségével a kijelölt sorok mindegyikét egysoros kommentbe teszi. (Ideiglenes kód eltávolítás miatt pl.)
 
 
 #  Változók
-A változó a program futásához szükséges kellék, ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ha azonosulunk a programmal. Képzeljük el, hogy mi vagyunk a buta program aki nem tud olyan komplexen gondolkozni mint egy ember, hanem egyszerre csak egy dologra tud koncentrálni aki ül egy asztalnál. Ha megkérdezed a felhasználót, hogy mondjon egy számot, akkor azt a számot le kell írnod egy lapra és ott hagynod az asztalodon (ami a valóságban a memóriát szimbolizálja), mivel ha nemírod fel elfelejted. 
+Nemes egyszerűséggel egy változó az ami valamilyen nemű információt tárol. A változót úgy képzelhetjük el, hogy ha azonosulunk a programmal, hogy mi vagyunk a buta program aki nem tud olyan komplexen gondolkozni, hanem egyszerre csak egy dologra tud koncentrálni. Ha megkérdezed a felhasználót, hogy mondjon egy számot, akkor azt a számot le kell írnod egy lapra és ott hagynod az asztalodon (ami a valóságban a memóriát szimbolizálja), mivel ha nemírod fel elfelejted. 
 
 ## Hogy hozzuk létre?
 
@@ -149,7 +150,7 @@ Note: az általában kifejezés annyit tesz, hogy a mi esetünkben az ELTE-n a g
 
 # Függvények
 
-A programozási nyelvek első egyik legfontosabb eleme a függvények, amik segítségével struktúráltabbá tudjuk tenni a programunkat. A függvényt úgy lehet elképzelni, mint egy doboz amiben ül egy manó te odaadod neki a paramétereket ő meg folyamatosan ugyanazt a feladatot hajtja végre és a végén opcionálisan visszaad valami választ és addig mi ott állunk és tartjuk a kezünket. Ilyenkor a szokásos sorról sorra futás hirtelen elugrik arra a kódrészletre ami meg lett hívva. A hívást egyszerűen úgy írjuk, hogy megadjuk a függvénynevét és utána zárójelben a paramétereket.
+A programozási nyelvek első egyik legfontosabb eleme a függvények, amik segítségével struktúráltabbá tudjuk tenni a programunkat. A függvényt úgy lehet elképzelni, mint egy doboz amiben ül egy manó te odaadod neki a paramétereket ő meg folyamatosan ugyanazt a feladatot hajtja végre és ha a függvény olyan, hogy visszaad valami választ akkor addig mi ott állunk és tartjuk a kezünket, ha nem akkor is megvárjuk míg végez (kivéve párhuzamos programozás, ami arról szól, hogy nem feltétlenül várjuk meg a függvényt míg végez). Ilyenkor a sorról sorra futásból hirtelen átugrik arra a kódrészletre ami meg lett hívva. A hívást egyszerűen úgy írjuk, hogy megadjuk a függvénynevét és utána zárójelben a paramétereket.
 Egy függvény két részből áll: van deklaráció és definíció része.
 
 ## Deklaráció
