@@ -157,9 +157,10 @@ Egy függvény két részből áll: van deklaráció és definíció része.
 ## Deklaráció
 
 A deklaráció arra szolgál, hogy jelezzük a fordító számára (ami sorról sorra értelmezi a kódot, hasonlóan ahogyan futtatja is), hogy lesz egy ilyen nevű és szignatúrájú függvény (Szignatúra később részletesebben). A deklaráció szerkezete a következő:
+```
 [Visszatérési érték] [Függvény név]([Paraméterek]);
 [Paraméterek] ::= [1. Paraméter típus] [1. Paraméter név], [2. Paraméter típus] [2. Paraméter név] ...
-
+```
 Például:
 ```c++
 int max(int a, int b);
