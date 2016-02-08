@@ -19,10 +19,10 @@ int main(){
 }
 ```
 Egy programkód futtatás nélküli elemzéséhez az első dolog amit szem előtt kell tartani, hogy a programunk mindig **sorról sorra fut**, ergo a gép nem fogja mágikus módon kitalálni, hogy mit akarunk, hanem sorról sorra fogja azokat végrehajtani, mint egy gép:). 
-Először figyeljük meg azt, hogy hol jelenik meg a programunkban az **int main()** nevű függvény, mivel innen fog indulni a futásunk. Ami a ```c++main``` után van a **{ és }** között, az a rész lesz a főprogramunk. 
+Először figyeljük meg azt, hogy hol jelenik meg a programunkban az **int main()** nevű függvény, mivel innen fog indulni a futásunk. Ami a ```main``` után van a **{ és }** között, az a rész lesz a főprogramunk. 
 Szóval ez a programkód pl. annyit csinál, hogy létrehoz egy egészeket tároló változót b névvel, majd annak értékéül adja, hogy kettő.
-```c++ int b=2;```. következő sorban a b változót növeljük egyel ```c++ b++;```.  Ekkor a b-nk 3 lesz, mivel eddig 2 volt. Kiírjuk a b-t, ergo a képernyőre kikerül, hogy 3 majd utána egy sortörés (sortörést jelölése: endl).
-```c++ return 0;``` minden main végén kötelező, ezzel jelezzük a programot indítónak, hogy a program lefutása sikeres volt (ha nem 0-t írunk a return után, akkor azzal hibát jelzünk a programunkat futtató felé). 
+```int b=2;```. következő sorban a b változót növeljük egyel ```b++;```.  Ekkor a b-nk 3 lesz, mivel eddig 2 volt. Kiírjuk a b-t, ergo a képernyőre kikerül, hogy 3 majd utána egy sortörés (sortörést jelölése: endl).
+```return 0;``` minden main végén kötelező, ezzel jelezzük a programot indítónak, hogy a program lefutása sikeres volt (ha nem 0-t írunk a return után, akkor azzal hibát jelzünk a programunkat futtató felé). 
 
 ### De miért kell mindenhova ";"?
 A c++ nem foglalkozik a sortörésekkel, szóközökkel, tabulátorokkal (whitespace karakterekkel, szemben a whitespace nevű nyelvvel: http://hu.wikipedia.org/wiki/Whitespace_%28programoz%C3%A1si_nyelv%29), így valahogy el kell választanunk a parancsokat, ebből adódóan az előző programkódot a következő módon is írhattuk volna.
@@ -51,9 +51,9 @@ using namespace std;
 ```
 
 Ez egy egyszerű rövidítés, mivel ha ez nincs kiírva, akkor minden cout elé oda kell írni, hogy std::cout (később lesz szó részletesebben a :: operátorról). De mire is jó?
-Egy könnyen érthető magyarázat, hogy programozásban minden feladat megvalósítására nagyon sok verzió készül különböző programozóktól, így viszont elkerülhetetlen, hogy egy nagy projekt esetében ne nevezzenek el a fejlesztők két különböző függvényt azonos névvel, de ha mindkettőt szeretnénk használni akkor mit tudunk tenni? Erre valók a névterek, hogy valamilyen megbeszélt felosztás szerint a függvényeket névcsoportokba soroljuk. Legyen A és B névtér (később erről is részletesebben) mindkettőben létezik a hello függvény, ekkor ```c++ A::hello()``` -val hívhatjuk meg az A verziót ```c++ B::hello()```-val meg a B-set. Ha viszont tudjuk, hogy főként az A függvényeit fogjuk használni, akkor kiírjuk a usingos részt és onnantól ha ```c++ hello()```-t írunk automatikusan az A verziót veszi, de továbbra is elérhető a B verziója ```c++ B::hello()```-t használva. A ```c++::``` operátor más esetekben is használatos lesz majd még. Amit általánosan tudni kell róla az az, hogy ez egy olyan operátor ami egy fogalmi szinten létező dolgon belüli valamit választ ki. A mostani példánkban egy a fogalomban (névtér) lévő másik fogalmat (függvény) érünk elezzel az operátorral (később lesz másra is példa).
+Egy könnyen érthető magyarázat, hogy programozásban minden feladat megvalósítására nagyon sok verzió készül különböző programozóktól, így viszont elkerülhetetlen, hogy egy nagy projekt esetében ne nevezzenek el a fejlesztők két különböző függvényt azonos névvel, de ha mindkettőt szeretnénk használni akkor mit tudunk tenni? Erre valók a névterek, hogy valamilyen megbeszélt felosztás szerint a függvényeket névcsoportokba soroljuk. Legyen A és B névtér (később erről is részletesebben) mindkettőben létezik a hello függvény, ekkor ```A::hello()``` -val hívhatjuk meg az A verziót ```B::hello()```-val meg a B-set. Ha viszont tudjuk, hogy főként az A függvényeit fogjuk használni, akkor kiírjuk a usingos részt és onnantól ha ```c++ hello()```-t írunk automatikusan az A verziót veszi, de továbbra is elérhető a B verziója ```B::hello()```-t használva. A ```::``` operátor más esetekben is használatos lesz majd még. Amit általánosan tudni kell róla az az, hogy ez egy olyan operátor ami egy fogalmi szinten létező dolgon belüli valamit választ ki. A mostani példánkban egy a fogalomban (névtér) lévő másik fogalmat (függvény) érünk elezzel az operátorral (később lesz másra is példa).
 
-Tehát ha eltávolítjuk a usingos rézt, akkor az iostream-ből ismert dolgok elé kikell rakni az ```c++ std::```-t
+Tehát ha eltávolítjuk a usingos rézt, akkor az iostream-ből ismert dolgok elé kikell rakni az ```std::```-t
 ```c++
 #include <iostream>
 
@@ -145,7 +145,7 @@ double - Ugyanaz mint a float csak nagyobb (általában 64 bit)
 char - karakter (8 bit - 1 byte - 1 karakter)
 bool - logikai változó (1 bit)
 
-A fenti számos típusokból (a bool nem) létrehozhatunk előjel nélkülit is ha a típus elé írjuk, hogy unsigned: ```c++ unsigned int```.
+A fenti számos típusokból (a bool nem) létrehozhatunk előjel nélkülit is ha a típus elé írjuk, hogy unsigned: ```unsigned int```.
 
 Note: az általában kifejezés annyit tesz, hogy a mi esetünkben az ELTE-n a gépeken így lesz a félév folyamán.
 
@@ -164,7 +164,7 @@ Például:
 ```c++
 int max(int a, int b);
 ```
-A kódban ezalatt a deklaráció alatt már akárhol hívhatjuk a ```c++max``` függvényt függetlenül attól, hogy definiálva lett-e, hogy mit is csinál ez a függvény.
+A kódban ezalatt a deklaráció alatt már akárhol hívhatjuk a ```max``` függvényt függetlenül attól, hogy definiálva lett-e, hogy mit is csinál ez a függvény.
 
 ```c++
 cout << max(2,3); 
@@ -262,7 +262,7 @@ Nem helyes, mert az értelmezés során a max függvény nem lesz ismertlen szá
 
 ## Szignatúra és overload
 
-Egy függvényt nem csak a neve azonosít hanem az úgynevezett szignatúrája is, ami esetünkben a paraméterek típusa lesz. Az előző példánkban a függvény neve ```c++max``` volt, a szignatúrája pedig ```c++int,int```, mivel két paramétert vár és mindkettő int. Ez azért fontos, mert ha ```c++max(2); ``` parancsot adjuk ki a kódunkban, akkor a fordító panaszkodni fog, hogy nem ismeri a függvényt.
+Egy függvényt nem csak a neve azonosít hanem az úgynevezett szignatúrája is, ami esetünkben a paraméterek típusa lesz. Az előző példánkban a függvény neve ```max``` volt, a szignatúrája pedig ```int,int```, mivel két paramétert vár és mindkettő int. Ez azért fontos, mert ha ```max(2); ``` parancsot adjuk ki a kódunkban, akkor a fordító panaszkodni fog, hogy nem ismeri a függvényt.
 
 Viszont pont ezt kihasználva, hogy a szignatúra is beleszámít egy függvény azonosításába nem csak a név, tudunk úgymond overloadolni, ami annyit tesz, hogy egy névhez több funkciót is megadunk. 
 
@@ -299,7 +299,7 @@ int max(int a, int b){
   }
 }
 ```
-Helyes. A ```c++max``` függvényen belül az átadott értékek nevei ```c++a``` és ```c++b``` lesz a többitől függetlenül.
+Helyes. A ```max``` függvényen belül az átadott értékek nevei ```a``` és ```b``` lesz a többitől függetlenül.
 
 # Referencia használata
 A tárgy óráin általában a http://www.cplusplus.com/ oldalán található leírásokat fogom ajánlani, mivel az oldalon egy függvény használatához általában vannak példák, amik sokat segíthetnek a megértésben.
@@ -356,18 +356,27 @@ Ahhoz, hogy használhassunk egy új fejlécfájlt kell includeolnunk, ami meglep
 Létrehozása egy kicsit érdekes, mert nem simán ahogy gondolnánk, hogy változó típus és név, mert itt van a típusnak egy paramétere is, amivel azt adjuk meg, hogy miket szeretnénk tárolni ebben a vectorban. Ha nem lenne ilyen támogatás a C++-ban akkor létre kéne hozni minden típusra egy-egy vector osztyált, de mi lenne akkor ha egy saját új típusból szeretnénk vectort csinálni? Hát természetesen nem sikerlüne (egyszerűen legalábbis nem), tehát template paramétert adunk meg a változó létrehozásakor.
 
 Tehát ha mondjuk egy int-ekből álló tömböt akarunk amit v-nek nevezünk, akkor a 
-```c++ vector<int> v;```
+```c++
+vector<int> v;
+```
 kód a nekünk való.:)
 
-Ennek az osztálynak úgy tudunk parancsot adni, azaz egy függvényét meghívni, hogy a neve után teszünk egy pontot majd megadjuk a függvény nevét. A pont operátor lesz a ```c++::``` operátor párja, mivel a ```c++.```egy létező dolog részét célozza meg, amíg a ```c++::``` egy fogalmi dolog részét.
+Ennek az osztálynak úgy tudunk parancsot adni, azaz egy függvényét meghívni, hogy a neve után teszünk egy pontot majd megadjuk a függvény nevét. A pont operátor lesz a ```::``` operátor párja, mivel a ```.```egy létező dolog részét célozza meg, amíg a ```::``` egy fogalmi dolog részét.
 
 ## push_back
-Az első és legtriviálisabb függvény az a ```c++ vector::push_back(int)```. 
-A jelölés ne zavarjon meg minket, a ```c++vector``` egy fogalom, maga a ```c++vector``` nem tárol semmit, csak ha létrehozunk egy ilyen változót akkor az fog tudni tárolni elemeket, tehát az lesz egy létező valami. 
+Az első és legtriviálisabb függvény az a
+```c++
+vector::push_back(int)
+```
+A jelölés ne zavarjon meg minket, a ```vector``` egy fogalom, maga a ```vector``` nem tárol semmit, csak ha létrehozunk egy ilyen változót akkor az fog tudni tárolni elemeket, tehát az lesz egy létező valami. 
 A
-```c++ vector<int> v;```
-kód esetén a ```c++v``` a vector osztály egy példánya, ami már egy létező elem, erre már meghívhatjuk a függvényeket.
-```c++v.push_back(4); ```
+```c++
+vector<int> v;
+```
+kód esetén a ```v``` a vector osztály egy példánya, ami már egy létező elem, erre már meghívhatjuk a függvényeket.
+```c++
+v.push_back(4);
+```
 Ez a Kód annyit fog tenni, hogy a v vektorba ami kezdetben üres berakja a 4-et.
 
 Összerakva:
@@ -376,7 +385,7 @@ Ez a Kód annyit fog tenni, hogy a v vektorba ami kezdetben üres berakja a 4-et
 #include <vector>
 
 int main(){
-  c++ std::vector<int> v;
+  std::vector<int> v;
   v.push_back(12);
   return 0;
 }
@@ -389,7 +398,7 @@ vagy
 using namespace std;
 
 int main(){
-  c++ vector<int> v;
+  vector<int> v;
   v.push_back(12);
   return 0;
 }
@@ -403,19 +412,25 @@ Részletesebben: http://www.cplusplus.com/reference/vector/vector/push_back/
 
 Ha csak berakni tudunk az nem túl izgalmas és mivel a tömböt általánosítottuk elég kínos lenne ha nem tudnánk ugyanúgy hivatkozni az elemeire, mint a tömbnek, így a szokásos írásmóddal tudunk hivatkozni egy tömb elemére:
 
-```c++vector::operator[](unsigned int) ```
+```c++
+vector::operator[](unsigned int)
+```
 
-```c++a[1] ``` és ```c++a.operator[](1) ``` teljesen ekvivalens, később láthatjuk, hogy a többi jelnél is hasonlóan működik.
+```a[1] ``` és ```a.operator[](1) ``` teljesen ekvivalens, később láthatjuk, hogy a többi jelnél is hasonlóan működik.
 
-Tehát  ```c++v[1] ``` visszaadja a ```c++v``` vector első elemét (tehát a második elemét, mivel 0-tól indexelünk c-ben, ne feledjük)
+Tehát  ```v[1] ``` visszaadja a ```v``` vector első elemét (tehát a második elemét, mivel 0-tól indexelünk c-ben, ne feledjük)
 
 Részletesebben: http://www.cplusplus.com/reference/vector/vector/operator[]/
  
 ## size
 
-```c++ vector::size() ```
+```c++
+vector::size()
+```
 Visszaadja a vektor méretét, hogy mennyi elem van benne. Paramétere természetesen nincs.
-```c++ v.size() ```
+```c++
+v.size()
+```
 
 http://www.cplusplus.com/reference/vector/vector/size/
 
