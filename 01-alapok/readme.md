@@ -557,6 +557,6 @@ for(int i=0;i<billCount;i++){
 #Feladat 
 
 1. Írjunk egy olyan programot ami a vector használatával bekér számokat 0-ig, majd összegüket kiírja. (bontsuk függvényekre: beolvas összegzés)
-2. Írjunk egy olyan programot ami a vector használatával bekéri egy vector méretét (n>=0), majd sorban annyi számot, majd a maximumot kiírja. (bontsuk függvényekre: beolvas összegzés)
+2. Írjunk egy olyan programot ami a vector használatával bekéri egy vector méretét (n>=0), majd sorban annyi számot, majd kiírja a beaddot számok maximumát. (bontsuk függvényekre: beolvas összegzés)
 
 
