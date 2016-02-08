@@ -554,6 +554,24 @@ for(int i=0;i<billCount;i++){
 }
 ```
 
+# Beolvasás
+
+A beolvasás a kiíráshoz hasonlóan működik ```c++>>``` jellel, csak a fordítva ```c++<<```. A jel arra mutat amerre az információ halad.
+
+A példa beolvas egy számot majd kijrja annak kétszeresét:
+```c++
+#include <iostream>
+
+int main(){
+  int a;
+  cout << "Adj meg egy számot! ";
+  cin >> a;
+  
+  cout << "A megadott szám kétszerese: " << (a*2) << endl;
+  return 0;
+}
+```
+
 #Feladat 
 
 1. Írjunk egy olyan programot ami a vector használatával bekér számokat 0-ig, majd összegüket kiírja. (bontsuk függvényekre: beolvas összegzés)
