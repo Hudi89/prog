@@ -23,15 +23,3 @@ ZH tudnivalók:
  * Ha az órán nem sikerült megoldani, viszont a következő óra elejéig elküldi e-mailben a feladat helyes megoldását akkor kap 1 pontot
 
 **A szükséges ponthatár: 32 pont**
-
-## 01-Alapok 
-https://github.com/Hudi89/prog/blob/master/01-alapok/alapok.md
-
-## 02-Absztrakció (template, istream)
-https://github.com/Hudi89/prog/blob/master/02-absztrakcio/absztrakcio.md
-
-## 03-Általánosítsunk tovább (operátor, mátrix)
-https://github.com/Hudi89/prog/blob/master/03-matrix/matrix.md
-
-## 04-Mátrix
-https://github.com/Hudi89/prog/blob/master/04-matrix2/matrix2.md
