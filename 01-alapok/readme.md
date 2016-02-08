@@ -450,8 +450,86 @@ Végereményben ki fogja írni a program, hogy
 
 http://www.cplusplus.com/reference/vector/vector/
 
+## Vector átadása
 
-# Tételek
+Egy dologra kell még figyelni nagyon a vector használatánál, az az átadás. A vector mint már említettem egy úgy nevezett osztály, ami egy nagyobb valami, mint például egy int vagy bármi, így a másolása nem feltétlenül szerencsés. Képzeljünk el egy 10 millió elemet tartalmazó vectort és hogy azt ha lemásoljuk, akkor ~40 megát kell másolnunk a memóriában, amit szerencsés elkerülni ha nem feltétlen szükséges.
+
+A c++-ban minden alapesetben másolódik (egy vectornál ez problémát jelenthet, de alap típusoknál nem), tehát ha van a main-ben egy változód amit átadsz és egy függvényben módosítod az értéket az kívülre nem hat.
+```c++
+#include <iostream>
+
+int test(int a){
+  a = 31;
+}
+
+int main(){
+  int asd = 12;
+  test(asd);
+  std::cout << asd;
+}
+```
+Ez a program 12-t fog kiírni. 
+Van viszont egy kis jelünk amivel megtudjuk mondani a fordítónak, hogy ne másolja le az adott értéket, hanem a függvény belül azzal a változóval dolgozzon amit átadtak neki.
+```c++
+#include <iostream>
+
+int test(int& a){
+  a = 31;
+}
+
+int main(){
+  int asd = 12;
+  test(asd);
+  std::cout << asd;
+}
+```
+Ez a program 31-t fog eredményül kiírni, mivel a függvénynek megmondtuk, hogy ne a másolattal dolgozzon.
+
+Figyelni kell arra, hogy ha referencia szerinti paramétert várunk akkor konstans nem lehet, tehát a 
+```c++
+#include <iostream>
+
+int test(int& a){
+  std::cout << a;
+}
+
+int main(){
+  test(32);
+}
+```
+program fordítási hibát fog eredményezni, mivel egy konstanst nem tud referencia szerint átadni.
+
+Vector esetében a következő a megoldás tehát:
+```c++
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void writeVector(const vector<int>& v){
+  cout << v.size() << endl; //3-at fog kiírni és egy sortörést
+  for(int a=0;a<v.size()){
+    cout << v[a] << endl;  //kiír egy elemet egy cikluslépésben
+  }
+}
+
+int main(){
+  vector<int> v;
+  
+  v.push_back(3);
+  v.push_back(2);
+  v.push_back(1);
+  
+  writeVector(v);
+}
+```
+Itt tartalmaz még egy plusz kulcsszót a program, ami a ```c++const```. Ez annyit tesz, hogy a hívó félnek garantáljuk, hogy a függvényen belül annak ellenére, hogy referencia szerint adta át nem fogjuk változtatni a vectorját. Ezzel a megoldással elértük azt, hogy ne másolódjon feleslegesen rengeteg adat, viszont a vector védelme megmaradjon (tehát egy függvény suttyomba ne tudja változtatni).
+
+Összefoglalva: 
+* Alap típust általában érték szerint adunk át (referencia jel nélkül), kivéve ha kimenetként szeretnénk az adott paramétert használni és direkt abba akarjuk, hogy írjon a függvény.
+* Osztályokat, tehát a vector típust lehetőleg mindig referenciaszerint adjunk át (& jellel).
+
+# Tételek 
 
 Ha egy feladatot nagyon sokszor végez el valaki, akkor egy idő után nagyon elkezdi unni. :) Mit tehetünk ilyenkor? Automatizáljuk. A programok pont erre lesznek jók nekünk. Vegyünk például egy egyszerű példát:
 Ha egy boltban minden nap meg kell számolnunk az összes bevételt, úgy mint kasszában, ugyanúgy a blokkokon, akkor sokadik nap végére már eléggé unni fogjuk a feladatot. Ezt a programozásban hívjuk összegzési tételnek.
