@@ -538,7 +538,7 @@ int main(){
   writeVector(v);
 }
 ```
-Itt tartalmaz még egy plusz kulcsszót a program, ami a ```c++const```. Ez annyit tesz, hogy a hívó félnek garantáljuk, hogy a függvényen belül annak ellenére, hogy referencia szerint adta át nem fogjuk változtatni a vectorját. Ezzel a megoldással elértük azt, hogy ne másolódjon feleslegesen rengeteg adat, viszont a vector védelme megmaradjon (tehát egy függvény suttyomba ne tudja változtatni).
+Itt tartalmaz még egy plusz kulcsszót a program, ami a ```const```. Ez annyit tesz, hogy a hívó félnek garantáljuk, hogy a függvényen belül annak ellenére, hogy referencia szerint adta át nem fogjuk változtatni a vectorját. Ezzel a megoldással elértük azt, hogy ne másolódjon feleslegesen rengeteg adat, viszont a vector védelme megmaradjon (tehát egy függvény suttyomba ne tudja változtatni).
 
 Összefoglalva: 
 * Alap típust általában érték szerint adunk át (referencia jel nélkül), kivéve ha kimenetként szeretnénk az adott paramétert használni és direkt abba akarjuk, hogy írjon a függvény.
@@ -571,7 +571,7 @@ for(int i=0;i<billCount;i++){
 
 # Beolvasás
 
-A beolvasás a kiíráshoz hasonlóan működik ```c++>>``` jellel, csak a fordítva ```c++<<```. A jel arra mutat amerre az információ halad.
+A beolvasás a kiíráshoz hasonlóan működik ```>>``` jellel, csak a fordítva ```<<```. A jel arra mutat amerre az információ halad.
 
 A példa beolvas egy számot majd kijrja annak kétszeresét:
 ```c++
