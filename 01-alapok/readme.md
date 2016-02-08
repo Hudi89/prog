@@ -155,7 +155,7 @@ Egy függvény két részből áll: van deklaráció és definíció része.
 
 ## Deklaráció
 
-A deklaráció arra szolgál, hogy jelezzük a fordító számára (ami sorról sorra értelmezi a kódot), hogy lesz egy ilyen nevű és szignatúrájú függvény (Szignatúra később részletesebben). A deklaráció szerkezete a következő:
+A deklaráció arra szolgál, hogy jelezzük a fordító számára (ami sorról sorra értelmezi a kódot, hasonlóan ahogyan futtatja is), hogy lesz egy ilyen nevű és szignatúrájú függvény (Szignatúra később részletesebben). A deklaráció szerkezete a következő:
 [Visszatérési érték] [Függvény név]([Paraméterek]);
 [Paraméterek] ::= [1. Paraméter típus] [1. Paraméter név], [2. Paraméter típus] [2. Paraméter név] ...
 
@@ -168,7 +168,7 @@ A kódban ezalatt a deklaráció alatt már akárhol hívhatjuk a ```c++max``` f
 ```c++
 cout << max(2,3); 
 ```
-Ez természetesen kifogja írni, hogy 3 ha megfelelően definiáljuk később a függvényt. A deklaráció elhagyható és csak a definíció is elég pl. egy egyfájlos program esetében, de később látni fogjuk a hasznát. Ha mégis megakarjuk spórolni a deklaráció leírását, akkor figyeljünk arra, hogy az adott függvény csak onnantól hívható meg ha volt deklarálva vagy definiálva.
+Ez természetesen kifogja írni, hogy 3 ha megfelelően definiáljuk később a függvényt. A deklaráció elhagyható és csak a definíció is elég, de később látni fogjuk a hasznát. Ha mégis megakarjuk spórolni a deklaráció leírását, akkor figyeljünk arra, hogy az adott függvény csak onnantól hívható meg a programkódban ha volt deklarálva vagy definiálva.
 
 ## Definíció
 
@@ -183,6 +183,81 @@ int max(int a, int b){
   }
 }
 ```
+
+Összegezve:
+```c++
+#include <iostream>
+using namespace std;
+
+
+int max(int a, int b)
+
+int main(){
+  cout << max(2,3);
+  return 0;
+}
+
+int max(int a, int b){
+  if(a > b){
+    return a;
+  }else{
+    return b;
+  }
+}
+```
+helyes.
+
+```c++
+#include <iostream>
+using namespace std;
+
+int max(int a, int b){
+  if(a > b){
+    return a;
+  }else{
+    return b;
+  }
+}
+
+int main(){
+  cout << max(2,3);
+  return 0;
+}
+
+```
+helyes.
+```c++
+#include <iostream>
+using namespace std;
+
+int main(){
+  cout << max(2,3);
+  return 0;
+}
+
+int max(int a, int b){
+  if(a > b){
+    return a;
+  }else{
+    return b;
+  }
+}
+
+```
+Nem helyes, mivel az első hívásnál még a fordító nem tud a max függvényről.
+```c++
+#include <iostream>
+using namespace std;
+
+
+int max(int a, int b)
+
+int main(){
+  cout << max(2,3);
+  return 0;
+}
+```
+Nem helyes, mert az értelmezés során a max függvény nem lesz ismertlen számára, de a végén amikor össze akarja rakni a végleges programot a fordító panaszkodni fog, hogy azt állítottad a program elején, hogy lesz max függvény, de végül nem definiáltad, így nem tudja összerakni a programot.
 
 ## Szignatúra és overload
 
