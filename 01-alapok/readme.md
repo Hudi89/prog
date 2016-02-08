@@ -388,7 +388,7 @@ vagy
 using namespace std;
 
 int main(){
-  c++ std::vector<int> v;
+  c++ vector<int> v;
   v.push_back(12);
   return 0;
 }
@@ -404,7 +404,9 @@ Ha csak berakni tudunk az nem túl izgalmas és mivel a tömböt általánosíto
 
 ```c++vector::operator[](unsigned int) ```
 
-```c++v[1] ``` visszaadja az első elemét (tehát a második elemét, mivel 0-tól indexelünk c-ben, ne feledjük)
+```c++a[1] ``` és ```c++a.operator[](1) ``` teljesen ekvivalens, később láthatjuk, hogy a többi jelnél is hasonlóan működik.
+
+Tehát  ```c++v[1] ``` visszaadja a ```c++v``` vector első elemét (tehát a második elemét, mivel 0-tól indexelünk c-ben, ne feledjük)
 
 Részletesebben: http://www.cplusplus.com/reference/vector/vector/operator[]/
  
@@ -430,10 +432,20 @@ int main(){
   v.push_back(2);
   v.push_back(1);
   
-  for(int a=0;a<v.size())
+  cout << v.size() << endl; //3-at fog kiírni és egy sortörést
+  
+  for(int a=0;a<v.size()){
+    cout << v[a] << endl;  //kiír egy elemet egy cikluslépésben
+  }
 }
 ```
-Ennek
+Végereményben ki fogja írni a program, hogy 
+```
+3
+3
+2
+1
+```
 
 http://www.cplusplus.com/reference/vector/vector/
 
@@ -466,5 +478,6 @@ for(int i=0;i<billCount;i++){
 #Feladat 
 
 1. Írjunk egy olyan programot ami a vector használatával bekér számokat 0-ig, majd összegüket kiírja. (bontsuk függvényekre: beolvas összegzés)
+2. Írjunk egy olyan programot ami a vector használatával bekéri egy vector méretét (n>=0), majd sorban annyi számot, majd a maximumot kiírja. (bontsuk függvényekre: beolvas összegzés)
 
 
