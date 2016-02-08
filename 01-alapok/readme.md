@@ -184,7 +184,7 @@ int max(int a, int b){
 }
 ```
 
-Összegezve:
+## Összegezve
 ```c++
 #include <iostream>
 using namespace std;
@@ -205,7 +205,7 @@ int max(int a, int b){
   }
 }
 ```
-helyes.
+Helyes.
 
 ```c++
 #include <iostream>
@@ -225,7 +225,7 @@ int main(){
 }
 
 ```
-helyes.
+Helyes.
 ```c++
 #include <iostream>
 using namespace std;
@@ -261,7 +261,7 @@ Nem helyes, mert az értelmezés során a max függvény nem lesz ismertlen szá
 
 ## Szignatúra és overload
 
-Egy függvényt nem csak a neve azonosít hanem az úgynevezett szignatúrája is, ami esetünkben a paraméterek típusa lesz. Az előző példánkban a függvény neve max volt a szignatúrája ```c++int,int``` volt, mivel két paramétert vár és mindkettő int. Ez azért fontos, mert ha ```c++max(2); ``` parancsot adjuk ki a kódunkban, akkor a fordító panaszkodni fog, hogy nem ismeri a függvényt.
+Egy függvényt nem csak a neve azonosít hanem az úgynevezett szignatúrája is, ami esetünkben a paraméterek típusa lesz. Az előző példánkban a függvény neve ```c++max``` volt, a szignatúrája pedig ```c++int,int```, mivel két paramétert vár és mindkettő int. Ez azért fontos, mert ha ```c++max(2); ``` parancsot adjuk ki a kódunkban, akkor a fordító panaszkodni fog, hogy nem ismeri a függvényt.
 
 Viszont pont ezt kihasználva, hogy a szignatúra is beleszámít egy függvény azonosításába nem csak a név, tudunk úgymond overloadolni, ami annyit tesz, hogy egy névhez több funkciót is megadunk. 
 
@@ -275,8 +275,33 @@ Ezzel a kóddal elérjük azt, hogy ha három paraméterrel hívják meg a max f
 *Note: Egyelőre nem törekedünk optimális kód írására, a fő szempontunk, hogy gyorsabban és szebb kódot írjunk.*
 
 
+##Név változtatás
+Az, hogy a hívó függvényben hogy nevezzük el a változókat az teljesen független attól, hogy egy függvényen belül hogy hívjuk.
+```c++
+#include <iostream>
+using namespace std;
+
+int max(int a, int b)
+
+int main(){
+  int bela=2;
+  int feri=3;
+  cout << max(bela,feri);
+  return 0;
+}
+
+int max(int a, int b){
+  if(a > b){
+    return a;
+  }else{
+    return b;
+  }
+}
+```
+Helyes. A ```c++max``` függvényen belül az átadott értékek nevei ```c++a``` és ```c++b``` lesz a többitől függetlenül.
+
 # Referencia használata
-A tárgy óráin általában a http://www.cplusplus.com/ oldalán található leírásokat fogom ajánlani, mivel az oldalon egy függvény használatához általában 
+A tárgy óráin általában a http://www.cplusplus.com/ oldalán található leírásokat fogom ajánlani, mivel az oldalon egy függvény használatához általában vannak példák, amik sokat segíthetnek a megértésben.
 
 
 # Tömbök
@@ -308,50 +333,68 @@ int main(){
 }
 ```
 Ez a kód szintén ki fogja írni a 3 elem maximumát a korábbiakhoz hasonlóan.
-Note: Az, hogy belül hogy nevezzük el a változókat az teljesen független attól, hogy egy függvényen belül hogy hívjuk.
-Viszont ezzel a kóddal van egy olyan problémánk, hogy normális esetben egy statikus változó nem lehet dinamikus méretű, ergo ha mondjuk nem tudjuk mennyi bemenő adat lesz, akkor max úgy tudjuk megoldani, hogy létrehozunk egy 1000 nagyságút és imádkozunk, hogy a felhasználó ne akarjon több adatot beadni. Ez egy ideig használható megoldás is lehet, de éles helyzetben egy általánosabb programnál természtesen elfogadhatatlan. 
 
+## 0-tól indexelünk
 
-# Tételek
+A c++-ban 0-tól indexelünk, tehát ha egy tömb első elemét akarjuk elérni, akkor 0. elemet kérünk le, ha 2.at, akkor 1.t és így tovább. Ennek több oka is van, egyet közülük röviden megemlítek. Ha a memóriában lefoglalunk egy 4 elemű tömböt akkor az úgy történik, hogy a 4 elemű tömb első elemének a helyét jegyezzük csak meg, amit nevezzünk címnek.
+Ha az első elemet akarjuk, akkor Cím+0 lesz az 1. elem címe, Cím+1 lesz a 2. elemé és így tovább. C++ tárgy részletesebben kitér erre a gondolatmenetre.
 
-Ha egy feladatot nagyon sokszor végez el valaki, akkor egy idő után nagyon elkezdi unni. :) Mit tehetünk ilyenkor? Automatizáljuk. A programok pont erre lesznek jók nekünk. Vegyünk például egy egyszerű példát:
-Ha egy boltban minden nap meg kell számolnunk az összes bevételt, úgy mint kasszában, ugyanúgy a blokkokon, akkor az egy elég robot munka lehet. Ez az összegzés tétel.
+## Dinamizmus problémája
 
-```c++
-int s = 0;
-for(int i=0;i<billCount;i++){
-  s = bills[a];
-}
-```
-
-Másik példaként vehetjük pl. hogy a legerősebb alkoholt keressük a termékek közül. Ekkor annyit tudunk csinálni ha bemegyünk a boltba, hogy végigmegyünk a soron és nézegetjük, hogy melyik mennyi és mindig megjegyezzük, hogy mi volt eddig a legerősebb alkohol. Amikor a sor végére érünk akkor (ha a memóriánk nem rossz) emlékszünk, hogy melyik volt az, meg is oldottuk a feladatot. Ez a maximum keresés.
-
-```c++
-int s = 0;
-for(int i=0;i<billCount;i++){
-  s = bills[a];
-}
-```
+Ezzel a kóddal van egy olyan problémánk, hogy normális esetben egy statikus változó nem lehet dinamikus méretű, ergo ha mondjuk nem tudjuk mennyi bemenő adat lesz, akkor max úgy tudjuk megoldani, hogy létrehozunk egy 1000 nagyságút és imádkozunk, hogy a felhasználó ne akarjon több adatot beadni. Ez egy ideig használható megoldás is lehet, de éles helyzetben egy általánosabb programnál természtesen elfogadhatatlan. 
 
 # Vector 
 
-Ebben az esetben jön segítségünkre a vector, ami egy eddig ismeretlen fogalomtárból származik. Ez egy úgynevezett osztály, amiről most első szinten annyit kell tudnunk, hogy egy olyan dolog aminek parancsokat tudunk kiadni, kérdezni tudunk tőle, de az hogy az adott feladatot hogy oldja meg az minket egyelőre nem érdekel. Ez az osztály segít nekünk dinamikusan kezelni tömböket, nem kell foglalkoznunk memóriafoglalásokkal, méretekkel meg semmivel, csak kiadunk neki egy parancsot, hogy mit csináljon és megoldja nekünk.
+Ebben az esetben jön segítségünkre a vector, ami eddig progalaphoz képest új. Ez egy úgynevezett osztály, amiről most első szinten annyit kell tudnunk, hogy egy olyan dolog aminek parancsokat tudunk kiadni, kérdezni tudunk tőle, de az hogy az adott feladatot hogy oldja meg az minket egyelőre nem érdekel, de az esetek nagy részében nem is fog. Ez az osztály segít nekünk dinamikusan kezelni tömböket, nem kell foglalkoznunk memóriafoglalásokkal, méretekkel meg semmivel, csak kiadunk neki egy parancsot, hogy mit csináljon és megoldja nekünk.
 
-Létrehozása egy kicsit érdekes, mert nem simán ahogy gondolnánk, hogy változó típus és név, mert itt van a típusnak egy paramétere is, amivel azt adjuk meg, hogy miket szeretnénk tárolni ebben a vectorban. Ha nem lenne ilyen támogatás a C++-ban akkor létre kéne hozni minden más típusra egy-egy vector osztyált, de mi lenne akkor ha egy saját új típusból szeretnénk vectort csinálni? Hát természetesen nem sikerlüne (egyszerűen legalábbis nem).
+Ahhoz, hogy használhassunk egy új fejlécfájlt kell includeolnunk, ami meglepő módon a vector lesz. Tehát ahhoz, hogy használni tudjuk a következő sort kell hozzáadni az eddigi kódunkhoz.
+```c++
+#include <vector>
+```
+
+Létrehozása egy kicsit érdekes, mert nem simán ahogy gondolnánk, hogy változó típus és név, mert itt van a típusnak egy paramétere is, amivel azt adjuk meg, hogy miket szeretnénk tárolni ebben a vectorban. Ha nem lenne ilyen támogatás a C++-ban akkor létre kéne hozni minden típusra egy-egy vector osztyált, de mi lenne akkor ha egy saját új típusból szeretnénk vectort csinálni? Hát természetesen nem sikerlüne (egyszerűen legalábbis nem), tehát template paramétert adunk meg a változó létrehozásakor.
 
 Tehát ha mondjuk egy int-ekből álló tömböt akarunk amit v-nek nevezünk, akkor a 
 ```c++ vector<int> v;```
 kód a nekünk való.:)
 
-Ennek az osztálynak úgy tudunk parancsot adni, azaz egy függvényét meghívni, hogy a neve után teszünk egy pontot majd megadjuk a függvény nevét. 
+Ennek az osztálynak úgy tudunk parancsot adni, azaz egy függvényét meghívni, hogy a neve után teszünk egy pontot majd megadjuk a függvény nevét. A pont operátor lesz a ```c++::``` operátor párja, mivel a ```c++.```egy létező dolog részét célozza meg, amíg a ```c++::``` egy fogalmi dolog részét.
 
 ## push_back
-Az első és legtriviálisabb függvény az a ```c++ vector::push_back(int)```. A jelölés ne zavarjon meg minket, ez már a korábban emlegetett ```c++::``` operátor ami egy fogalomban egy valamit jelöl. A vector fogalmi szinten létezik amíg nem hozunk létre belőle egyet. Az előző vector létrehozásnál a ```c++v``` a vector osztály egy példánya.
-Viszont ha már van példányunk és arra a konkrét vectorra szeretnénk meghívni egy függvényt akkor a ```c++.``` operátor lesz a segítségünkre:
+Az első és legtriviálisabb függvény az a ```c++ vector::push_back(int)```. 
+A jelölés ne zavarjon meg minket, a ```c++vector``` egy fogalom, maga a ```c++vector``` nem tárol semmit, csak ha létrehozunk egy ilyen változót akkor az fog tudni tárolni elemeket, tehát az lesz egy létező valami. 
+A
+```c++ vector<int> v;```
+kód esetén a ```c++v``` a vector osztály egy példánya, ami már egy létező elem, erre már meghívhatjuk a függvényeket.
 ```c++v.push_back(4); ```
 Ez a Kód annyit fog tenni, hogy a v vektorba ami kezdetben üres berakja a 4-et.
 
-Note: Természetesen az int helyén *bármi* lehet (A bármire később lesznek korlátaink, de aktuális tudásunk szerint bármi). 
+Összerakva:
+```c++
+#include <iostream>
+#include <vector>
+
+int main(){
+  c++ std::vector<int> v;
+  v.push_back(12);
+  return 0;
+}
+```
+vagy 
+```c++
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main(){
+  c++ std::vector<int> v;
+  v.push_back(12);
+  return 0;
+}
+```
+
+Note: Természetesen az int helyén bármi lehet (A bármire később lesznek korlátaink, de az alapvető típusokra jó lesz). 
 
 Részletesebben: http://www.cplusplus.com/reference/vector/vector/push_back/
 
@@ -367,15 +410,16 @@ Részletesebben: http://www.cplusplus.com/reference/vector/vector/operator[]/
  
 ## size
 
-```c++vector::size() ```
+```c++ vector::size() ```
 Visszaadja a vektor méretét, hogy mennyi elem van benne. Paramétere természetesen nincs.
-```c++v.size()```
+```c++ v.size() ```
 
 http://www.cplusplus.com/reference/vector/vector/size/
 
 
 ```c++
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -391,8 +435,33 @@ int main(){
 ```
 Ennek
 
-
 http://www.cplusplus.com/reference/vector/vector/
+
+
+# Tételek
+
+Ha egy feladatot nagyon sokszor végez el valaki, akkor egy idő után nagyon elkezdi unni. :) Mit tehetünk ilyenkor? Automatizáljuk. A programok pont erre lesznek jók nekünk. Vegyünk például egy egyszerű példát:
+Ha egy boltban minden nap meg kell számolnunk az összes bevételt, úgy mint kasszában, ugyanúgy a blokkokon, akkor sokadik nap végére már eléggé unni fogjuk a feladatot. Ezt a programozásban hívjuk összegzési tételnek.
+
+```c++
+int s = 0;
+for(int i=0;i<billCount;i++){
+  s = bills[a];
+}
+```
+
+Másik példaként vehetjük pl. hogy a legerősebb alkoholt keressük a termékek közül. Ekkor annyit tudunk csinálni ha bemegyünk a boltba, hogy megnézzük az első üvegen, hogy hány fokos és ahogy végigmegyünk a soron nézzük folyamatosan, hogy melyik mennyi és mindig megjegyezzük, hogy mi volt eddig a legerősebb alkohol. Ha az ami előtt állunk erősebb mint az eddigi legerősebb, akkor nekem már ezt kell megjegyeznem. Amikor a sor végére érünk akkor (ha a memóriánk nem rossz) emlékszünk, hogy melyik volt az, meg is oldottuk a feladatot. Ez a maximum keresés.
+
+```c++
+int m = alc[0]; //megjegyezzük az első fokot
+int ind = 0; //megjegyezzük, hogy az első üveg volt eddig a legerősebb (másikat még nem néztünk)
+for(int i=0;i<billCount;i++){
+   if(alc[a] > m){ //Ha az amit most látunk erősebb akkor megjegyezzük
+    m = alc[a];
+    ind = a; //hanyadik üveg volt
+   }
+}
+```
 
 #Feladat 
 
