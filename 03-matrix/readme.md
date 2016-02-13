@@ -33,7 +33,7 @@ Előző fejezetben beszéltünk, hogy mindenre jó a beolvasó függvényünk a 
 vector< vector<int> > v;
 cin >> v;
 ```
-Ekkor a ```cin >> v```-t a fordító átalakítja ```operator>>(cin,v)```-re, ezután megpróbál keresni egy olyan függvényt aminek azonos a szignatúrájá. Az általunk írt ```operator>>(istream&,vector<T>)```-t meg is találja úgy, hogy a ```T``` típus ```vector<int>```. Ebben a függvényben viszont viszont meghívódik egy ```T```-re a ```operator>>(istream&,vector<int>)```, ebben az esetben meg a template a már eddig látott módon elkészül és az fog lefutni.
+Ekkor a ```cin >> v```-t a fordító átalakítja ```operator>>(cin,v)```-re, ezután megpróbál keresni egy olyan függvényt aminek azonos a szignatúrájá. Az általunk írt ```operator>>(istream&,vector<T>&)```-t meg is találja úgy, hogy a ```T``` típus ```vector<int>```. Ebben a függvényben viszont viszont meghívódik egy ```T```-re a ```operator>>(istream&,vector<int>&)```, ebben az esetben meg a template a már eddig látott módon elkészül és az fog lefutni.
 
 Viszont ebben az esetben milyen bemeneti formátum lesz szükséges? 
 ```
@@ -45,7 +45,7 @@ Viszont ebben az esetben milyen bemeneti formátum lesz szükséges?
 
 Soronként is meg kell adnunk, hogy hány elem van egy adott sorban (itt egy kicsit több a szabadságfok mint kéne, mivel egy mátrixban nem lehetnek különböző hosszú sorok, de ettől egyelőre eltekintünk.
 Ha megnézzük valójában ez egy vector reprezentáció, a felépítése a rekurzíóval párhuzamba hozva megérthető: Az első hármas megadja, hogy hány vector-t akarunk beolvasni, ezután jönnek a vektorok. De hogy olvasunk be egy vektort, úgy hogy beolvasunk egy számot ami adja, hogy hány elem van a vectorban aztán beolvassuk a vectorokat.
-Az első vector ```3 1 2 3``` lesz, ami egy olyan vector amiben 1,2 és 3 egész számok szerepelnek (az első a számosság) 
+Az első vector ```3 1 2 3``` lesz, ami egy olyan vector amiben 1, 2 és 3 egész számok szerepelnek (az első a számosság) 
 
 Ez a technika könnyen bővíthető a következő bementre is vector-vector-vector-int típusra:
 ```
@@ -119,7 +119,7 @@ int max(const vector<int> &v){
     return maxInd;
 }
 ```
-Az belső tétel bekötése után:
+A belső tétel bekötése után:
 ```c++
 //Ez a függvény csak akkor működik, ha van elem a vectorban
 int max(const vector<int> &v){
