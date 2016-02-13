@@ -23,7 +23,7 @@ A vektor szót azért általánosításával nem foglalkozunk, mert az egyelőre
 ## Template
 
 Az első lépés amit általánosítunk, az az, hogy ne csak egész számokat tudjon beolvasni a függvényünk. Ebben segítségünkre lesz a c nyelv egy hasznos része, az úgynevezett template, amit pár egyszerű módosítással megtehetünk. A lényeg, hogy az a célunk, hogy megadható legyen, hogy az adott függvény milyen típussal működjön.
-Ha a beolvasást akarjuk általánosítani, akkor egy függő paraméter kell, ami az lesz, hogy milyen típusokat olvassunk be a konzolról.  Ebben az esetben annyi dolgunk van, hogy a függvény neve elég odaírjuk, hogy ```c++template<class T> ``` (általában az előtte lévő sorba szoktuk írni, hogy jobban átlátható legyen). Ha ezt a sort hozzáadtuk akkor mindenhol a függvényben az adott típust amit általánosítani akarunk ki kell cserélnünk ```c++T```-re. (Logikusan ha ```c++template<class Valami> ``` a template paraméter akkor a ```c++Valami```-t kell mindenhova írni.
+Ha a beolvasást akarjuk általánosítani, akkor egy függő paraméter kell, ami az lesz, hogy milyen típusokat olvassunk be a konzolról.  Ebben az esetben annyi dolgunk van, hogy a függvény neve elég odaírjuk, hogy ```template<class T> ``` (általában az előtte lévő sorba szoktuk írni, hogy jobban átlátható legyen). Ha ezt a sort hozzáadtuk akkor mindenhol a függvényben az adott típust amit általánosítani akarunk ki kell cserélnünk ```T```-re. (Logikusan ha ```template<class Valami> ``` a template paraméter akkor a ```Valami```-t kell mindenhova írni.
 
 ```c++
 template<class T>
@@ -46,7 +46,7 @@ beolvas(v);
 
 A függvénytörzsben látható egy cin >> a; itt esetünkben számít, hogy milyen típusú a T, mivel nem mindegy, hogy intet, floatot vagy pl. stringet akarunk beolvasni. De szerencsénkre ezek mind megvannak írva, ez alapján mondhatjuk azt, hogy minden olyan vectorra működni fog ez a függvény ami olyan elemeket tartalmaz amire az STL-ben van >> operátor. (Tehát pl. amit be tudunk olvasni konzolról)
 
-Note: Több template paraméter is használható: ```c++template<class T,class T2> ``` hasonlóan mint a paraméterek.
+Note: Több template paraméter is használható: ```template<class T,class T2> ``` hasonlóan mint a paraméterek.
 Note: Programozási nyelvek c++ tárgyon lesz részletesebben a template használata.
 
 ### istream
@@ -127,9 +127,9 @@ int main(){
 
 ## Csináljuk szépen
 
-Ha mindenfelé nézünk olyanokat láthatunk, hogy ```c++cin>> a``` ami szép és jó és érdemes lenne ezt a stílust át venni. De hogy tudjuk ezt megtenni? Nagyon egyszerűen, mivel a C++-ban egyszerű függvényekként defininálhatóak operátorok. Annyi a dolgunk, hogy létrehozunk egy olyan függvényt, aminek az a neve, hogy ```c++operator>>(istream&,vector<T>&)```, tehát kb. csak át kell neveznünk a beolvas függvényünket egy különbséggel. Itt most nekünk kelleni fog visszatérési érték. De mi is lesz az a visszatérési érték?
+Ha mindenfelé nézünk olyanokat láthatunk, hogy ```cin>> a``` ami szép és jó és érdemes lenne ezt a stílust át venni. De hogy tudjuk ezt megtenni? Nagyon egyszerűen, mivel a C++-ban egyszerű függvényekként defininálhatóak operátorok. Annyi a dolgunk, hogy létrehozunk egy olyan függvényt, aminek az a neve, hogy ```operator>>(istream&,vector<T>&)```, tehát kb. csak át kell neveznünk a beolvas függvényünket egy különbséggel. Itt most nekünk kelleni fog visszatérési érték. De mi is lesz az a visszatérési érték?
 Vegyük elő a cin-t ismét, aminél van egy olyan kis tulajdonságunk, hogy láncba tudjuk fűzni a parancsokat:
-```c++cin>> a >> b ```
+```cin>> a >> b ```
 Ezt a tulajdonságot egy módon tudjuk megőrizni:
 3 + 4 + 5 összeget, hogy számoljuk ki?
 3+4 = 7, utána 
@@ -141,7 +141,7 @@ Tehát:
 cin >> b; 
 és kész.
 Tehát az operátornak ebben az esetben a folyamot magát kell visszaadnia:
-```c++istream& operator>>(istream&,vector<T>&);```
+```istream& operator>>(istream&,vector<T>&);```
 
 és kész is vagyunk.
 
@@ -164,12 +164,12 @@ istream& operator>>(istream &in, vector<T> &v){
 ```
 
 Innentől stílusosan szépen írhatjuk a main-be, hogy
-```c++ 
+``` 
 vector<int> a;
 cin >> a;
 ``` 
 vagy pl.:
-```c++ 
+``` 
 ifstream fileStream("asd.txt");
 vector<int> a;
 fileStream >> a;

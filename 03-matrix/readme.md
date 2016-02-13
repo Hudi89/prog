@@ -33,7 +33,7 @@ Előző fejezetben beszéltünk, hogy mindenre jó a beolvasó függvényünk a 
 vector< vector<int> > v;
 cin >> v;
 ```
-Ekkor a ```c++cin >> v```-t a fordító átalakítja ```c++operator>>(cin,v)```-re, ezután megpróbál keresni egy olyan függvényt aminek azonos a szignatúrájá. Az általunk írt ```c++operator>>(istream&,vector<T>)```-t meg is találja úgy, hogy a ```c++T``` típus ```c++vector<int>```. Ebben a függvényben viszont viszont meghívódik egy ```c++T```-re a ```c++operator>>(istream&,vector<int>)```, ebben az esetben meg a template a már eddig látott módon elkészül és az fog lefutni.
+Ekkor a ```cin >> v```-t a fordító átalakítja ```operator>>(cin,v)```-re, ezután megpróbál keresni egy olyan függvényt aminek azonos a szignatúrájá. Az általunk írt ```operator>>(istream&,vector<T>)```-t meg is találja úgy, hogy a ```T``` típus ```vector<int>```. Ebben a függvényben viszont viszont meghívódik egy ```T```-re a ```operator>>(istream&,vector<int>)```, ebben az esetben meg a template a már eddig látott módon elkészül és az fog lefutni.
 
 Viszont ebben az esetben milyen bemeneti formátum lesz szükséges? 
 ```
@@ -168,7 +168,7 @@ int max(const vector<T> &v){
 }
 ```
 
-A végső függvényünk már float,int-re is működő megoldás, de például string-el is működhetne a dolog, mivel az STL definiálja a ```c++ <``` (mint lexikografikus rendezés) és ```c++ +``` (mint konkatenáció) operátort, ezért valójában csak egy probléma van ami akadályoz minket, hogy az összegzés függvényünkben a kezdőérték 0-ként van definiálva ami viszont a stringek terén nem hasznáható. [TODO:hogy lehetne ezt tovább áltaálnosítani (null függvény)]
+A végső függvényünk már float,int-re is működő megoldás, de például string-el is működhetne a dolog, mivel az STL definiálja a ```<``` (mint lexikografikus rendezés) és ```+``` (mint konkatenáció) operátort, ezért valójában csak egy probléma van ami akadályoz minket, hogy az összegzés függvényünkben a kezdőérték 0-ként van definiálva ami viszont a stringek terén nem hasznáható. [TODO:hogy lehetne ezt tovább áltaálnosítani (null függvény)]
 
 ## Hogy találjunk ki feladatokat?
 
