@@ -273,7 +273,7 @@ Tehát a h fájlban csak a deklarációkat kell tartanunk végsősoron a cpp-ben
 
 * A fordító a cpp-ket egyenként fordítja le, így ha két cpp-ben includeolunk be azonos h fájl és abban van egy függvénydefiníció akkor a linker azt fogja mondani, hogy kétszer van definiálva, mert mind a két o fájlba belegenerálja a fordító, mivel mind a két cpp-be belekerült az include hatására (Mint korábban mondtam az include kb. copy-paste-nek felel meg)
 * Ha const osztályra akarunk meghívni egy függvényt, akkor csak úgy lehetséges, ha az adott függvény konstans, amit úgy érünk el, hogy a függvény deklarációjában a () után írjuk, hogy const:
-```c++ int getSomething() const { return something; }```
+```int getSomething() const { return something; }```
 * ```using namespace std;```-t header file-ban nem használunk (ha más használja a kódunkat akkor rákényszerítenénk vele, hogy azt a namespacet használja amit mi)
 * Konstans függvényt lehet csak konstansra hívni.
 * Üres konstruktornak léteznie kell ahhoz, hogy egy az adott osztályt tartalmazó vector-t resizeolni lehessen.

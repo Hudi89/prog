@@ -28,7 +28,7 @@ Egy speciális blokk amivel jelezzük, hogy az adott fajta hibákat mi lekezelj�
 ### Hogy is néz ez ki?
 
 Hiba eldobás (bármilyen típust eldobhatunk valójában, most intet fogunk):
-```c++throw 1;``` 
+```throw 1;``` 
 Elfogás:
 ```c++
 try{
@@ -60,7 +60,7 @@ A leírás rész különböző típus típusnál változni fog.
 Az első amit nézünk az a felsoroló típus, ami arra lesz jó, hogy x darab értéket vehet fel csak, valójában nem sokban különbözik egy ```int```-től, mert az is véges értéket csak vehet fel, csak itt számok helyett magunknak definiált értékek halmazából vehet fel. Ennek a típus típusnak a definíciója annyiból áll, hogy felsoroljuk a ```{}```-k között a lehetséges értékeket és a neve ```enum```.
 
 Tehát egy enum létrehozása:
-```c++ enum Rank{OPERATOR,MODERATOR,USER,ADMNIN};```
+```enum Rank{OPERATOR,MODERATOR,USER,ADMNIN};```
 Ezzel pl. jelezhetjük egy felhasználóról, hogy az milyen ranggal rendelkezik. Ezek az ```enum```-okra használhatjuk az értékeadást és az összehasonlítást. 
 Pl.:
 ```c++
@@ -142,7 +142,7 @@ A try blokknak van egy olyan tulajdonsága, hogy ahogy a függvények excetion e
 
 # Header fájlba szétpakolás
 
-Ahogy az első órán már beszéltünk róla, a header fájlok, amiket pl. használtunk már a kiírás és beolvasás használatához is: ```c++ #inlucde<iostream>```
+Ahogy az első órán már beszéltünk róla, a header fájlok, amiket pl. használtunk már a kiírás és beolvasás használatához is: ```#inlucde<iostream>```
 De most eljött az ideje, hogy saját ilyen fájlokat is létrehozzunk, ami nagyon egyszerű. A menüben a fájl->új->fájl kattintva előjön egy wizard aminek segítségével létrehozhatunk header fájlokat. Ha létrehozunk itt egy fájlt és azt includeoljuk valahol akkor teljesmértékben úgy fog működni mintha copy-paste lenne.
 
 A fejlécfájlokat (.h fájlokat) arra használjuk, hogy deklarációkat, leírásokat (típuslétrehozás pl.) tároljunk benne.
@@ -153,7 +153,7 @@ A forrásfájlokat (.cpp fájlokat) viszont arra, hogy konkrét futtatandó prog
 Képzeljü el a szituációt, hogy van egy valaki által írt fejlécfájl, ami beincludeolja a vectort, viszont mi is megtesszük ezt. Ebben az esetben minden kétszer lenne deklarálva ami a fordítónak nem fog tetszeni, mert neki nem tisztje eldönteni, hogy ha kétszer ugyanúgy akarunk megadni egy típust pl. akkor melyik legyen a kettő teljesen egyforma közül. :) (Igen...:D)
 
 Ennek a komoly problémának a megoldására jött létre az úgynevezett header guard, amit nekünk a CodeBlocks automatikusan hozzá fog rakni a fájljainkhoz, de azért ismerkedjünk meg vele. A direktíváknál is vannak elágazások, viszont itt a feltételek csak kapcsolók lehetnek, hogy adott érték már be van-e állítva/igaz-e/definiálva volt-e már. Egy ilyen kapcsolót úgy tudunk bekapcsolt állapotra állítani, hogy azt írjuk a kódba, hogy 
-```c++ #define ASD```
+```#define ASD```
 Ebben az esetben az adott sor kódtól nekünk ez definiálva lesz, tehát ha azt írjuk, hogy
 ```c++
 #ifdef ASD
@@ -163,7 +163,7 @@ Ebben az esetben az adott sor kódtól nekünk ez definiálva lesz, tehát ha az
 #endif
 ```
 Akkor ebben az esetben ha a define fölött történik ez, akkor a ```B``` kódrészlet lesz itt a előfeldogozás után, ha viszont alatta, tehát a kapcsoló már be van állítva mire az if-hez érünk, így az if igaz lesz, akkor az ```A``` kódrészlet marad. A Header Guardokhoz a tagadó If-et használják:
-```c++ #ifndef ASD```
+```#ifndef ASD```
 ami annyit tesz, hogy ahelyett hogy azt kérdezénk, hogy ```ASD``` be van-e állítva azt kérdezzük, hogy ```ASD``` nincs beállítva?
 
 Gondoljunk bele, hogy ez van egy header fájlban (asd.h) amit kétszer includeolunk be :
