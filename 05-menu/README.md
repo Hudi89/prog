@@ -68,3 +68,5 @@ void menukiir()
 # Mi is az a getch() és a system("cls")
 
 Igazából egyik sem egy nagy trükk. A getch() mint a függvény neve is mondja vár egy karakter leütést. (get - char). A system("cls") pedig letisztítja nekünk a képernyőt, az átláthatóság érdekében.
+
+A system függvénnyen viszont óvatosan kell bánni, mivel használata oprendszer függű, mivel a képernyő törlési parancs csak windowson CLS, környezettől függő lehet, hogy mi ez a parancs.
