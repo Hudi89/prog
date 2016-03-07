@@ -282,4 +282,4 @@ template void max<float>(const vector<float> &v);
 De láthatjuk, hogy ez nem a legjobb megoldás, tehát maradjunk annál, hogy a templatek esetében a fejlécfájlban tartjuk a definíciókat is.
 
 # Feladat
-1. (FTM-cnt(<5)>2,sum) Egy lovaglótusán keressük a nyertest, de a király úgy döntött, hogy mindenkit aki több mint két versenyszámban kevesebb mint 5 pontot ér el azt lefejezteti. (Ne feledjük, hogy mivan ha a király mindenkit lefejeztetett)
+1. (CMF-cnt(<5)<=2,sum) Egy lovaglótusán keressük a nyertest, de a király úgy döntött, hogy mindenkit aki több mint két versenyszámban kevesebb mint 5 pontot ér el azt lefejezteti. (Ne feledjük, hogy mivan ha a király mindenkit lefejeztetett)
