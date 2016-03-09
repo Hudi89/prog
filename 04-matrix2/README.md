@@ -283,3 +283,4 @@ De láthatjuk, hogy ez nem a legjobb megoldás, tehát maradjunk annál, hogy a 
 
 # Feladat
 1. (CMF-cnt(<5)<=2,sum) Egy lovaglótusán keressük a nyertest, de a király úgy döntött, hogy mindenkit aki több mint két versenyszámban kevesebb mint 5 pontot ér el azt lefejezteti. (Ne feledjük, hogy mivan ha a király mindenkit lefejeztetett)
+2. (CMF-ls(>=9),sum/size()) Egy lovaglótusán keressük a nyertest, de a király úgy döntött, hogy mindenkinek legalább egy versenyszámban el kell érnie a legalább 9 pontot, különben kaputt! (Ne feledjük, hogy mivan ha a király mindenkit lefejeztetett)
