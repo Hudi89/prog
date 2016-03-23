@@ -29,7 +29,7 @@
 
 Ha kész vagy akkor küld el nekem a hudi1989@gmail.com -ra és várj míg jelzek az eredménnyel.
 
-**Fontos:** Csak a main.cpp tartalmát küldjétek el a levél törzseként, nem kell semmi szöveg azon kívül (Még köszönés sem:) ).
+**Fontos:** Csatolmányként csak a main.cpp-t küldjétek el (becsomagolás nélkül), semmi mást.
 **Fontos:** A levél tárgya úgy kezdődjön, hogy ```[PROG]``` majd utána név és neptun kód!
 
 ## Gyakorláshoz
