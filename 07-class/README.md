@@ -672,8 +672,10 @@ Példa egy sorra: 1505181035210101 ve61 árukód21 2.5
 Készítsünk a leckében látható módon osztályt egy rekord tárolására, készítsünk hozzá beolvasó, kiíró operátort.
 
 Oldjuk meg a következő feladatokat:
-⋅⋅1. Melyik törzsvásárló vett elősször az "aru11" -ből.
-⋅⋅2. Ha a vevő kódja VIP-el kezdődik, akkor a mennyiségét dupla annyiként számolva összegezzük a teljes mennyiséget.
+
+a. Melyik törzsvásárló vett elősször az "aru11" -ből.
+
+b. Ha a vevő kódja VIP-el kezdődik, akkor a mennyiségét dupla annyiként számolva összegezzük a teljes mennyiséget.
 
 
 [2015-05-18 nagy zh - A csoport]
