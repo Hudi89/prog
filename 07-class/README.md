@@ -665,11 +665,11 @@ Gonoljunk bele, hogy van egy stringünk amit lemásolunk egy másikba majd a má
 
 # Feladatok 
 
-1) Egy üzletlánc folyamatosan elemzi a törzsvásárlóinak vásárlási szokásait. Egy szöveges állományban nyilvántartja, hogy a törzsvásárlók mit vettek az elmúlt időszakban. Az állomány minden sora egy-egy vásárlási tétel adatait tartalmazza: a vásárlás azonosítóját (16 karakter), a törzsvásárló kódját (4 karakter), a vásárolt áru kódját (8 karakter) és egy mennyiséget (valós szám); ezek mind szóközökkel vagy tabulátor jelekkel vannak elválasztva. 
+1. Egy üzletlánc folyamatosan elemzi a törzsvásárlóinak vásárlási szokásait. Egy szöveges állományban nyilvántartja, hogy a törzsvásárlók mit vettek az elmúlt időszakban. Az állomány minden sora egy-egy vásárlási tétel adatait tartalmazza: a vásárlás azonosítóját (16 karakter), a törzsvásárló kódját (4 karakter), a vásárolt áru kódját (8 karakter) és egy mennyiséget (valós szám); ezek mind szóközökkel vagy tabulátor jelekkel vannak elválasztva. 
 Példa egy sorra: 1505181035210101 ve61 árukód21 2.5
 Készítsünk a leckében látható módon osztályt egy rekord tárolására, készítsünk hozzá beolvasó, kiíró operátort, majd oldjuk meg a következő feladatokat:
-a) Melyik törzsvásárló vett elősször az "aru11" -ből.
-b) Ha a vevő kódja VIP-el kezdődik, akkor a mennyiségét dupla annyiként számolva összegezzük a teljes mennyiséget.
+..1. Melyik törzsvásárló vett elősször az "aru11" -ből.
+..2. Ha a vevő kódja VIP-el kezdődik, akkor a mennyiségét dupla annyiként számolva összegezzük a teljes mennyiséget.
 
 
 [2015-05-18 nagy zh - A csoport]
