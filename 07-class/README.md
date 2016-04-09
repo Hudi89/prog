@@ -673,7 +673,7 @@ Készítsünk a leckében látható módon osztályt egy rekord tárolására, k
 
 Oldjuk meg a következő feladatokat:
 
-a. Melyik törzsvásárló vett elősször az "aru11" -ből.
+a. Melyik törzsvásárló vett elősször az "aru11111" -ből.
 
 b. Ha a vevő kódja VIP-el kezdődik, akkor a mennyiségét dupla annyiként számolva összegezzük a teljes mennyiséget.
 
