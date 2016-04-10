@@ -668,6 +668,8 @@ Gonoljunk bele, hogy van egy stringünk amit lemásolunk egy másikba majd a má
 1. Egy üzletlánc folyamatosan elemzi a törzsvásárlóinak vásárlási szokásait. Egy szöveges állományban nyilvántartja, hogy a törzsvásárlók mit vettek az elmúlt időszakban. Az állomány minden sora egy-egy vásárlási tétel adatait tartalmazza: a vásárlás azonosítóját (16 karakter), a törzsvásárló kódját (4 karakter), a vásárolt áru kódját (8 karakter) és egy mennyiséget (valós szám); ezek mind szóközökkel vagy tabulátor jelekkel vannak elválasztva.
 Az előfeltétlek megsértése esetén a rendszer jelezzen a hibát.
 
+Ne tömörítve küldjétek a fájlokat, hanem mellékeljétek külön a forrásfájlokat.
+
 Példa egy sorra: 1505181035210101 ve61 árukód21 2.5
 
 Készítsünk a leckében látható módon osztályt egy rekord tárolására, készítsünk hozzá beolvasó, kiíró operátort.
