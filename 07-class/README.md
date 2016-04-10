@@ -96,7 +96,7 @@ Coord operator+(const Coord &lh, const Coord &rh){
 }
 
 ostream& operator<<(ostream& out, const Coord &c){
-    out << c.re << ' ' << c.im;
+    out << c.x << ' ' << c.y;
     return out;
 }
 
