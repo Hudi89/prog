@@ -45,6 +45,5 @@ int main()
             throw e;
         }
     }
-   // cout << "Hello world!" << endl;
     return 0;
 }

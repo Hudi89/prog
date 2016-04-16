@@ -10,7 +10,7 @@ std::ostream& operator<<(std::ostream& out, const Exam &o){
 
     switch(o.type){
         case Exam::ORAL: out << "ORAL"; break;
-        case Exam::WRITE: out << "WRITE"; break;
+        case Exam::WRITTEN: out << "WRITTEN"; break;
         default:
             throw Exam::UNDHANDLED_TYPE_TO_OUTPUT;
     }
@@ -35,8 +35,8 @@ std::istream& operator>>(std::istream& in, Exam &o){
 
     if(typeString == "ORAL"){
         o.type = Exam::ORAL;
-    }else if(typeString == "WRITE"){
-        o.type = Exam::WRITE;
+    }else if(typeString == "WRITTEN"){
+        o.type = Exam::WRITTEN;
     }else if(in.good()){
         throw Exam::UNKNOWN_TYPE_TO_READ;
     }

@@ -8,7 +8,7 @@ class Exam{
 public:
     enum Type{
         ORAL,
-        WRITE
+        WRITTEN
     };
 
     enum Exception{
