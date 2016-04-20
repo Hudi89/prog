@@ -230,6 +230,29 @@ std::istream& operator>>(std::istream& in, std::vector<T> &v){
 Note: Ha bármi miatt sikertelen a beolvasás, akkor ugyanúgy le fog állni a ciklusunk. Van erre is függvény ```istream::eof```. Ha ezt használjuk a hibákra figyeljünk oda, hogy kezelve legyenek.
 
 
+### Probléma merül fel
+
+Ekkor ha lefuttatjuk ap programunkat, láthatjuk, hogy valamiért a vectorok halmozódva olvasódnak be, ez meg pontosan amiatt van, mert az ```operator>>(std::istream& in, std::vector<T> &v)```-ban a cikluson kívül van defininálva egy ```T``` típusú elemünk amiben van egy vector, tehát amikor a következő beolvasásához érünk, bár az értékek simán felülíródnak, a vector nem mivel ott ```push_back```-et használtunk. Be kell raknunk az osztályt beolvasó függvénybe egy olyat, hogy töröljük a vectort a beolvasás elején. Erre a vector osztálynak van egy külön parancsa, ami a ```clear()```
+
+Tehát:
+
+```
+std::istream& operator>>(std::istream& in, Exam &o){
+    string temp;
+    std::getline(in,temp);
+    std::stringstream ss;
+    ss << temp; //beleküldjük a stringet a streamünkbe
+    ss >> o.courseName >> o.credit >> o.dateTime; //kiolvassuk az adatokat
+    
+    o.grades.clear();
+    int tempGrade;
+    while(ss >> tempGrade){//Beolvasunk egyet, ami ha sikeres volt
+        o.grades.push_back(tempGrade); //akkor hozzáadjuk
+    }
+    return in;
+}
+```
+
 # Enum az osztályban
 
 Adjunk hozzá egy olyan tulajdonságot az osztályunkhoz, hogy szóbeli vagy írásbeli az adott vizsga.
