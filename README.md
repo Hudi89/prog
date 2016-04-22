@@ -22,4 +22,5 @@ ZH tudnivalók:
  * Ha az óra végéig sikerül megoldani egy hallgatónak 2 pontot kap
  * Ha az órán nem sikerült megoldani, viszont a következő óra elejéig elküldi e-mailben a feladat helyes megoldását akkor kap 1 pontot
 
-**A szükséges ponthatár: 32 pont**
+**A szükséges ponthatár: 26 pont**
+(Tavalyi 32-höz képest 6-al kevesebb, mert 3 feladat kimaradt)
