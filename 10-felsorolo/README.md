@@ -24,7 +24,7 @@ Mit is várunk el egy ilyen felsoroló osztálytól? Alakítsuk át az összegz�
 template<typename T>
 int sum(Enumerator<T> &e){
   int s = 0;
-  for(e.init();e.isEnd();e.next()){
+  for(e.init();!e.isEnd();e.next()){
     s += e.current();
   }
   return s;
