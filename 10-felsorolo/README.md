@@ -116,7 +116,7 @@ public:
     next();
   }
   bool isEnd() const{
-    return f.fail() || f.eof(); 
+    return f.fail(); 
   }
   void next(){
     f >> actualData;
