@@ -67,7 +67,7 @@ public:
     SeqOutFile(string fname){
         f.open(fname.c_str());
     }
-    write(const T &v){
+    void write(const T &v){
         f << v << endl;
     }
 };
@@ -75,7 +75,7 @@ public:
 template<class T>
 class SeqOutConsole : public SeqOut<T>{
 public:
-    write(const T &v){
+    void write(const T &v){
         cout << v << endl;
     }
 };
