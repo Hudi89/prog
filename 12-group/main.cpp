@@ -1,117 +1,173 @@
 #include <iostream>
+#include <vector>
+#include <sstream>
 #include <fstream>
+
 using namespace std;
 
-class Flat{
-    int dis;
-    double area;
-    int price;
+class Pancake{
+    float radius;
+    vector<string> filling;
+    float tastyFactor;
 public:
 
-    int getDis(){
-        return dis;
-    }
+    float getRadius() const { return radius; }
+    float getTastyFactor() const { return tastyFactor; }
 
-    double getPriceDArea(){
-        return price / area;
-    }
-
-    friend istream& operator>> (istream& in, Flat& dx);
-    friend ostream& operator<< (ostream& out,const Flat& dx);
-};
-
-struct District{
-    int dis;
-    double avg;
-};
-
-istream& operator>> (istream& in, Flat& dx)
-{
-    in >> dx.dis >> dx.price >> dx.area;
-    return in;
-};
-ostream& operator<< (ostream& out,const Flat& dx)
-{
-    out << dx.dis << " " << dx.price<< " " << dx.area;
-    return out;
-};
-
-ostream& operator<< (ostream& out,const District& dx)
-{
-    out << dx.dis << " " << dx.avg;
-    return out;
-};
-
-class SeqIn{
-private:
-    ifstream f;
-    Flat dx;
-    District dxOut;
-    bool fuckYourself;
-public:
-    SeqIn(string filename){
-        fuckYourself = false;
-        f.open(filename.c_str());
-
-        if(f.fail()){
-            throw "NOT_EXISTS";
+    bool isHaveTuros() const{
+        bool l = false;
+        int i = 0;
+        while(!l && i < filling.size()){
+            l = (filling[i] == "turo");
+            i++;
         }
+        return l;
+    }
+
+    friend istream& operator>>(istream& in, Pancake &o);
+    friend ostream& operator<<(ostream& out,
+                     const Pancake &o);
+};
+//kolbasz erosPista vanilia 1
+istream& operator>>(istream& in, Pancake &o){
+    string temp;
+    getline(in,temp);
+    stringstream ss(temp);
+    //ss << temp;
+
+    ss >> o.radius;
+
+
+   /*  o.filling.clear();
+    string tempString;
+    while(ss >> tempString){
+        stringstream ss2(tempString);
+        ss2 >> o.tastyFactor;
+        if(ss2.fail()){
+           o.filling.push_back(tempString);
+        }
+    }*/
+/*
+    o.filling.clear();
+    string tempString;
+    string tempString2;
+    ss >> tempString;
+    while(ss >> tempString2){
+        o.filling.push_back(tempString);
+        tempString = tempString2;
+    }
+    stringstream ss2(tempString);
+    ss2 >> o.tastyFactor;*/
+
+    o.filling.clear();
+    string tempString;
+    while(ss >> tempString){
+        o.filling.push_back(tempString);
+    }
+
+    if(!o.filling.empty()){
+        stringstream ss2(o.filling.back());
+        ss2 >> o.tastyFactor;
+
+        o.filling.pop_back();
+    }
+    return in;
+}
+ostream& operator<<(ostream& out,
+                     const Pancake &o){
+    out << o.radius << " ";
+    for(int a=0;a<o.filling.size(); a++){
+        out << o.filling[a] << " ";
+    }
+    out << o.tastyFactor;
+    return out;
+}
+
+
+
+
+class PancakeGroupedBySize{
+    float radius;
+    float sumTastyFactor;
+    int count;
+    bool haveTuros;
+public:
+
+    float getRadius() const{
+        return radius;
+    }
+    float getAvgTastyFactor() const{
+        return sumTastyFactor /(float) count;
+    }
+
+    bool isHaveTuros() const{
+        return haveTuros;
+    }
+
+    friend class PancakeGroupedBySizeSeqIn;
+    friend ostream& operator <<(ostream& tokmindegy,
+        const PancakeGroupedBySize& dzs);
+};
+
+ostream& operator <<(ostream& tokmindegy,
+        const PancakeGroupedBySize& dzs){
+    tokmindegy << dzs.radius << " " << dzs.sumTastyFactor/(float)dzs.count;
+    return tokmindegy;
+}
+
+class PancakeGroupedBySizeSeqIn{
+    ifstream f;
+    Pancake actual;
+    PancakeGroupedBySize actualGroup;
+    bool isFinished;
+public:
+    PancakeGroupedBySizeSeqIn(string fname){
+        f.open(fname.c_str());
     }
     void init(){
-        f >> dx;
+        f >> actual;
         next();
+        isFinished = false;
     }
     void next(){
-
         if(f.fail()){
-            fuckYourself = true;
+            isFinished = true;
         }else{
-            Flat temp;
-            int c =1;
-            double s = dx.getPriceDArea();
-            while(f >> temp && temp.getDis()==dx.getDis())
-            {
-                s+=temp.getPriceDArea();
-                c++;
+            actualGroup.radius = actual.getRadius();
+            actualGroup.sumTastyFactor = 0;
+            actualGroup.count = 0;
+            actualGroup.haveTuros = false;
+
+            while(!f.fail() &&
+                actual.getRadius() == actualGroup.radius){
+                actualGroup.sumTastyFactor +=
+                    actual.getTastyFactor();
+                actualGroup.count++;
+                if(actual.isHaveTuros()){
+                    actualGroup.haveTuros = true;
+                }
+                f >> actual;
             }
-
-            dxOut.avg = s / c;
-            dxOut.dis = dx.getDis();
-            dx = temp;
         }
-
     }
-    bool isEnd(){
-        return fuckYourself;
+    bool isEnd() const{
+        return isFinished;
     }
-    District current(){
-        return dxOut;
+    PancakeGroupedBySize current() const{
+        return actualGroup;
     }
 };
+
+
+
 int main()
 {
-    SeqIn si("input.txt");
-
-    int M = 0;
-
-    for(si.init();!si.isEnd();si.next()){
-        cout << si.current() << endl;
-        if(M < si.current().avg){
-            M = si.current().avg;
-        }
+    PancakeGroupedBySizeSeqIn en("input.txt");
+    for(en.init();!en.isEnd();en.next()){
+            cout << en.current().getRadius() << " " <<
+                en.current().getAvgTastyFactor()<<" " <<
+                (en.current().isHaveTuros()?"TUROS":"NEM TUROS") << endl;
+      //  cout << en.current() << endl;
     }
-
-    while(s1.isEnd() &&s2.isEnd()){
-        if(==){
-            out << max(M1,M2)
-        }
-        else if (<){
-            Max
-            out << Max
-        }
-        >
-    }
-
-    cout << "\tMax:" << M <<endl;
     return 0;
 }
