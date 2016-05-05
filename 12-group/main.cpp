@@ -5,169 +5,182 @@
 
 using namespace std;
 
-class Pancake{
-    float radius;
-    vector<string> filling;
-    float tastyFactor;
+class Festival{
+    int price;
+    vector<string> genres;
+    int length;
 public:
 
-    float getRadius() const { return radius; }
-    float getTastyFactor() const { return tastyFactor; }
+    int getPrice() const {
+        return price;
+    }
 
-    bool isHaveTuros() const{
+    int getLength() const {
+        return length;
+    }
+    bool isHaveJazz() const{
         bool l = false;
         int i = 0;
-        while(!l && i < filling.size()){
-            l = (filling[i] == "turo");
+        while(!l && i < genres.size()){
+            l = (genres[i] == "jazz");
             i++;
         }
         return l;
     }
 
-    friend istream& operator>>(istream& in, Pancake &o);
+    friend istream& operator>>(istream& in, Festival &o);
     friend ostream& operator<<(ostream& out,
-                     const Pancake &o);
+                    const Festival &o);
 };
-//kolbasz erosPista vanilia 1
-istream& operator>>(istream& in, Pancake &o){
-    string temp;
-    getline(in,temp);
-    stringstream ss(temp);
-    //ss << temp;
 
-    ss >> o.radius;
-
-
-   /*  o.filling.clear();
+istream& operator>>(istream& in, Festival &o){
+    /*string line;
+    getline(in,line);
+    stringstream ss(line);
+    ss >> o.price;
     string tempString;
+    o.genres.clear();
     while(ss >> tempString){
+
         stringstream ss2(tempString);
-        ss2 >> o.tastyFactor;
+        int tempInt;
+        ss2 >> tempInt;
         if(ss2.fail()){
-           o.filling.push_back(tempString);
+            o.genres.push_back(tempString);
+        }else{
+            o.length = tempInt;
         }
     }*/
-/*
-    o.filling.clear();
+
+    /*string line;
+    getline(in,line);
+    stringstream ss(line);
+    //jazz dubstep 2
+    ss >> o.price;
     string tempString;
     string tempString2;
     ss >> tempString;
+    o.genres.clear();
     while(ss >> tempString2){
-        o.filling.push_back(tempString);
+        o.genres.push_back(tempString);
         tempString = tempString2;
     }
+
     stringstream ss2(tempString);
-    ss2 >> o.tastyFactor;*/
+    ss2 >> o.length;*/
 
-    o.filling.clear();
+    string line;
+    getline(in,line);
+    stringstream ss(line);
+
+    ss >> o.price;
     string tempString;
+    o.genres.clear();
     while(ss >> tempString){
-        o.filling.push_back(tempString);
+        o.genres.push_back(tempString);
+    }
+    if(!o.genres.empty()){
+        stringstream ss2(o.genres.back());
+        ss2 >> o.length;
+        o.genres.pop_back();
     }
 
-    if(!o.filling.empty()){
-        stringstream ss2(o.filling.back());
-        ss2 >> o.tastyFactor;
-
-        o.filling.pop_back();
-    }
     return in;
 }
+
 ostream& operator<<(ostream& out,
-                     const Pancake &o){
-    out << o.radius << " ";
-    for(int a=0;a<o.filling.size(); a++){
-        out << o.filling[a] << " ";
+                    const Festival &o){
+    out << o.price << " ";
+    for(int a=0;a<o.genres.size();a++){
+        out << o.genres[a] << " ";
     }
-    out << o.tastyFactor;
+    out << o.length;
     return out;
 }
 
-
-
-
-class PancakeGroupedBySize{
-    float radius;
-    float sumTastyFactor;
+class FestivalGroupedByPrice{
+    int price;
+    int sumLength;
     int count;
-    bool haveTuros;
+    int maxLength;
+    bool isHaveJazz;
 public:
-
-    float getRadius() const{
-        return radius;
-    }
-    float getAvgTastyFactor() const{
-        return sumTastyFactor /(float) count;
+    int getPrice() const {
+        return price;
     }
 
-    bool isHaveTuros() const{
-        return haveTuros;
+    int getSumLength() const{
+        return sumLength;
     }
 
-    friend class PancakeGroupedBySizeSeqIn;
-    friend ostream& operator <<(ostream& tokmindegy,
-        const PancakeGroupedBySize& dzs);
+    int getMaxLength() const{
+        return maxLength;
+    }
+
+    bool getIsHaveJazz() const{
+        return isHaveJazz;
+    }
+
+    float getAvgLength() const{
+        return (float)sumLength / (float)count;
+    }
+
+    friend class FestivalGroupedByPriceSeqIn;
 };
 
-ostream& operator <<(ostream& tokmindegy,
-        const PancakeGroupedBySize& dzs){
-    tokmindegy << dzs.radius << " " << dzs.sumTastyFactor/(float)dzs.count;
-    return tokmindegy;
-}
-
-class PancakeGroupedBySizeSeqIn{
+class FestivalGroupedByPriceSeqIn{
     ifstream f;
-    Pancake actual;
-    PancakeGroupedBySize actualGroup;
     bool isFinished;
+
+    FestivalGroupedByPrice actualGroup;
+    Festival actual;
 public:
-    PancakeGroupedBySizeSeqIn(string fname){
+    FestivalGroupedByPriceSeqIn(string fname){
         f.open(fname.c_str());
     }
     void init(){
         f >> actual;
-        next();
         isFinished = false;
+        next();
     }
     void next(){
         if(f.fail()){
             isFinished = true;
         }else{
-            actualGroup.radius = actual.getRadius();
-            actualGroup.sumTastyFactor = 0;
+            actualGroup.price = actual.getPrice();
+            actualGroup.sumLength = 0;
             actualGroup.count = 0;
-            actualGroup.haveTuros = false;
-
+            actualGroup.maxLength = actual.getLength();
+            actualGroup.isHaveJazz = false;
             while(!f.fail() &&
-                actual.getRadius() == actualGroup.radius){
-                actualGroup.sumTastyFactor +=
-                    actual.getTastyFactor();
+                actual.getPrice() == actualGroup.price){
+
+                actualGroup.sumLength += actual.getLength();
                 actualGroup.count++;
-                if(actual.isHaveTuros()){
-                    actualGroup.haveTuros = true;
+                if(actual.getLength() > actualGroup.maxLength){
+                    actualGroup.maxLength = actual.getLength();
+                }
+                if(actual.isHaveJazz()){
+                    actualGroup.isHaveJazz = true;
                 }
                 f >> actual;
             }
         }
     }
+    FestivalGroupedByPrice current() const{
+        return actualGroup;
+    }
     bool isEnd() const{
         return isFinished;
     }
-    PancakeGroupedBySize current() const{
-        return actualGroup;
-    }
 };
-
-
 
 int main()
 {
-    PancakeGroupedBySizeSeqIn en("input.txt");
+    FestivalGroupedByPriceSeqIn en("input.txt");
     for(en.init();!en.isEnd();en.next()){
-            cout << en.current().getRadius() << " " <<
-                en.current().getAvgTastyFactor()<<" " <<
-                (en.current().isHaveTuros()?"TUROS":"NEM TUROS") << endl;
-      //  cout << en.current() << endl;
+        cout << en.current().getPrice() << " " <<
+                en.current().getIsHaveJazz() << endl;
     }
     return 0;
 }
