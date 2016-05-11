@@ -1,0 +1,8 @@
+2 lekvar nutella 0.95
+2 turo 0.3
+2 asd 0.1
+10 kakao lekvar 0.9
+10 kakao 0.6
+10 kakao lekvar 0.7
+30 kolbasz erosPista vanilia 1
+30 kolbasz turo erosPista vanilia disznosajt 1.05
