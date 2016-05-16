@@ -3,6 +3,43 @@
 
 using namespace std;
 
+class Minion{
+    string name;
+    int eyeNumber;
+    
+    //Number between 0 and 1 
+    float annoyFactor;
+    bool hasGlass;
+public:
+
+    string getName() const{
+        return name;
+    }
+    int getEyeNumber() const{
+        return eyeNumber;
+    }
+    float getAnnoyFactor() const{
+        return annoyFactor;
+    }
+    bool getHasGlass() const{
+        return hasGlass;
+    }
+
+    friend istream& operator>>(istream& in, Minion& o);
+    friend ostream& operator<<(ostream& out, const Minion& o);
+};
+
+istream& operator>>(istream& in, Minion& o){
+    in >> o.name >> o.eyeNumber >> o.annoyFactor >> o.hasGlass;
+    return in;
+}
+
+ostream& operator<<(ostream& out, const Minion& o){
+    out << o.name << " " << o.eyeNumber << " "  << o.annoyFactor << " " << o.hasGlass;
+    return out;
+}
+
+
 template<class T>
 class SeqInFile{
 private:
@@ -27,6 +64,9 @@ public:
         return f.fail();
     }
 };
+
+
+
 
 template<class T>
 class SeqOut{
@@ -54,39 +94,6 @@ public:
     }
 };
 
-
-
-class Minion{
-    string name;
-    int eyeNumber;
-    float annoyFactor;
-    bool hasGlass;
-public:
-
-    bool operator<(const Minion &o){
-        return name < o.name;
-    }
-
-    string getName(){
-        return name;
-    }
-
-    friend istream& operator>>(istream& in, Minion& o);
-    friend ostream& operator<<(ostream& out, const Minion& o);
-};
-
-istream& operator>>(istream& in, Minion& o){
-    in >> o.name >> o.eyeNumber
-     >> o.annoyFactor >> o.hasGlass;
-    return in;
-}
-
-ostream& operator<<(ostream& out, const Minion& o){
-    out << o.name << " " << o.eyeNumber << " "
-        << o.annoyFactor << " " << o.hasGlass;
-    return out;
-}
-
 template<class T>
 class SeqOutFileAndConsole : public SeqOut<T>{
     ofstream f;
@@ -100,12 +107,30 @@ public:
     }
 };
 
-void intersect(SeqInFile<Minion> &in1, SeqInFile<Minion> &in2,
-               SeqOut<Minion> &out){
+
+
+int main()
+{
+   
+/*    SeqInFile<Minion> in("input.txt");
+    bool l = true;
+    for(in.init();l && !in.isEnd();in.next()){
+        l = in.current().getHasGlass();
+    }
+    
+    cout << (l?"Yes":"no") << endl;
+  */  
+    
+    SeqInFile<Minion> in1("input.txt");
+    SeqInFile<Minion> in2("input2.txt");
+
+    SeqOutFileAndConsole<Minion> out("out.txt");
     in1.init();
     in2.init();
-
-    while(!in1.isEnd() && !in2.isEnd()){
+    
+    
+    // Intersect
+/*  while(!in1.isEnd() && !in2.isEnd()){
         if(in1.current().getName() < in2.current().getName()){
             in1.next();
         }else if(in2.current().getName() < in1.current().getName()){
@@ -115,20 +140,15 @@ void intersect(SeqInFile<Minion> &in1, SeqInFile<Minion> &in2,
             in1.next();
             in2.next();
         }
-    }
-}
-
-void unio(SeqInFile<Minion> &in1, SeqInFile<Minion> &in2,
-               SeqOut<Minion> &out){
-    in1.init();
-    in2.init();
-
+    }*/
+    
+    // Unio
+    
     while(!in1.isEnd() || !in2.isEnd()){
-
         if( in2.isEnd() ||
                (
                !in1.isEnd() &&
-               in1.current() < in2.current()
+               in1.current().getName() < in2.current().getName()
                )
            ){
             out.write(in1.current());
@@ -137,36 +157,65 @@ void unio(SeqInFile<Minion> &in1, SeqInFile<Minion> &in2,
                  in1.isEnd() ||
                  (
              !in2.isEnd() &&
-            in2.current() < in1.current())
+            in2.current().getName() < in1.current().getName())
 
                  ){
             out.write(in2.current());
             in2.next();
-        }else{//in1.current() == in2.current()
+        }else{//in1.current().getName() == in2.current().getName()
             out.write(in1.current());
             in1.next();
             in2.next();
         }
     }
-}
 
-template<class T>
-void write(SeqInFile<T> &in){
-    for(in.init();!in.isEnd();in.next()){
-        cout << in.current() << endl;
+    // Substract
+    /*
+    while(!in1.isEnd()){
+
+        if( in2.isEnd() ||
+               (
+               !in1.isEnd() &&
+               in1.current().getName() < in2.current().getName()
+               )
+           ){
+            out.write(in1.current());
+            in1.next();
+        }else if(!in2.isEnd() &&
+            in2.current().getName() < in1.current().getName()
+                 ){
+            in2.next();
+        }else{//in1.current() == in2.current()
+            in1.next();
+            in2.next();
+        }
+    }*/
+    // Symmetric difference
+    /*
+    while(!in1.isEnd() || !in2.isEnd()){
+        if( in2.isEnd() ||
+               (
+               !in1.isEnd() &&
+               in1.current().getName() < in2.current().getName()
+               )
+           ){
+            out.write(in1.current());
+            in1.next();
+        }else if(
+                 in1.isEnd() ||
+                 (
+             !in2.isEnd() &&
+            in2.current().getName() < in1.current().getName())
+
+                 ){
+            out.write(in2.current());
+            in2.next();
+        }else{//in1.current() == in2.current()
+            in1.next();
+            in2.next();
+        }
     }
-}
-
-
-int main()
-{
-    SeqInFile<Minion> in1("input.txt");
-    SeqInFile<Minion> in2("input2.txt");
-
-    SeqOutConsole<Minion> out;
-    SeqOutFileAndConsole<Minion> out2("out.txt");
-
-    unio(in1,in2,out);
+    */
 
     return 0;
 }
