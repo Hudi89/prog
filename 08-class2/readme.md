@@ -345,4 +345,29 @@ Az ```UNKNOWN_TYPE_TO_READ``` hibát csak akkor dobjuk el, hogyha még a stream�
 
 # Feladat
 
-Határozzuk meg a cicák átlagos tejindexét. A tejindexet úgy számoljuk, hogy összegezzük az egyes cicák tejfogyasztását majd osztom a testömegükkel.
+## Cica
+
+Állapítsuk meg az átlagos tejindexet a cicák között.
+Egy cica tejindexe úgy számolandó, hogy összeadjuk a fogyasztott tejmennyiségeket, majd leosztjuk a súlyával.
+
+Név Súly [vector: fogyasztott tejmennyiségek]
+```
+Cirmos 80 1 2.3 4 5.1 7 58
+Cian 3 0.1 0.3 21 
+Tigris 4 1.1 3 4 5
+Alfred 4 6 3 1 
+Cauchy 30 10 10 10
+```
+
+## Sleep
+
+Állapítsuk meg, hogy a vizsgára készülés alatt ki tudott a legtöbb alvási ciklust abszolválni.
+
+Egy alvási ciklus csak ha teljes akkor érvényes.
+
+```
+Bela 18 1.2 1.2 0.2 3.2 10 12 0.1
+Feri 19 1.0 1.0 0.1 0.1 0.1 0
+Gizi 21 2.0 6.0 2.0 3.0 1.0
+```
+Név Kor AlvásiCiklus idő [Vector: Alvási idők]

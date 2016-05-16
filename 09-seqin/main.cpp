@@ -4,12 +4,20 @@
 
 using namespace std;
 
+//Megfogalmazunk egy absztrakt osztályt, hogy milyen függvényeket várunk el egy felsoroló osztálytól
 template<typename T>
 class Enumerator{
 public:
+    //Visszaadja azt az elemet amin állunk
     virtual T current() = 0;
+    
+    //Következő elemre lép a szekvencia
     virtual void next() = 0;
+    
+    //Visszadja, hogy vége van-e az szekvenciának
     virtual bool isEnd() = 0;
+    
+    //A felsorolót inicializálja (Valójában elhagyható lenne)
     virtual void init() = 0;
 };
 
@@ -41,23 +49,26 @@ public:
 
 };
 
+
+//Egy olyan osztály ami a konstruktorában egy fájl nevet vár majd a >> operátorral felsorolja a T típusú elemeket
 template<typename T>
 class FileEnumerator : public Enumerator<T>{
 private:
     ifstream f;
-
+    //Ebben tároljuk mindig az aktuális elemet, amin áll a felsorolónk
     T actualItem;
 public:
     FileEnumerator(string filename){
         f.open(filename.c_str());
     }
 
-    void init(){
-        f.seekg(0);
+    void init(){       
+        //Beolvassuk az első elemet
         next();
     }
     bool isEnd(){
-        return f.eof();
+        //Akkor állunk le, ha az olvasás sikertelen volt
+        return f.fail();
     }
     void next(){
         f >> actualItem;
@@ -67,6 +78,7 @@ public:
     }
 
 };
+
 
 template<typename T>
 T sum(Enumerator<T> &en)

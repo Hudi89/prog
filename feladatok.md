@@ -38,11 +38,6 @@ Note: A megoldáshoz szekvenciális osztályokkal oldjátok meg.
 
 Készítsünk egy programot ami valamilyen kulcs szerint sorbarendezett rekordokat tartalmazó fájlokat össszefűz egy nagy fájlba. Nem csak kettő fájl hanem akármennyi fájlra működjön és az output is rendezett legyen.
 
-
-### Összefoglaló készítése (8)
-
-Egy tetszőleges tulajdonságú rekordokra készítsük el mind a négy halmazműveleti feladatot a tanult megoldási módszerrel.
-
 ### Osztálykirándulás (6)
 
 Egy iskolai osztálykirándulás árát (13000) a tanulók részletekben fizetik be. Minden tanuló minden befizetése egy szöveges állomány egy-egy sorában található, amelyik tartalmazza a  tanuló nevét (sztring), a befizetés dátumát (EEEE.HH.NN formájú sztring) és összegét(természetes szám). Egy soron belül az adatokat elválasztójelek (szóközök, tabulátor jelek) határolják egymástól. A sorok a tanulók nevei szerint, azon belül a befizetési dátumok időrendje szerint rendezettek. Feltehetjük, hogy az állomány nem üres, sorai a megadott formájúak.

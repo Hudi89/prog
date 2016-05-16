@@ -3,119 +3,219 @@
 
 using namespace std;
 
-
-//Megfogalmazunk egy absztrakt osztályt, hogy milyen függvényeket várunk el egy felsoroló osztálytól
-template<typename T>
-class Enumerator{
+class Minion{
+    string name;
+    int eyeNumber;
+    
+    //Number between 0 and 1 
+    float annoyFactor;
+    bool hasGlass;
 public:
-    //Visszaadja azt az elemet amin állunk
-    virtual T current() = 0;
-    
-    //Következő elemre lép a szekvencia
-    virtual void next() = 0;
-    
-    //Visszadja, hogy vége van-e az szekvenciának
-    virtual bool isEnd() = 0;
-    
-    //A felsorolót inicializálja (Valójában elhagyható lenne)
-    virtual void init() = 0;
+
+    string getName() const{
+        return name;
+    }
+    int getEyeNumber() const{
+        return eyeNumber;
+    }
+    float getAnnoyFactor() const{
+        return annoyFactor;
+    }
+    bool getHasGlass() const{
+        return hasGlass;
+    }
+
+    friend istream& operator>>(istream& in, Minion& o);
+    friend ostream& operator<<(ostream& out, const Minion& o);
 };
 
+istream& operator>>(istream& in, Minion& o){
+    in >> o.name >> o.eyeNumber >> o.annoyFactor >> o.hasGlass;
+    return in;
+}
 
-//Egy olyan osztály ami a konstruktorában egy fájl nevet vár majd a >> operátorral felsorolja a T típusú elemeket
-template<typename T>
-class FileEnumerator : public Enumerator<T>{
+ostream& operator<<(ostream& out, const Minion& o){
+    out << o.name << " " << o.eyeNumber << " "  << o.annoyFactor << " " << o.hasGlass;
+    return out;
+}
+
+
+template<class T>
+class SeqInFile{
 private:
     ifstream f;
-    //Ebben tároljuk mindig az aktuális elemet, amin áll a felsorolónk
-    T actualItem;
+    T actual;
 public:
-    FileEnumerator(string filename){
-        f.open(filename.c_str());
+    SeqInFile(string fname){
+        f.open(fname.c_str());
     }
 
     void init(){
-        //A fájl elejére ugrunk. Ezzel a funkciót is megvalósítjuk, hogy újra 
-        //inicializálás esetében a szekvencia előről kezdődik (Ezt nem várjuk el amúgy)
-        f.seekg(0);
-        
-        //Beolvassuk az első elemet
-        next();
-    }
-    bool isEnd(){
-        //Akkor állunk le, ha az olvasás sikertelen volt
-        return f.fail();
+        f >> actual;
     }
     void next(){
-        f >> actualItem;
+        f >> actual;
     }
-    T current(){
-        return actualItem;
+    T current() const{
+        return actual;
     }
 
+    bool isEnd() const{
+        return f.fail();
+    }
 };
+
+
 
 
 template<class T>
 class SeqOut{
 public:
-    virtual void write(const T& data) = 0;
+    virtual void write(const T &v) = 0;
 };
 
 template<class T>
-class ConsoleSeqOut : public SeqOut<T>{
+class SeqOutConsole : public SeqOut<T>{
 public:
-    void write(const T& data){
-        cout << data << " ";
+    void write(const T &v){
+        cout << v << endl;
     }
 };
 
-class Adatok{
-    string name;
-    int kereset;
+template<class T>
+class SeqOutFile : public SeqOut<T>{
+    ofstream f;
 public:
-    string getName() {
-        return name;
+    SeqOutFile(string fname){
+        f.open(fname.c_str());
     }
-
-    int getKereset() {
-        return kereset;
+    void write(const T &v){
+        f << v << endl;
     }
-    friend istream& operator>>(istream& in, Adatok &adatok);
-    friend ostream& operator<<(ostream& out,const Adatok &adatok);
 };
 
-istream& operator>>(istream& in, Adatok &adatok) {
-    in >> adatok.name >> adatok.kereset;
-    return in;
-}
+template<class T>
+class SeqOutFileAndConsole : public SeqOut<T>{
+    ofstream f;
+public:
+    SeqOutFileAndConsole(string fname){
+        f.open(fname.c_str());
+    }
+    void write(const T &v){
+        f << v << endl;
+        cout << v << endl;
+    }
+};
 
-ostream& operator<<(ostream& out,const Adatok &adatok) {
-    out << adatok.name <<" "<< adatok.kereset<<endl;
-    return out;
-}
+
 
 int main()
 {
-    FileEnumerator<Adatok> si1("in1.txt");
-    FileEnumerator<Adatok> si2("in2.txt");
-    ConsoleSeqOut<Adatok> so;
-    si1.init();
-    si2.init();
-
-    //Metszet
-    while (!(si1.isEnd() || si2.isEnd())) {
-        if (si1.current().getName() == si2.current().getName()) {
-            so.write(si1.current());
-            si1.next();
-            si2.next();
-        } else if (si1.current().getName() < si2.current().getName()) {
-            si1.next();
-        }
-        else {
-            si2.next();
-        }
-
+   
+/*    SeqInFile<Minion> in("input.txt");
+    bool l = true;
+    for(in.init();l && !in.isEnd();in.next()){
+        l = in.current().getHasGlass();
     }
+    
+    cout << (l?"Yes":"no") << endl;
+  */  
+    
+    SeqInFile<Minion> in1("input.txt");
+    SeqInFile<Minion> in2("input2.txt");
+
+    SeqOutFileAndConsole<Minion> out("out.txt");
+    in1.init();
+    in2.init();
+    
+    
+    // Intersect
+/*  while(!in1.isEnd() && !in2.isEnd()){
+        if(in1.current().getName() < in2.current().getName()){
+            in1.next();
+        }else if(in2.current().getName() < in1.current().getName()){
+            in2.next();
+        }else{//in1.current() == in2.current()
+            out.write(in1.current());
+            in1.next();
+            in2.next();
+        }
+    }*/
+    
+    // Unio
+    
+    while(!in1.isEnd() || !in2.isEnd()){
+        if( in2.isEnd() ||
+               (
+               !in1.isEnd() &&
+               in1.current().getName() < in2.current().getName()
+               )
+           ){
+            out.write(in1.current());
+            in1.next();
+        }else if(
+                 in1.isEnd() ||
+                 (
+             !in2.isEnd() &&
+            in2.current().getName() < in1.current().getName())
+
+                 ){
+            out.write(in2.current());
+            in2.next();
+        }else{//in1.current().getName() == in2.current().getName()
+            out.write(in1.current());
+            in1.next();
+            in2.next();
+        }
+    }
+
+    // Substract
+    /*
+    while(!in1.isEnd()){
+
+        if( in2.isEnd() ||
+               (
+               !in1.isEnd() &&
+               in1.current().getName() < in2.current().getName()
+               )
+           ){
+            out.write(in1.current());
+            in1.next();
+        }else if(!in2.isEnd() &&
+            in2.current().getName() < in1.current().getName()
+                 ){
+            in2.next();
+        }else{//in1.current() == in2.current()
+            in1.next();
+            in2.next();
+        }
+    }*/
+    // Symmetric difference
+    /*
+    while(!in1.isEnd() || !in2.isEnd()){
+        if( in2.isEnd() ||
+               (
+               !in1.isEnd() &&
+               in1.current().getName() < in2.current().getName()
+               )
+           ){
+            out.write(in1.current());
+            in1.next();
+        }else if(
+                 in1.isEnd() ||
+                 (
+             !in2.isEnd() &&
+            in2.current().getName() < in1.current().getName())
+
+                 ){
+            out.write(in2.current());
+            in2.next();
+        }else{//in1.current() == in2.current()
+            in1.next();
+            in2.next();
+        }
+    }
+    */
+
     return 0;
 }
