@@ -317,10 +317,279 @@ istream& operator>>(istream& in, User &o){
 }
 ```
 
-
-
 # Csoportosítás
 
+
+Bonyolítsuk még egy kicsit a dolgot. :)
+
+Ha a fesztiválos inputhoz azt a feladatot kapjuk kérdésként, hogy mondjuk meg, hogy melyik árkategóriában melyik a leghosszabb fesztivál, akkor mit tudunk tenni?
+
+```
+10000 dubstep 1
+10000 jazz classic 10
+10000 dubstep 5
+12000 norw_black_metal 3
+12000 rock 2
+12000 dubstep 2
+13000 folklore house electro 3
+13000 house 2
+``` 
+
+Mondhatnánk azt, hogy kipakoljuk vektorba és hasonlítgatunk sokat, de ha sorbarendezett inputunk van akkor meg tudjuk oldani stílusosabban és gyorsabban a problémát. Csoportosítani fogunk.
+
+Az elvárt output:
+```
+10000 10
+12000 3
+13000 3
+```
+
+A csoportosítás műveletét viszont nem a mainben fogjuk megcsinálni, hanem a felsorolónkat írjuk át egy kicsit, hogy egyedi felsorolót kapjunk a végén.
+
+## Kimeneti osztály
+
+Az egyedi felrosolónak van egy bemeneti típusa, annak az osztályát már megírtuk ```Festival``` néven, viszont kell egy kimeneti is, ami azon mezőket tartalmazza amiket a felsorolóból szeretnénk kiadni.
+
+```c++
+class FestivalGroupedByPrice{
+    int price;
+    int sumLength;
+public:
+    int getPrice() const {
+        return price;
+    }
+
+    int getSumLength() const{
+        return sumLength;
+    }
+};
+```
+
+## Egyedi felsoroló
+
+Az egyedi felsoroló hasonló lesz egy sima felsorolóhoz csak egy kicsit másképp fogalmazzuk meg.
+
+* Ugyanúgy lesz ```ifstream```-ünk
+* Ugyanúgy lesz egy ```actual``` osztályváltozónk ami az aktuális elemet tárolja.
+* Hozzákerül viszont két új adattag
+** ```actualGroup``` ami tárolni fogja az aktuális csoportot amit összevontunk egy kimeneti értékké
+** ```isFinished``` ami azt fogja jelezni, hogy végeztünk-e
+
+A működési elve az új felsorolónknak, hogy az ```init```-ben a legelején beolvassuk az első sort majd rögtön hívunk egy nextet, ami felolvassa az első csoportot.
+A csoport felolvasása úgy megy végbe, hogy addig olvasunk újat és újat, amíg a csoportot azonosító változó egyenlő az első elemével. Ezt az értéket a next elején átadjuk az ```actualGroup``` változónak, tehát csak azzal kell hasonlítgatnunk folyton.
+Az olvasás végén az ```actual```-bann a következő csoport első eleme marad, ami viszont nekünk jó, mert az ```init```-ben is úgy indítottunk, hogy egy elemet beolvasunk. Így mondhatjuk azt, hogy az ```actual``` mindig a következő csoport első elemét tárolja, az ```actualGroup``` meg az aktuális csoportot. Ezt fogjuk visszaadni a ```current```-ben.
+
+Amit még meg kell érteni, hogy a finished miért kell. 
+Ha az ```isEnd```-ben ```f.fail``` lenne, ahogyan a sima felsorolónál is csináltuk, akkor a mostani egyedi felsorolónk sajnos az utolsó sort már nem listázná ki, mivel az ```actual``` mindig a következő csoport első elemén áll, ami az utolsó csoport esetén nem létezik, ergo ha az utolsó csoport beolvasásra került, akkor az ```f```-el ki fogunk futni, azaz be fog állni a fail flag. Ezt elkerülendő berakunk egy csúsztatást az egészbe és egy változóval jelezzük, hogy vége van-e már a felsorolásnak, amit akkor állítunk be, ha ```next```-et hívnak egy elfailelt inputra.
+
+Az egyedi felsoroló osztályunk: 
+
+```c++
+class FestivalGroupedByPriceSeqIn{
+    ifstream f;
+    bool isFinished;
+
+    FestivalGroupedByPrice actualGroup;
+    Festival actual;
+public:
+    FestivalGroupedByPriceSeqIn(string fname){
+        f.open(fname.c_str());
+    }
+    void init(){
+        f >> actual;
+        isFinished = false;
+        next();
+    }
+    void next(){
+        if(f.fail()){
+            isFinished = true;
+        }else{
+            actualGroup.price = actual.getPrice();
+            actualGroup.sumLength = 0;
+            while(!f.fail() &&
+                actual.getPrice() == actualGroup.price){
+
+                actualGroup.sumLength += actual.getLength();
+                f >> actual;
+            }
+        }
+    }
+    FestivalGroupedByPrice current() const{
+        return actualGroup;
+    }
+    bool isEnd() const{
+        return isFinished;
+    }
+};
+```
+
+### A main 
+
+Ilyenkor nagyon egszerűen írhatunk egy kiíró operátort a kimeneti osztályhoz vagy akár manuálisan ki is írhatjuk a szükséges adatokat:
+
+```c++
+int main()
+{
+    FestivalGroupedByPriceSeqIn en("input.txt");
+    for(en.init();!en.isEnd();en.next()){
+        cout << en.current().getPrice() << " " <<
+                en.current().getSumLength() << endl;
+    }
+    return 0;
+}
+```
+
+
+### Egyéb tételek
+
+A nextben lévő while-ban, amivel csoportosítunk ott tudunk mindenféle tételeket beékelni, amik különböző dolgokat kiszámolnak. Legtöbb esetben csak a ```next``` függvényt kell csak módosítanunk, így a továbbiakban csak azt írom le.
+
+Mit kell tennünk ha átlagot kér a feladat?
+```
+void next(){
+    if(f.fail()){
+        isFinished = true;
+    }else{
+        actualGroup.price = actual.getPrice();
+        actualGroup.sumLength = 0;
+        actualGroup.count = 0;
+        while(!f.fail() &&
+            actual.getPrice() == actualGroup.price){
+            actualGroup.sumLength += actual.getLength();
+            actualGroup.count++;
+            
+            f >> actual;
+        }
+    }
+}
+```
+
+A kimeneti osztály:
+```c++
+class FestivalGroupedByPrice{
+    int price;
+    int sumLength;
+    int count;
+public:
+    int getPrice() const {
+        return price;
+    }
+
+    int getSumLength() const{
+        return sumLength;
+    }
+    
+    float getAvgLength() const{
+        return (float)sumLength / (float)count;
+    }
+};
+```
+
+Hasonlóan tudjuk a többi függvént is ékelni visszavezetve a tételeinkből. Visszavezetés nem annyira triviális, hogyha például egy szummázást akarunk egyszerre végrehajtani egy kereséssel, mivel a keresési tételünk csak addig megy amíg nem talál elemet, esetünkben a szumma miatt végigfutunk úgyis az algoritmuson.
+
+Ha például azt is akarjuk jelezni az outputban, hogy adott fesztiválon van-e jazz, akkor a következő módon tehetjük azt meg:
+```
+void next(){
+    if(f.fail()){
+        isFinished = true;
+    }else{
+        actualGroup.price = actual.getPrice();
+        actualGroup.sumLength = 0;
+        actualGroup.count = 0;
+        actualGroup.hasJazz = false;
+        while(!f.fail() &&
+            actual.getPrice() == actualGroup.price){
+            actualGroup.sumLength += actual.getLength();
+            actualGroup.count++;
+            
+            if(actual.hasJazz()){
+                actualGroup.hasJazz = true;
+            }
+            
+            //Vagy vaggyal: actualGroup.hasJazz = actualGroup.hasJazz || actual.hasJazz(); 
+            
+            f >> actual;
+        }
+    }
+}
+```
+
+A kimeneti osztály:
+```c++
+class FestivalGroupedByPrice{
+    int price;
+    int sumLength;
+    int count;
+    bool hasJazz;
+public:
+    int getPrice() const {
+        return price;
+    }
+
+    int getSumLength() const{
+        return sumLength;
+    }
+    
+    float getAvgLength() const{
+        return (float)sumLength / (float)count;
+    }
+    
+    bool getHasJazz() const{
+        return hasJazz;
+    }
+};
+```
+
+```c++
+class Festival{
+    int price;
+    vector<string> genres;
+    int length;
+public:
+
+    int getPrice() const {
+        return price;
+    }
+
+    int getLength() const {
+        return length;
+    }
+    
+    bool hasJazz() const{
+        bool l = false;
+        int i = 0;
+        while(!l && i < genres.size()){
+            l = (genres[i] == "jazz");
+            i++;
+        }
+        return l;
+    }
+    
+    friend istream& operator>>(istream& in, Festival &o);
+    friend ostream& operator<<(ostream& out, const Festival &o);
+};
+```
+
+
+## Egyedi felsoroló eredményein tétel
+
+Ha Az a kérdésünk, hogy mennyi árkategóriában van Jazz-et tartalmazó fesztivál, akkor csak a main-t kell módosítsuk:
+
+```c++
+int main()
+{
+    FestivalGroupedByPriceSeqIn en("input.txt");
+    int count = 0;
+    for(en.init();!en.isEnd();en.next()){
+        if(en.current().getHasJazz()){
+            count++;
+        }
+    }
+    
+    cout << count << " Jazz-t tartalmazó kategória van!" << endl;
+    return 0;
+}
+```
 
 
 
