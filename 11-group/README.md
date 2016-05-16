@@ -60,19 +60,15 @@ Minden újonnan beolvasott értékre mgenézzük, hogy megfelel-e egy adott felt
 Például a fesztiválos példánk esetében megpróbálunk minden értéket átalakítani int-e és amíg nem sikerül addig berakjuk az értéket a vectorba, máskülönben az már a fesztivál hossza.
 
 ```c++
-    string line;
-    getline(in,line);
-    stringstream ss(line);
-    
-    ss >> o.price;
+    in >> o.price;
     string tempString;
     o.genres.clear();//Ne felejtsük el clearelni előtte a vectort!
-    while(ss >> tempString){
+    while(in >> tempString){
 
-        stringstream ss2(tempString);
+        stringstream ss(tempString);
         int tempInt;
-        ss2 >> tempInt;
-        if(ss2.fail()){
+        ss >> tempInt;
+        if(ss.fail()){
             o.genres.push_back(tempString);
         }else{
             o.length = tempInt;
@@ -83,6 +79,7 @@ Például a fesztiválos példánk esetében megpróbálunk minden értéket át
 Pro: 
 * Egyedi feltételeket tudunk megadni (akár regex: http://www.cplusplus.com/reference/regex/)
 * Nem kell azt a korlátozást megadnunk, hogy egy sorban legyen egy rekord (példánk ettől függetlenül kéri, de elhagyható a getline-os rész. Abban az esetben ss helyett egynesen in-ről olvasunk)
+* Nem használunk getline-t, így szabadabb lehet az input
 
 Contra:
 * Nem működik akkor ha csak annyi a feltételünk, hogy sor utolsó eleme már nem az, de előtte minden más.
@@ -104,18 +101,14 @@ class Festival{
 
 
 ```c++
-    string line;
-    getline(in,line);
-    stringstream ss(line);
-    
-    ss >> o.price;
+    in >> o.price;
     string tempString;
     o.genres.clear();//Ne felejtsük el clearelni előtte a vectort!
-    while(ss >> tempString){
+    while(in >> tempString){
         if(tempString.substring(0,2) != "20"){
-            stringstream ss2(tempString);
+            stringstream ss(tempString);
             int tempInt;
-            ss2 >> tempInt;
+            ss >> tempInt;
             o.numericalData.push_back(tempInt);
         }else{
             o.date = tempInt;
@@ -135,23 +128,19 @@ Ha mondjuk berakjuk a fesztivál nevét még a sor végére.
 
 Egyszerűen a ciklusban lévő else ágban olvasunk be
 ```c++
-    string line;
-    getline(in,line);
-    stringstream ss(line);
-    
-    ss >> o.price;
+    in >> o.price;
     string tempString;
     o.genres.clear();//Ne felejtsük el clearelni előtte a vectort!
-    while(ss >> tempString){
+    while(in >> tempString){
 
-        stringstream ss2(tempString);
+        stringstream ss(tempString);
         int tempInt;
-        ss2 >> tempInt;
-        if(ss2.fail()){
+        ss >> tempInt;
+        if(ss.fail()){
             o.genres.push_back(tempString);
         }else{
             o.length = tempInt;
-            ss >> o.name; // Simán csak beolvasunk egy értéket plusszba
+            in >> o.name; // Simán csak beolvasunk egy értéket plusszba
         }
     }
 ```
@@ -271,8 +260,6 @@ Nézzük ismét ezt a példát, ahol a név bekerül még a sor végére:
         stringstream ss2(o.genres.back());
         ss2 >> o.length;
         o.genres.pop_back();
-    }else{//Ha nem tudtuk a két adatunkat beszedni akkor failelünk az istream-nél!
-        in.setstate(std::ios::failbit);
     }
 ```
 
@@ -320,6 +307,68 @@ istream& operator>>(istream& in, User &o){
     return in;
 }
 ```
+
+## fail bit közvetítése
+
+Ami általános fontosságú, hogy amikor ```getline```-t használunk, akkor a hibák elrejtődhetnek, mert az ```istream``` nem fail-el el, csak a ```stringstream```. Ez esetben azt tudjuk tenni, hogy beállítjuk manuálisan a failbitet ha belül olvasási hiba történik.
+
+```c++
+in.setstate(std::ios::failbit);
+```
+
+Pár példa:
+```c++
+    string line;
+    getline(in,line);
+    stringstream ss(line);
+
+    ss >> o.price;
+    string tempString;
+    
+    o.genres.clear(); 
+    while(ss >> tempString){
+        o.genres.push_back(tempString);
+    }
+    if(!o.genres.empty()){
+        o.name = o.genres.back();
+        o.genres.pop_back();
+    }
+    if(!o.genres.empty()){
+        stringstream ss2(o.genres.back());
+        ss2 >> o.length;
+        o.genres.pop_back();
+    }else{//Ha nem tudtuk a két adatunkat beszedni akkor failelünk az istream-nél!
+        in.setstate(std::ios::failbit);
+    }
+```
+
+
+```c++
+    string line;
+    getline(in,line);
+    stringstream ss(line);
+    
+    ss >> o.price;
+    string tempString;
+    string tempString2;
+    ss >> tempString; //előreolvasunk egy értéket
+    if(ss.fail()){//Két adatnak minden sorban lennie kell, így ha itt fail van akkor gond van
+        in.setstate(std::ios::failbit);
+    }
+    o.genres.clear();
+    while(ss >> tempString2){
+        stringstream ss2(tempString2);
+        int tempInt;
+        ss2 >> tempInt;
+        o.genres.push_back(tempInt);
+        tempString = tempString2;
+    }
+    o.date = tempString;
+```
+
+## Összefoglalva
+
+Sok módon csinálhatjuk a beolvasást, mindig a feladat elején kell végiggondolnunk, hogy érdemes megcsinálni a beolvasást. 
 
 # Csoportosítás
 
