@@ -264,16 +264,20 @@ Nézzük ismét ezt a példát, ahol a név bekerül még a sor végére:
         o.genres.push_back(tempString);
     }
     if(!o.genres.empty()){
-        stringstream ss2(o.genres.back());
-        ss2 >> o.length;
-        o.genres.pop_back();
-    }
-    if(!o.genres.empty()){
         o.name = o.genres.back();
         o.genres.pop_back();
     }
+    if(!o.genres.empty()){
+        stringstream ss2(o.genres.back());
+        ss2 >> o.length;
+        o.genres.pop_back();
+    }else{//Ha nem tudtuk a két adatunkat beszedni akkor failelünk az istream-nél!
+        in.setstate(std::ios::failbit);
+    }
 ```
 
+Figyeljünk arra, hogy itt a végétől visszafele szedegetjük le az értékeket így először a legutolsó elembe írunk.
+Érdemes a hibát jelezni az istreamen ha nem sikerült beolvasni az adatot úgy ahogy szerettük volna.
 
 ## Név olvasás 
 
