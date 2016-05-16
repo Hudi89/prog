@@ -24,8 +24,7 @@ public:
     }
 
     friend istream& operator>>(istream& in, Deposit &o);
-    friend ostream& operator<<(ostream& out,
-                    const Deposit &o);
+    friend ostream& operator<<(ostream& out, const Deposit &o);
 };
 
 istream& operator>>(istream& in, Deposit &o){   
@@ -189,17 +188,10 @@ int main()
     while(!in1.isEnd() || !in2.isEnd()){
         DepositGroupedByPrice act;
         
-        if( in2.isEnd() ||
-               (
-               !in1.isEnd() && in1.current().getName() < in2.current().getName()
-               )
-           ){
+        if(in2.isEnd()   ||   (!in1.isEnd() && in1.current().getName() < in2.current().getName())){
             act = in1.current();
             in1.next();
-        }else if(in1.isEnd() ||
-                 (
-             !in2.isEnd() && in2.current().getName() < in1.current().getName())
-                 ){
+        }else if(in1.isEnd()   ||   (!in2.isEnd() && in2.current().getName() < in1.current().getName())){
                  
             act = in2.current();
             in2.next();
