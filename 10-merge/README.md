@@ -1,7 +1,7 @@
 #Alap tételek felsorolóval
 
 Valósítsunk meg először egy valamilyen rekord osztályt, majd annak kiíró és beolvasó operátorát. Írjunk minden adattaghoz egy gettert, mivel egyik sem érzékeny adat, így kívülről olvashatóvá tehetjük őket nyugodtan.
-```
+```c++
 class Minion{
     string name;
     int eyeNumber;
@@ -42,7 +42,7 @@ ostream& operator<<(ostream& out, const Minion& o){
 
 Majd vegyük elő az előző órán felépített szekvenciális felsoroló osztályt, most származtatás nélkül.
 
-```
+```c++
 template<class T>
 class SeqInFile{
 private:
@@ -72,7 +72,7 @@ public:
 Ehhez az eddigiekben egy egy dimenziós tételt csináltunk meg, úgy mint pl.:
 
 Átlagoljuk az inputban szereplő minyonok szemszámát.
-```
+```c++
 int main(){
     SeqInFile<Minion> in("input.txt");
     int s = 0;
@@ -86,7 +86,7 @@ int main(){
 }
 ```
 Számoljuk meg mennyi szemüveges van a csapatban.
-```
+```c++
 int main(){
     SeqInFile<Minion> in("input.txt");
     int count = 0;
@@ -101,7 +101,7 @@ int main(){
 ```
 
 Ki a legidegesítőbb?
-```
+```c++
 int main(){
     SeqInFile<Minion> in("input.txt");
     int count = 0;
@@ -127,7 +127,7 @@ int main(){
 ```
 
 Mindenki szemüveges?
-```
+```c++
 int main(){
     SeqInFile<Minion> in("input.txt");
     bool l = true;
@@ -146,7 +146,7 @@ int main(){
 Ha egy adott feltétel szerint kell nekünk elemeket visszadni, például, hogy adjuk meg a szemüveges minyonokat, akkor egy egyszerű if-el megtudjuk tenni.
 
 
-```
+```c++
 int main(){
     SeqInFile<Minion> in("input.txt");
     
@@ -164,7 +164,7 @@ Viszont ha van szekvenciális felsorolónk, akkor szekvenciális kimenetünk is 
 
 Hasonlóan a szekvenciális inputhoz, definiálhatunk szekvenciális outputot, viszont ez nagyságrendileg egyszerűbb osztály lesz, mivel egy függvény is elegendő hozzá. Ez a függvény lesz amin keresztül egy értéket átadhatunk a szekvenciális outputnak.
 
-```
+```c++
 template<class T>
 class SeqOut{
 public:
@@ -175,7 +175,7 @@ public:
 Definiálhatjuk több módon a szekvenciális outputot:
 
 Az egyik ha simán konzolos kimenetként definiáljuk.
-```
+```c++
 template<class T>
 class SeqOutConsole : public SeqOut<T>{
 public:
@@ -186,7 +186,7 @@ public:
 ```
 
 Ekkor a mainünk általánosabb lesz egy picit:
-```
+```c++
 int main(){
     SeqInFile<Minion> in("input.txt");
     SeqOutConsole<Minion> out("out.txt");
@@ -201,7 +201,7 @@ int main(){
 
 De definiálhatunk fájlba kimenetet is.
 
-```
+```c++
 template<class T>
 class SeqOutFile : public SeqOut<T>{
     ofstream f;
@@ -215,7 +215,7 @@ public:
 };
 ```
 
-```
+```c++
 int main(){
     SeqInFile<Minion> in("input.txt");
     SeqOutFile<Minion> out("out.txt");
@@ -230,7 +230,7 @@ int main(){
 
 Vagy akár olyat ami egyszerre a kettőre kiír:
 
-```
+```c++
 template<class T>
 class SeqOutFileAndConsole : public SeqOut<T>{
     ofstream f;
@@ -244,7 +244,7 @@ public:
     }
 };
 ```
-```
+```c++
 int main(){
     SeqInFile<Minion> in("input.txt");
     SeqOutFileAndConsole<Minion> out("out.txt");
@@ -279,7 +279,7 @@ A metszet keresés esetében amikor az egyik input le van maradva, azaz az az é
 
 Tegyük fel tehát, hogy az inputjaink sorbarendezettek név szerint például és a feladatunk az, hogy megadjuk, hogy kik voltak mindkét ülésen ott például.
 
-```
+```c++
 int main(){
     SeqInFile<Minion> in1("input.txt");
     SeqInFile<Minion> in2("input2.txt");
@@ -313,7 +313,7 @@ Amit változtatnunk kell a metszethez képest:
 * Ha az első input véget ért akkor mindig a 2. ágnak kell lefutnia 
 * Ha a 2. input ért véget akkor mindig az 1. ágnak kell lefutnia
 
-```
+```c++
 int main(){
     SeqInFile<Minion> in1("input.txt");
     SeqInFile<Minion> in2("input2.txt");
@@ -349,7 +349,7 @@ int main(){
 }
 ```
 Az 1. és 2. ifben figyeljük meg, hogy valójában ugyanaz mint ha azt írtuk volna, hogy:
-```
+```c++
  if( in2.isEnd() ||
                (
                !in1.isEnd() && !in2.isEnd()
@@ -363,7 +363,7 @@ Az eddigiek alaján a szimmetrikus differencia és a különbség már nagyon eg
 
 ## Kivonás
 
-```
+```c++
 while(!in1.isEnd()){
     if( in2.isEnd() ||
            (
@@ -386,7 +386,7 @@ while(!in1.isEnd()){
 
 ## Szimmetrikus differencia
 
-```
+```c++
 while(!in1.isEnd() || !in2.isEnd()){
     if( in2.isEnd() ||
            (
