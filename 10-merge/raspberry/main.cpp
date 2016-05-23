@@ -17,7 +17,7 @@ public:
         return id;
     }
 
-    bool operator<(const Raspberry &o){
+    bool operator<(const Raspberry &o) const{
         return id < o.id;
     }
 };
@@ -108,7 +108,7 @@ int main()
             out.write(in2.current());
             in2.next();
         }else { // in1.current() == in2.current()
-            out.write(in1.current() + in2.current());
+            out.write(in1.current());
             in1.next();
             in2.next();
         }
