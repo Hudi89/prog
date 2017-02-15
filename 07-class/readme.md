@@ -3,7 +3,7 @@
 ## Struktúra
 
 Ha létre akarunk hozni egy új adattípust, már korábbi tanulmányaink során láthattuk, hogy a
-```
+```c++
 [Új típus típusa] [Új típus neve];
 ```
 módon tehetjük meg.
@@ -12,7 +12,7 @@ Eddig ismertetett típus típusok:
 * struct
 
 Amikor egy structot létrehozunk több alaptípust akarunk összefogni egy új típusban. Például ha egy koordinátát megvalósítú struktúrát akarunk létrehozni, akkor a következő módon tehetjük:
-```
+```c++
 struct Coord{
     int x;
     int y;
@@ -20,7 +20,7 @@ struct Coord{
 ```
 , ahol az ```x``` az egyik tengely, az ```y``` a másik tengely mentén felvett értéket jelöli.
 Innentől a két változót egy típusként tudjuk kezelni és ```.``` operátorral tudunk hivatkozni egy-egy részére az adott példánynak.
-```
+```c++
 Coord a;
 a.x = 12;
 a.y = 0;
@@ -32,7 +32,7 @@ if(a.x > 0){
 ## Operátor a struktúrához
 
 Jogosan elvárhatjuk egy objektumtól, hogy kiírható legyen:
-```
+```c++
 #include <iostream>
 
 using namespace std;
@@ -56,7 +56,7 @@ int main(){
 Sok nyelvel ellentétben a C++ nyelvi megoldást ad arra, hogy a fenti kód helyes legyen és logikus működést biztosítson, két operátor megírásával.
 
 Először meg kell írnunk a + operátort két koordináta között. Első paraméter a bal operandus (bal kéz - left hand - lh), a második a jobb operandus (jobb kéz - right hand - rh).
-```
+```c++
 Coord operator+(const Coord &lh, const Coord &rh){
     Coord ret;
     ret.x = lh.x + rh.x;
@@ -67,7 +67,7 @@ Coord operator+(const Coord &lh, const Coord &rh){
 Két koordináta összege egyértelműen koordináta lesz, amit úgy kapunk hogy a komponenseket külön-külön összeadjuk.
 
 Ezután megírhatjuk a kiíró operátort, ami egy koordinátát kiír.
-```
+```c++
 ostream& operator<<(ostream& out, const Coord &c){
     out << c.re << ' ' << c.im;
     return out;
@@ -77,7 +77,7 @@ Már megszokott módon láthatjuk, hogy olyan operátort kell írnunk, aminek a 
 
 ## Tulajdonság számolása egy struktúrának
 
-```
+```c++
 #include <iostream>
 #include <cmath>
 
@@ -122,7 +122,7 @@ Ahogy eddig írtunk függvényeket azt szoktuk úgy hívni, hogy globális térb
 ```length(a)``` helyett ```a.length()``` formában fogjuk hívni a függvényt.
 
 
-```
+```c++
 #include <iostream>
 #include <cmath>
 
@@ -168,7 +168,7 @@ Két típusú láthatóságot fogunk tárgyalni:
 ```public``` - mindenki által elérhető és módosítható változók és meghívható függvények.
 
 A következő példán keresztül nézük meg, hogy hogy is működik ez a láthatóság.
-```
+```c++
 struct Valami{
   int a;
 private:
@@ -185,7 +185,7 @@ Ennek a strutkúrának az ```a``` és ```d``` változóját elérjük, de ```b``
 ## Egy lépés az osztály felé
 
 Az osztály mai fordítóknál lényegében csak egy dologban különbözik, hogy az alapvető láthatóság ```private```, tehát ha a kódunkat így módosítjuk akkor a két kódunk azonos lesz lényegében.
-```
+```c++
 class Coord{
 public:
   int x;
@@ -206,7 +206,7 @@ public:
 
 ## Adattagokat konvencionálisan priváttá tesszük
 
-```
+```c++
 #include <iostream>
 #include <cmath>
 
@@ -268,7 +268,7 @@ A maint nem tesszük baráttá, mivel ő nem tartozik szorosan az osztályunkhoz
 
 ## Működő kód
 
-```
+```c++
 #include <iostream>
 #include <cmath>
 
@@ -404,7 +404,7 @@ int main(){
 
 Egy osztályt ugyanúgy berakhatunk egy vectorba, ahogy egy sima változót, viszont ha például szeretnénk egy szummát meghívni egy ```vector<Coord>```-ra, akkor két dolgot meg kell írnunk az osztályunkhoz.
 
-```
+```c++
 template<class T>
 T sum(const vector<T> &v){
     T s;
@@ -417,7 +417,7 @@ T sum(const vector<T> &v){
 ```
 Először azt kell kitalálnunk, hogy mi a logikus ha egy skalárral akarunk egyenlővé tenni egy koordináttát. Ebben az esetben most azt választjuk, ami nem a legtökéletesebb választás, de megteszi, hogy minden komponense a koordinátának felveszi a skalár értékét.
 
-```
+```c++
 class Coord{
 ...
   Coord& operator=(float v){
@@ -438,7 +438,7 @@ class Coord{
 ## A visszatérési érték miért ```Coord&```?
 
 A 
-```
+```c++
 int a;
 (a=4)=6;
 cout << a;
@@ -450,7 +450,7 @@ példa esetében a kiírt érték 6 lesz, amit viszont csak úgy lehet elérni, 
 
 
 ## Kész kód
-```
+```c++
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -541,7 +541,7 @@ Csak a példa kedvéért, ha az lenne ott, hogy ```T s = 0```, akkor abban az es
 ## Konstans függvények
 
 Ha a maximális távolságú koordinátát keressük, akkor a következő függvény fog segíteni nekünk.
-```
+```c++
 int maxFind(const vector<Coord> &v){
     int ind = 0;
     float max = v[0].length();
@@ -553,10 +553,12 @@ int maxFind(const vector<Coord> &v){
     }
     return ind;
 }
+```
 Erre viszont a fordító panaszkodni fog méghozzá azért, mert a ```v[a]``` az egy ```const Coord```, viszont amikor meghívjuk rá a length függvényt nem garantáljuk, hogy az nem fogja bántani azt amire meghívtuk. Ezt eddig meg tudtuk tenni úgy hogy a paraméter elé írtuk, hogy const, de most hogy tudjuk megtenni, hogy már nincs paraméter?
 Egyetlen hely van ahol elfér ez az infó és oda is kell rakni az pedig a függvény után. Ha egy függvény utána odatesszük a ```const``` kulcsszót, akkor onnantól az konstans függvény lesz, ergo nem bánthatja az osztály adatatagjait, csak olvashatja őket.
 
-```class Coord{
+```c++
+class Coord{
   int x;
   int y;
 public:
@@ -631,6 +633,7 @@ Tehát ha pl. van egy olyan osztályunk ami pointerekkel dolgozik akkor a követ
 
 **Desktruktor** - Ez a függvény hasonló mint a konstruktor, csak nem lehet paramétere és akkor fut le amikor az adott változó élettartama végetér, ergo a {} blokk végén amiben létre lett hozva.
 **Copy Konstruktor ** és **Egyenlőség operátor** - Ezek hívódnak meg amikor másolni akar implicit a fordító egy osztályt, ezért ezeket mindig érdemes megírni az elején. Ha pointerekről vannak az osztályban akkor meg szükséges, mivel rossz eredményre fogunk jutni.
+
 ```c++
 class String2{
   char* data;

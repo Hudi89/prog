@@ -4,7 +4,7 @@
 Könnyen előfodrulhat, hogy az osztályunk nem csak egyszerű adattagokból áll össze, hanem bonyolutabb más osztályokat is tartalmaz. Nézzük meg, hogy hogy változik egy kódunk ha egy egyszerű vizsgát meghatározó osztályba berakunk egy vectort is ami példánkban azt jelzi, hogy milyen érdemjegyek születtek a vizsgán.
  
 A kezdő osztályunk váza.
-```
+```c++
 class Exam{
 private:
     std::string courseName;
@@ -39,7 +39,7 @@ Ha ugyanúgy ahogy eddig csináltuk megjelöljük a számosságot egy vector ele
 
 ```Prog 7 2016-04-14 6 5 4 4 4 5 1```
 Ebben az esetben a beolvasónk úgy nézne ki, hogy:
-```
+```c++
 std::istream& operator>>(std::istream& in, Exam &o){
     in >> o.courseName >> o.credit >> o.dateTime;
     int n;//Beolvassuk, hogy hány jegy született adott vizsgán
@@ -55,7 +55,7 @@ std::istream& operator>>(std::istream& in, Exam &o){
 ## Új módszer
 
 Ha meg akarjuk tartani az első felvetett formátumot akkor egy sort ki kell emelnünk mindig és abból beolvasni a különböző adattagokat. Ennek megoldására létezik egy függvény ami egy adott istream-ről beolvas egy sort. Ez a függvény a ```std::getline```
-```
+```c++
 std::istream& operator>>(std::istream& in, Exam &o){
     string temp;
     std::getline(in,temp);
@@ -68,11 +68,11 @@ std::istream& operator>>(std::istream& in, Exam &o){
 A másik dolog amit használunk az új módszerhez az a ```std::stringstream```. Ez az osztály leegyszerűsítve annyit csinál, hogy stringre építve olyan viselkedést nyújt, mint amit már a ```cout``` és ```cin``` párostól megszokhattunk anélkül, hogy bármilyen fájlt vagy streamet használna. Itt a stream központja egy ```string```, ami csak az adott ```stringstream```-ben létezik.
 Ehhez viszont includeolnunk kell a ```sstream``` fejlécfájlt.
 
-```
+```c++
 #include <sstream>
 ```
 és 
-```
+```c++
 std::istream& operator>>(std::istream& in, Exam &o){
     string temp;
     std::getline(in,temp);
@@ -89,7 +89,7 @@ std::istream& operator>>(std::istream& in, Exam &o){
 
 Ahogyan ```cin```-nél és minden ```istream```-nél, a ```stringstream```-nek is van egy olyan függvénye, hogy ```fail()```. Ez a függvény azt adja vissza, hogy történt-e valami hiba a beolvasás közben. Hibák közé sorolható az a hiba, hogy rossz formátumó volt az input, de az is, hogy egy adott stream végére értünk és már nem sikerült a beolvasás (fájl esetében fájl végéig).
 Ami fontos, hogy a ```fail``` akkor fog igazat visszaadni csak ha már volt egy hibás beolvasás, tehát nem jó az a megoldás, hogy
-```
+```c++
 std::istream& operator>>(std::istream& in, Exam &o){
     string temp;
     std::getline(in,temp);
@@ -108,7 +108,7 @@ std::istream& operator>>(std::istream& in, Exam &o){
 mivel ekkor lesz egy plusz hozzáadás. A beolvasás hibás, de utána van egy berakás, tehát a hibásan beolvasott érték bekerül a vektorba.
 
 A megoldás az előreolvasás:
-```
+```c++
 std::istream& operator>>(std::istream& in, Exam &o){
     string temp;
     std::getline(in,temp);
@@ -129,7 +129,7 @@ std::istream& operator>>(std::istream& in, Exam &o){
 ### Hogy csinálhatjuk mégrövidebben?
 
 Ha egy istream-et berakunk egy if-be, tehát azt akarjuk, hogy logikai értékként értékelődjön ki, ekkor az istreamek úgy viselkednek, hogy csak akkor lesz igaz, ha minden rendben van, ellenkező esetben hamisat. Ezt kihasználva tudjuk rövidíteni a kódot a következőre:
-```
+```c++
 std::istream& operator>>(std::istream& in, Exam &o){
     string temp;
     std::getline(in,temp);
@@ -158,7 +158,7 @@ Dimat 2 2016-06-12 3 3 4 2 1 1 2 3 2 1
 ```
 
 A beolvasó függvényünk:
-```
+```c++
 template<class T>
 std::istream& operator>>(std::istream& in, std::vector<T> &v2){
     int n;
@@ -186,7 +186,7 @@ Ebben az esetben a probléma nem fog felmerülni természetesen, mivel itt már 
 
 #### Gyors megoldás 2.
 
-```
+```c++
 template<class T>
 std::istream& operator>>(std::istream& in, std::vector<T> &v2){
     int n;
@@ -214,7 +214,7 @@ Dimat 2 2016-06-12 3 3 4 2 1 1 2 3 2 1
 
 Ahogyan tudtunk egy stringstream végéig olvasni, úgy tudunk olvasni egy fájl végéig hasonló módon. Tehát a következő kóddal jól fog működni a beolvasásunk:
 
-```
+```c++
 template<class T>
 std::istream& operator>>(std::istream& in, std::vector<T> &v){
     T temp;
@@ -236,7 +236,7 @@ Ekkor ha lefuttatjuk ap programunkat, láthatjuk, hogy valamiért a vectorok hal
 
 Tehát:
 
-```
+```c++
 std::istream& operator>>(std::istream& in, Exam &o){
     string temp;
     std::getline(in,temp);
@@ -257,7 +257,7 @@ std::istream& operator>>(std::istream& in, Exam &o){
 
 Adjunk hozzá egy olyan tulajdonságot az osztályunkhoz, hogy szóbeli vagy írásbeli az adott vizsga.
 
-```
+```c++
 class Exam{
 public:
     //Szóbeli vagy írásbeli
@@ -291,7 +291,7 @@ Enumnál nem akarjuk kihasználni, hogy valójában számok, hanem lehetőleg í
 * Egy pár karakteres tömör string sem sokkal több terület, mint egy szám.
 
 
-```
+```c++
 std::ostream& operator<<(std::ostream& out, const Exam &o){
     out << o.courseName << " " << o.credit << " " << o.dateTime << " ";
 
