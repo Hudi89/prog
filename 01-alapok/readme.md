@@ -33,6 +33,42 @@ using namespace std;int main(){int b=2;b++;cout << b;return 0;}
 ```
 A **#include** -os rész sajnos teljesen más világ, így ott az egy sorba behúzást nem tehetjük meg, mivel ezek úgynevezett direktívák.
 
+### Változók és Aritmerika
+Minden névnek és kifejezésnek típusa van, amely meghatározza a végrehajtható műveleteket:
+```c++
+int inch;
+```
+A fenti deklaráció például azt adja meg, hogy inch típusa int (vagyis inch egy egész típusú változó). 
+
+A deklaráció olyan utasítás, mely a programba egy nevet vezet be. Ehhez a névhez egy típust rendel. A típus egy név vagy kifejezés megfelelő használatát határozza meg. 
+
+A c++ több alaptípussal rendelkezik. Például:
+```c++
+bool	//logikai típus, lehetséges értékei: true(igaz) vagy false(hamis)
+char	//karakter, például: 'a', 'z' vagy '9'
+int		//egész érték, például: 1, 42, vagy 1216
+double	//kétszeres pontosságú lebegőpontos szám
+```
+
+Az aritmetikai műveletek e típusok bármilyen párosítására használhatók:
+```c++
++	//összeadás vagy előjel, egy- és kétoperandusú is lehet
+-	//kivonás vagy előjel, egy- és kétoperandusú is lehet
+*	//szorzás
+/	//osztás
+%	//maradékképzés
+```
+
+Ugyanígy az összehasonlító műveletek is:
+```c++
+==	//egyenlő
+!=	//nem egyenlő
+<	//kisebb
+>	//nagyobb
+<=	//kisebb vagy egyenlő
+>=	//nagyobb vagy egyenlő
+```
+
 ### Direktíva
 
  #-el kezdődő részeket a programban direktívának hívjuk, ami nem konkrét programkód, hanem csak egy előfeldolgozó folyamat.
