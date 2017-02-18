@@ -589,7 +589,7 @@ Ha egy boltban minden nap meg kell számolnunk az összes bevételt, úgy mint k
 ```c++
 int s = 0;
 for(int i=0;i<billCount;i++){
-  s = bills[a];
+  s += bills[a]; //s = s + bills[a];
 }
 ```
 
