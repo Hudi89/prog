@@ -46,9 +46,9 @@ A c++ több alaptípussal rendelkezik. Például:
 ```c++
 bool	//logikai típus, lehetséges értékei: true(igaz) vagy false(hamis)
 char	//karakter, például: 'a', 'z' vagy '9'
-int		//egész érték, például: 1, 42, vagy 1216
+int   //egész érték, például: 1, 42, vagy 1216
 float //lebegőpontos szám
-double	//kétszeres pontosságú lebegőpontos szám 
+double//kétszeres pontosságú lebegőpontos szám 
 ```
 
 Az aritmetikai műveletek e típusok bármilyen párosítására használhatók:
