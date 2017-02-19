@@ -32,11 +32,11 @@ int main ()
 void beolvas(vector<int> &v)
 {
     int a;
-	cin >> a;
+    cin >> a;
     while(a != 0)
     {
     	v.push_back(a);
-    	cin >> myint;
+    	cin >> a;
     }
 }
 
