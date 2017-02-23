@@ -1,53 +1,21 @@
-|	Neptun kód	|	Pont	|
-|	----	|	----	|
-|	AVKZTS	|	20	|
-|	BYDAF7	|	25	|
-|	BZXRI1	|	33	|
-|	C4540B	|	33	|
-|	CDYQ99	|	34	|
-|	D0EXP2	|	22	|
-|	D0W5T4	|	35	|
-|	DCI2WL	|	28	|
-|	DPTUX2	|	36	|
-|	DYV6VA	|	34	|
-|	ENJIPB	|	30	|
-|	EPM7MQ	|	26	|
-|	ETGUH9	|	41	|
-|	EXB2DG	|	26	|
-|	FFSCBM	|	31.5	|
-|	FQD8T9	|	38	|
-|	FZE5DO	|	26	|
-|	G0CVTG	|	20	|
-|	HFYCXJ	|	33	|
-|	HYYS2B	|	16	|
-|	HZQ1XC	|	35	|
-|	HZT7FZ	|	38	|
-|	IL4T6B	|	32	|
-|	JUCNT1	|	35	|
-|	L3ZI7P	|	35	|
-|	LV0B5L	|	18	|
-|	M6X4JS	|	33	|
-|	NIISXR	|	34	|
-|	NQLHV1	|	30	|
-|	OA1RL2	|	21	|
-|	OWHVZT	|	4	|
-|	PCVWY8	|	23	|
-|	PW9YIK	|	34	|
-|	Q3JB1C	|	40	|
-|	Q4AD0L	|	36	|
-|	QTOMVF	|	34	|
-|	QZA91Y	|	24	|
-|	SP2FJ0	|	37	|
-|	T9DGFF	|	31	|
-|	TV7BKS	|	33	|
-|	UFGDB9	|	35	|
-|	UM2FTE	|	18	|
-|	UX9WU3	|	38	|
-|	UZX7FD	|	34	|
-|	W8CCTI	|	40	|
-|	WWNJBT	|	37	|
-|	X64AOZ	|	35	|
-|	XBBJA9	|	30	|
-|	XKRO7I	|	36	|
-|	XOSDWK	|	32	|
-|	YB5TZW	|	36	|
+Mikecz Márk László csoportja:
+
+|	Neptun kód	|	Pont	 |	Bead1	 |	Bead2	|	ZH1	|	ZH2	| Jegy  |
+|	----	|	----	|	----	|	----	|	----	|	----	| ---- |
+|	BAFUBX	|	4	|	(1)	|		|		|		|   |
+|	DN2CEQ	|	4	|	(6)	|		|		|		|   |
+|	F6KMYO	|	4	|	(11)	|		|		|		|   |
+|	JQ3E9F	|	4	|	(16)	|		|		|		|   |
+|	J3DRCQ	|	0	|	(2)	|		|		|		|   |
+|	KTG338	|	0	|	(7)	|		|		|		|   |
+|	LRRVU8	|	4	|	(12)	|		|		|		|   |
+|	LUERE1	|	4	|	(17)	|		|		|		|   |
+|	M2H8A7	|	4	|	(3)	|		|		|		|   |
+|	NC1NS4	|	0	|	(8)	|		|		|		|   |
+|	NKTWXL	|	4	|	(13)	|		|		|		|   |
+|	N6R8QM	|	4	|	(18)	|		|		|		|   |
+|	OURXCX	|	0	|	(4)	|		|		|		|   |
+|	SZ3B7J	|	4	|	(9)	|		|		|		|   |
+|	TSE4JZ	|	0	|	(14)	|		|		|		|   |
+|	WCOLMZ	|	4	|	(19)	|		|		|		|   |
+|	YT9MHO	|	4	|	(5)	|		|		|		|   |
