@@ -11,7 +11,7 @@ Mikecz Márk László csoportja:
 |	LRRVU8	|	6	|	(12)	|		|		|		|   |
 |	LUERE1	|	6	|	(17)	|		|		|		|   |
 |	M2H8A7	|	6	|	(3)	|		|		|		|   |
-|	NC1NS4	|	2	|	(8)	|		|		|		|   |
+|	NC1NS4	|	4	|	(8)	|		|		|		|   |
 |	NKTWXL	|	8	|	(13)	|		|		|		|   |
 |	N6R8QM	|	6	|	(18)	|		|		|		|   |
 |	OURXCX	|	2	|	(4)	|		|		|		|   |
