@@ -5,8 +5,8 @@ Gyakorlati Csoportok:
 Programozás EA+GY. (BSc,08,A)
 | Csoport Szám | Időpont | Oktató Neve | Oktató Elérhetősége |
 | -------- | ---- | ---- | ----------- |
-|  1 | Csütörtök 8:00-9:30 | Hudoba Péter | hudi1989@gmail.com |
-|  2 | Szerda 10:00-12:00 | Hudoba Péter | hudi1989@gmail.com |
+| 1 | Csütörtök 8:00-9:30 | Hudoba Péter | hudi1989@gmail.com |
+| 2 | Szerda 10:00-12:00 | Hudoba Péter | hudi1989@gmail.com |
 | 12 | Péntek 12-14 | Mikecz Márk László | mikecz.mark.laszlo@gmail.com |
 
 A félév folyamán 2 zh lesz, az egyiket a gyakorlat időpontjában és helyén írjuk (ápr 16-17 környékén), a másodikat viszont közösen a többi csoportal (máj 28-29 körül).
