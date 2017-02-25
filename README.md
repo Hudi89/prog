@@ -3,6 +3,7 @@
 Gyakorlati Csoportok:
 
 Programozás EA+GY. (BSc,08,A)
+
 | Csoport Szám | Időpont | Oktató Neve | Oktató Elérhetősége |
 | -------- | ---- | ---- | ----------- |
 | 1 | Csütörtök 8:00-9:30 | Hudoba Péter | hudi1989@gmail.com |
