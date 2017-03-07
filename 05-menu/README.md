@@ -61,7 +61,7 @@ void menukiir()
     cout << "0. Beirni az adatokat" << endl;
     cout << "1. Maxker" << endl;
     cout << "2. Feltmaxker" << endl;
-    cuot << "3. Kilepes" << endl;
+    cout << "3. Kilepes" << endl;
 }
 ```
 
