@@ -16,6 +16,7 @@ istream& operator>>(istream &in, Complex &c) {
     return in;
 }
 
+//Új és ropogós
 template<typename T>
 istream& operator>>(istream& in, vector<T> &a)
 {
@@ -30,6 +31,7 @@ istream& operator>>(istream& in, vector<T> &a)
     return in;
 }
 
+//Régi beolvasás
 /*istream& operator>>(istream& in,vector<int> &a)
 {
     int size;
@@ -55,6 +57,7 @@ istream& operator>>(istream& in,vector<vector<int> > &a)
     return in;
 }*/
 
+//Megszámlálás tétel Vectoron
 int& szamol(const vector<int> &v)
 {
     int c = 0;
@@ -68,6 +71,7 @@ int& szamol(const vector<int> &v)
     return c;
 }
 
+//Összegzés tétel Vectoron
 int& osszeg(const vector<int> &v)
 {
     int s = 0;
@@ -78,6 +82,7 @@ int& osszeg(const vector<int> &v)
     return s;
 }
 
+//Maximum keresés tétel Vectoron
 int& maxVector(const vector<int> &a)
 {
     int error = -1;
@@ -97,6 +102,7 @@ int& maxVector(const vector<int> &a)
     return max_h;
 }
 
+//Maximumba ágyazott Összegzés Mátrixon
 int& maximumOsszegMatrix(const vector<vector<int> > &a)
 {
     int error = -1;
@@ -116,12 +122,13 @@ int& maximumOsszegMatrix(const vector<vector<int> > &a)
     return max_h;
 }
 
+//Feltétel függvény
 bool negativE(int a)
 {
     return a < 0 ? true : false;
 }
 
-//MINDEN olyan elem
+//Optimista keresés tétel Vectoron
 bool& keresOptimistaVector(const vector<int> &a)
 {
     bool l = true;
@@ -134,7 +141,7 @@ bool& keresOptimistaVector(const vector<int> &a)
     return l;
 }
 
-//LÉTEZIK olyan elem
+//Pesszimista keresés tétel Vectoron
 bool& keresPesszimistaVector(const vector<int> &a)
 {
     bool l = false;
@@ -147,6 +154,7 @@ bool& keresPesszimistaVector(const vector<int> &a)
     return l;
 }
 
+//Feltételes Maximum kiválasztás tétel Vectoron
 int& feltetelesMaximumKeresesVector(const vector<int> &a)
 {
     bool l = false;
