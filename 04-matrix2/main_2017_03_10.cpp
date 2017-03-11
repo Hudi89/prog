@@ -4,6 +4,11 @@
 
 using namespace std;
 
+enum Exception {
+    URES_MATRIX,
+    NEGATIVE_SIZE
+};
+
 struct Complex
 {
     int Re;
@@ -22,6 +27,9 @@ istream& operator>>(istream& in, vector<T> &a)
 {
     int size;
     in >> size;
+    if(size < 0) {
+        throw NEGATIVE_SIZE;
+    }
     for(int i = 0; i < size; ++i)
     {
         T temp;
@@ -105,10 +113,9 @@ int& maxVector(const vector<int> &a)
 //Maximumba ágyazott Összegzés Mátrixon
 int& maximumOsszegMatrix(const vector<vector<int> > &a)
 {
-    int error = -1;
     if(a.size() == 0)
     {
-        return error;
+        throw URES_MATRIX;
     }
     int max_h = osszeg(a[0]);
     for(int i = 1; i < a.size(); ++i)
@@ -183,11 +190,14 @@ int& feltetelesMaximumKeresesVector(const vector<int> &a)
 
 int main()
 {
+    //=======COMPLEX========
+    /*
     vector<Complex> c;
     string filename = "asd.txt";
     fstream fin;
     fin.open(filename.c_str());
     fin >> c;
+    */
     //==== VECTOR =====
     /*vector<int> v;
     string filename = "asd.txt";
@@ -216,18 +226,31 @@ int main()
         cout << v.at(i) << endl;
     }*/
     //=== MÁTRIX ====
-    /*vector<vector<int> > matrix;
-    cin >> matrix;
-
-    cout << "Maximum: " << maximumOsszegMatrix(matrix) << endl;
-
-    cout << "DEBUG" << endl;
-    for(int i = 0; i < matrix.size(); ++i) {
-        for(int j = 0; j < matrix[i].size(); ++j) {
-            cout << matrix[i][j] << " ";
+    vector<vector<int> > matrix;
+    fstream fin("asd.txt");
+    try {
+        fin >> matrix;
+        cout << "Maximum: " << maximumOsszegMatrix(matrix) << endl;
+        cout << "DEBUG" << endl;
+        for(int i = 0; i < matrix.size(); ++i) {
+            for(int j = 0; j < matrix[i].size(); ++j) {
+                cout << matrix[i][j] << " ";
+            }
+            cout << endl;
         }
-        cout << endl;
-    }*/
+    } catch(Exception exc) {
+        switch(exc) {
+        case URES_MATRIX:
+            cout << "Ures volt a matrix!" << endl;
+            break;
+        case NEGATIVE_SIZE:
+            cout << "Beolvasasnal negativ szamot adtal meg" << endl;
+            break;
+        default:
+            cout << "Kerlek keresd a helpdesk-et!" << endl;
+            break;
+        }
+    }
 
     return 0;
 }
