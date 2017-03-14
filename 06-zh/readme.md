@@ -1,4 +1,4 @@
-##ZH alap tudnivalók
+## ZH alap tudnivalók
 * Mindenféle nyomtatott segédeszköz használata szabályos (igen, akár az egész internetet kinyomtathatod)
 * Bárminemű kommunikáció vagy közös munka azonnali kizárás
 * Attól függetlenül, hogy kinyomtatva lehet bármit használni gépen ez tilos (csak GT oldala használható a ZH alatt)! Akinél egy pillanatra is meglátok valami mást az kérdés nélkül egyes. Tehát ami szabad mégegyszer:
@@ -7,7 +7,7 @@
   * A zh feladat leírása
   * minden más azonnali kérdés nélküli kizárás
 
-##ZH elvárás
+## ZH elvárás
 * Vector osztály használata.
 * Függvényekre bontott feladatmegoldás.
 * A kész program fájlból olvasson be (egy fix fájlnévből).
@@ -17,7 +17,7 @@
  * A minta bemenet majd utána a minta kimenetet adjátok meg, hogy mikre teszteltétek a programot.
 * A program ```input.txt``` nevű fájlból olvasson be.
 
-##ZH értékelés
+## ZH értékelés
 * A egyszerűbb esetekre helyes eredményt adjon vissza (kettes)
 * A program minden előfeltételeknek megfelelő esetre helyes eredményt adjon vissza
 * Kód tagoltsága, egységesség, átláthatóság, értelmes elnevezések
@@ -25,7 +25,7 @@
 * A kód szépsége
 
 
-##ZH beadás
+## ZH beadás
 
 Ha kész vagy akkor küld el nekem a hudi1989@gmail.com -ra és várj míg jelzek az eredménnyel.
 
