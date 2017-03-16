@@ -1,6 +1,6 @@
 A felsorolt feladatok közül a ZH-ban egy várható, tehát mondjuk például a "hogy" után csak az egyes feladat lesz ott ZH-ban és az a feladat.
 
-#Mintafeladat
+# Mintafeladat
 Matematikus kollégánk megkért, hogy segítsünk neki egy két dolog kiszámolásában. Nem részletezte az indokokat csak megkért minket, hogy írjunk egy olyan programot ami megmondja egy mátrix alapján, hogy
 
 **Feladat minták:**
@@ -19,7 +19,7 @@ Matematikus kollégánk megkért, hogy segítsünk neki egy két dolog kiszámol
 
 Erre kéne írnunk egy programot.
 
-##Bemenet
+## Bemenet
 
 Az inputunk egy mátrix: az input első két értéke megadja a mátrix magasságát és szélességét, majd a mátrix elemei következnek sorfojtonosan.
 ```
@@ -28,7 +28,7 @@ Az inputunk egy mátrix: az input első két értéke megadja a mátrix magassá
 2 1 4 
 3 4 1 
 ```
-Output:
+## Output:
 
 1. Igen|Nem
 2. [Számérték]

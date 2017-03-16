@@ -1,6 +1,6 @@
 A felsorolt feladatok közül a ZH-ban egy várható, tehát mondjuk például a "hogy" után csak az egyes feladat lesz ott ZH-ban és az a feladat.
 
-#Mintafeladat
+# Mintafeladat
 Rádióban dolgozunk és a főnök kitalálta, hogy csinál egy válogatásversenyt, amire rengeteg jelentkezés érkezett, így megszívtuk, tehát megkért minket, hogy írjunk egy programot ami megmondja nekünk, hogy...
 
 **Feladat minták:**
@@ -11,7 +11,7 @@ Rádióban dolgozunk és a főnök kitalálta, hogy csinál egy válogatásverse
 
 Erre kéne írnunk egy programot.
 
-##Bemenet
+## Bemenet
 
 Az input tartalmazza a pályázatokat, ahol minden egyes sor 1-1 pályázatnak felel meg.
 Az input ezen rekordok számával kezdődik, majd minden sor megadja, hogy mennyi számból áll a válogatás amit a pályázó beküldött, majd sorba egymás után a számok hosszait másodpercben megadva.
@@ -22,7 +22,7 @@ Az input ezen rekordok számával kezdődik, majd minden sor megadja, hogy menny
 2 200 200
 
 ```
-Output:
+## Output:
 
 1. [index]|Nincs
 2. [Index]|Nincs
