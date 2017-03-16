@@ -1,6 +1,6 @@
 A felsorolt feladatok közül a ZH-ban egy várható, tehát mondjuk például a "hogy" után csak az egyes feladat lesz ott ZH-ban és az a feladat.
 
-#Mintafeladat
+# Mintafeladat
 Bulit szerveztünk a hétvégén a haverokkal, de kicsit túl nagyra sikeredett a buli, így a költségvetés kiszámolása elég nehézkes. Azt látjuk, hogy mennyi pénzünk maradt a végére, de megbeszéltük, hogy írunk egy programot ami kiszámolja nekünk, hogy...
 
 **Feladat minták:**
@@ -11,7 +11,7 @@ Bulit szerveztünk a hétvégén a haverokkal, de kicsit túl nagyra sikeredett 
 
 Erre kéne írnunk egy programot.
 
-##Bemenet
+## Bemenet
 
 Az input tartalmazza a vásárlásokat és a közös kasszába való befizetéseket is vegyesen. 
 Az input ezen rekordok számával kezdődik, majd minden sor megadja egy vásárlás 1-1 tételét, vagy ha közösbe fizetésről volt szó, akkor 1-1 ember által beadott pénzösszeget.  
@@ -23,7 +23,7 @@ Az input ezen rekordok számával kezdődik, majd minden sor megadja egy vásár
 2 1000 2500
 3 500 1000 1500
 ```
-##Output
+## Output
 
 A fent megadott feladatok minta outputjai a következők, zárójelben a lehetsgées outputokat adom meg.
 
