@@ -25,7 +25,7 @@ Az input ezen rekordok számával kezdődik, majd minden sor megadja, hogy menny
 ## Output:
 
 1. [index]|2
-2. [Index]|Nincs
+2. [Index]|2
 3. [Átlag érték]
 
 ## Előfeltételek
