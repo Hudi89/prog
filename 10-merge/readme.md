@@ -1,4 +1,4 @@
-#Alap tételek felsorolóval
+# Alap tételek felsorolóval
 
 Valósítsunk meg először egy valamilyen rekord osztályt, majd annak kiíró és beolvasó operátorát. Írjunk minden adattaghoz egy gettert, mivel egyik sem érzékeny adat, így kívülről olvashatóvá tehetjük őket nyugodtan.
 ```c++
@@ -139,7 +139,7 @@ int main(){
 }
 ```
 
-#Kiválogatás és szekvenciális output
+# Kiválogatás és szekvenciális output
 
 ## Kiválogatás
 
@@ -260,7 +260,7 @@ int main(){
 Láthatjuk, hogy maga a függvényünk nem kell hogy változzon semmit, csak az output típusát változtatjuk meg és kész. Ezt hasonlóan függvénybe is kiemelhetjük és ha ott a paraméter típusának ```SeqOut```-ot adunk meg, akkor bármilyen osztály ami gyereke a ```SeqOut```-nak és megvalósítja a write függvényt, használható kimenetként. Például a fenti 3 mód, de akár küldhetjük rögtön egy szervernek is vagy bármi.
 
 
-#Csoportosítás
+# Csoportosítás
 
 Mi történik viszont ha több fájlban van egyszerre az inputunk? Hogy tudjuk ezeket összerakni? Mi van ha például Fred mindkét fájlban benne van. Mi van ha az a feladatunk, hogy két fájlban vannak jelenlétek az adott eseményen és azt kell meghatároznunk, hogy ki volt mindkettőn, vagy hasonlók.
 
