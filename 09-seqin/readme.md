@@ -1,4 +1,4 @@
-#Felsoroló
+# Felsoroló
 
 Ahogy az órák alatt nagyon sokszor az általánosítást vettük fókuszba, most is azt fogjuk. Nézzünk meg egy egyszerű alaptételt:
 
@@ -173,7 +173,7 @@ int main(){
 Ezeket a felsorolókat szokás hívni, szekvenciális inputnak is, aminek létezik felsoroló párja is.
 
 
-##Feladat
+## Feladat
 
 Készítsük el azt a programot ami megmondja, hogy a környező bolygók közül melyik a legközelebbi bolygó ahol legalább 10 millió az összlakosság.
 Az inputunk olyan formájú, hogy minden sor egy bolygó és először a nevét adjuk meg a bolygónak majd a koordinátáit és végül fixen 4 számot ami megadja, hogy a négy ismert fajból mekkora a népesség az adott bolygón (Millióban megadva).
