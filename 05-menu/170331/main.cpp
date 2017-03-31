@@ -26,13 +26,13 @@ int main()
                 case NEGATIVE_SIZE:
                     cout << "Beolvasasnal negativ szamot adtal meg" << endl;
                     break;
-                }
                 case FILE_NOT_EXIST:
                     cout << "Nem letezik a file!" << endl;
                     break;
                 default:
                     cout << "sorry nem ismerem a hibat" << endl;
                     break;
+                }
             }
             break;
 
