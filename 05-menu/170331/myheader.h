@@ -9,7 +9,8 @@ using namespace std;
 
 enum Exception {
     URES_MATRIX,
-    NEGATIVE_SIZE
+    NEGATIVE_SIZE,
+    FILE_NOT_EXIST
 };
 
 struct Complex
