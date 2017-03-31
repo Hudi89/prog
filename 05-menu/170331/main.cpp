@@ -6,21 +6,25 @@ int main()
 {
     int cmd;
     vector<vector<int> > matrix;
+    string filename;
     fstream fin;
     do {
         menu();
+        cout << "Kerem a parancs számát: ";
         cin >> cmd;
         switch(cmd) {
         case 1:
             try {
-                string filename;
                 cout << "Kerem a file nevet: ";
                 cin >> filename;
                 fin.open(filename.c_str());
                 if(!fin.is_open()) {
                     throw FILE_NOT_EXIST;
                 }
+                matrix.clear();
+                cout << matrix.size() << endl;
                 fin >> matrix;
+                fin.close();
             } catch(Exception exc) {
                 switch(exc) {
                 case NEGATIVE_SIZE:
@@ -35,7 +39,28 @@ int main()
                 }
             }
             break;
-
+        case 2:
+            cout << "DEBUG" << endl;
+            for(int i = 0; i < matrix.size(); ++i) {
+                for(int j = 0; j < matrix[i].size(); ++j) {
+                    cout << matrix[i][j] << " ";
+                }
+                cout << endl;
+            }
+            break;
+        case 3:
+            try {
+                cout << "FMK: " << feltMaxKerOsszeg(matrix) << endl;
+            } catch(Exception exc) {
+                switch(exc) {
+                case URES_MATRIX:
+                    cout << "Ures volt a matrix!" << endl;
+                    break;
+                default:
+                    cout << "Kerlek keresd a helpdesk-et!" << endl;
+                    break;
+                }
+            }
         }
         //=======COMPLEX========
         /*
@@ -72,27 +97,6 @@ int main()
         {
             cout << v.at(i) << endl;
         }*/
-        //=== MÁTRIX ====
-        try {
-            fin >> matrix;
-            cout << "FMK: " << feltMaxKerOsszeg(matrix) << endl;
-            cout << "DEBUG" << endl;
-            for(int i = 0; i < matrix.size(); ++i) {
-                for(int j = 0; j < matrix[i].size(); ++j) {
-                    cout << matrix[i][j] << " ";
-                }
-                cout << endl;
-            }
-        } catch(Exception exc) {
-            switch(exc) {
-            case URES_MATRIX:
-                cout << "Ures volt a matrix!" << endl;
-                break;
-            default:
-                cout << "Kerlek keresd a helpdesk-et!" << endl;
-                break;
-            }
-        }
 
     }while(cmd != 4);
     return 0;
