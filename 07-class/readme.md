@@ -334,7 +334,7 @@ Például, ha kell egy pozitív egész számokat tartalmazó osztály, akkor tud
 
 A mainben lévő kódot tehetnénk rövidebbé, mivel láthattuk korábban, hogy már az ifstreamet is lehet paraméterezni már létrehozáskor is és akkor extra fügvényhívás nélkül megtudnánk adni a koordinátánk két komponensét.
 
-Az osztályoknak van egy egyedi függvénye ami az úgynevezett konstruktor. Ez a függvény fele az adott osztály létrehozásáért. Csak úgy tudunk létrehozni egy adott osztályt ha a konstruktor által megkövetelt paramétereket átadjuk létrehozáskor.
+Az osztályoknak van egy egyedi függvénye ami az úgynevezett konstruktor. Ez a függvény felel az adott osztály létrehozásáért. Csak úgy tudunk létrehozni egy adott osztályt ha a konstruktor által megkövetelt paramétereket átadjuk létrehozáskor.
 Alapesetben minden osztálynak van egy default konstruktora, ezért tudtuk a példában létrehozni a ```Coord``` osztály egy példányát mindenféle paraméter nélkül. De mihelyt írunk egy konstruktort a default konstruktor eltűnik, így ha továbbra is szeretnénk, hogy minden paraméter nélkül létre lehessen hozni az adott osztályt, csinálnunk kell egy üres konstruktort is.
 A konstruktor létrehozása ugyanolyan, mint egy függvény létrehozása az osztályban, annyi különbséggel, hogy a visszatérési érték nincs és a függvénynév azonos az osztály nevével. Annyira nincs visszatérési érték, hogy nemcsak hogy void, hanem semmit nem kell odaírni.:)
 
@@ -628,7 +628,7 @@ Tehát a h fájlban csak a deklarációkat kell tartanunk végsősoron a cpp-ben
 
 ## Copykonstruktor, egyenlőségoperátor és destruktor (Extra)
 
-Ha egy kicsit bonyolultabb osztályt akarunk csinálni, amiben például pointerek vannak akkro felmerülhet az a probléma, hogy ha egyenlővé tesszük az egyik osztályt a másikkal vagy vissszaadjuk paraméteren keresztül akkor, hogy másolódik le az adott osztály.
+Ha egy kicsit bonyolultabb osztályt akarunk csinálni, amiben például pointerek vannak akkor felmerülhet az a probléma, hogy ha egyenlővé tesszük az egyik osztályt a másikkal vagy vissszaadjuk paraméteren keresztül akkor, hogy másolódik le az adott osztály.
 Tehát ha pl. van egy olyan osztályunk ami pointerekkel dolgozik akkor a következő móódon járhatunk el.
 
 **Desktruktor** - Ez a függvény hasonló mint a konstruktor, csak nem lehet paramétere és akkor fut le amikor az adott változó élettartama végetér, ergo a {} blokk végén amiben létre lett hozva.
