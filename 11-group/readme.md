@@ -111,7 +111,7 @@ class Festival{
             ss >> tempInt;
             o.numericalData.push_back(tempInt);
         }else{
-            o.date = tempInt;
+            o.date = tempString;
         }
     }
 ```
